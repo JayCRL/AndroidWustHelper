@@ -63,3 +63,4 @@
 *   `/v2/clsroom/search-in-college`: 在指定学院内搜索
 *   `/v2/clsroom/search`: 全局搜索
 # AndroidWustHelper
+# AndroidWustHelper
