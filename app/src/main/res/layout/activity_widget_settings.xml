@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_widget_setting"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="0dp"
+        android:fitsSystemWindows="true"
+        android:clipToPadding="false"
+        app:contentInsetStart="0dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            >
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:padding="12dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_gray_24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_widget"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                style="@style/MyTablayoutstyle"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="60dp"/>
+
+            <TextView
+                android:visibility="gone"
+                android:id="@+id/tv_widget_setting"
+                android:textSize="18sp"
+                android:layout_centerInParent="true"
+                android:text="小组件设置"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_default_text"/>
+            <ImageView
+                android:id="@+id/iv_widget_settings_introduce"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_more_vert_black_24dp"
+                android:paddingBottom="12dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="12dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_margin="30dp">
+
+                <ImageView
+                    android:id="@+id/iv_widget_setting_bg"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+                <RelativeLayout
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_centerInParent="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="显示内容区域"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_widget_setting_title"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#2b2b2b"
+                        android:text="主标题"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tv_widget_setting_subtitle"
+                        android:layout_toEndOf="@+id/tv_widget_setting_title"
+                        android:textColor="#2b2b2b"
+                        android:textSize="14sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:text="副标题"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </RelativeLayout>
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/rl_widget_bg_select"
+                    android:background="@drawable/shape_widget_bg_round_corners_100"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/colorEditText"
+                        android:layout_marginStart="15dp"
+                        android:text="背景选择"
+                        android:textSize="16dp" />
+                    <ImageView
+                        android:padding="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_widget_reSettings"
+                    android:background="@drawable/shape_widget_bg_round_corners_100"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/colorEditText"
+                        android:layout_marginStart="15dp"
+                        android:text="默认主题"
+                        android:textSize="16dp" />
+                    <ImageView
+                        android:padding="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_widget_textColor_select"
+                    android:background="@drawable/shape_widget_bg_round_corners_100"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/colorEditText"
+                        android:layout_marginStart="15dp"
+                        android:text="标题颜色"
+                        android:textSize="16dp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_widget_textColor_select_show"
+                        android:layout_toLeftOf="@+id/iv_widget_textColor_select"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        app:cardCornerRadius="8dp"
+                        android:layout_centerVertical="true"/>
+                    <ImageView
+                        android:id="@+id/iv_widget_textColor_select"
+                        android:padding="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true"
+                        android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:background="@drawable/shape_widget_bg_round_corners_100"
+                    android:layout_marginTop="1dp"
+                    android:layout_margin="@dimen/dp_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp">
+                    <TextView
+                        android:id="@+id/ll_widget_bg_alpha"
+                        android:layout_centerVertical="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textColor="@color/colorEditText"
+                        android:layout_marginStart="15dp"
+                        android:text="不透明度"
+                        android:textSize="16dp" />
+                    <RelativeLayout
+                        android:layout_toRightOf="@+id/ll_widget_bg_alpha"
+                        android:layout_width="0dp"
+                        android:layout_weight="6"
+                        android:layout_height="match_parent">
+                        <SeekBar
+                            android:id="@+id/sar"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:max="250"
+                            android:progress="0"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="5dp"
+                            />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/tv_widget_bg_alpha"
+                        android:text="0%"
+                        android:textColor="@color/colorEditText"
+                        android:padding="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_width="0dp"
+                        android:layout_weight="2"
+                        android:layout_height="50dp"
+                        android:layout_alignParentEnd="true"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

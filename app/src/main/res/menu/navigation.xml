@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="@string/title_home"/>
+
+    <item
+        android:id="@+id/navigation_volunteering"
+        android:icon="@drawable/ic_volunteering"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="@string/title_volunteering"
+        />
+    <item
+        android:id="@+id/navigation_course"
+        android:icon="@drawable/ic_course"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="@string/title_course"/>
+
+    <item
+        android:id="@+id/navigation_consult"
+        android:icon="@drawable/ic_consult"
+        android:title="@string/title_consult"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        />
+    <item
+        android:id="@+id/navigation_mine"
+        android:icon="@drawable/ic_mine"
+        app:showAsAction="ifRoom"
+        android:enabled="true"
+        android:title="@string/title_mine"/>
+
+</menu>

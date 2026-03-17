@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.wusthelper">
+
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" /> <!-- 前台服务开启权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" /> <!-- 日历权限 -->
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:requestLegacyExternalStorage="false"
+        android:roundIcon="@mipmap/logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/MyTheme"
+        tools:replace="android:icon,android:theme"
+        tools:targetApi="n">
+        <activity
+            android:name=".ui.activity.AiQaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LibraryHistoryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.NewEmptyClassRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SearchCourseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SearchRoomResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SearchClassRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LibraryLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.BookDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LibraryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LibraryNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.LibrarySearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.NaviBarSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.MainSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ImportCalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.FontSizeSettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ScholarshipActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.ScholarShipChooseActivity"
+            android:exported="false" />
+        <activity android:name=".ui.activity.AuthorActivity" />
+        <activity android:name=".ui.activity.QRCodeShareActivity" />
+        <activity android:name=".ui.activity.ModifyUserDataActivity" />
+        <activity android:name=".ui.activity.UserSettingActivity" />
+        <activity android:name=".ui.activity.LostCardActivity" />
+        <activity android:name=".ui.activity.SchoolBusActivity" />
+        <activity android:name=".ui.activity.SchoolCalendarActivity" />
+        <activity android:name=".ui.activity.EmptyClassRoomActivity" />
+        <activity android:name=".ui.activity.YellowPageActivity" />
+        <activity android:name=".ui.activity.CreditsStatisticsActivity" />
+        <activity android:name=".ui.activity.TestActivity" />
+        <activity android:name=".ui.activity.CourseBgSettingActivity" />
+        <activity android:name=".ui.activity.ChangeScheduleSetting" />
+        <activity android:name=".ui.activity.GradeActivity" />
+        <activity android:name=".ui.activity.AboutActivity" />
+        <activity android:name=".ui.activity.GradeChartActivity" />
+        <activity android:name=".ui.activity.WidgetSettingsActivity" />
+        <activity android:name=".ui.activity.PhysicalDetailActivity" />
+        <activity
+            android:name=".ui.activity.MainMvpActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateVisible|adjustPan"
+            android:theme="@style/ScheduleTheme"
+            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".ui.activity.OtherWebActivity" />
+        <activity android:name=".ui.activity.EditActivity" />
+        <activity android:name=".ui.activity.FeedBackActivity" />
+        <activity
+            android:name=".ui.activity.LoginMvpActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/edit_activity" />
+        <activity
+            android:name=".ui.activity.LaunchActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/StartTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.activity.CountdownActivity" />
+        <activity android:name=".ui.activity.CountDownShareActivity" />
+        <activity android:name=".ui.activity.ScanActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <receiver
+            android:name=".appwidget.CountDownWidgetProvider"
+            android:label="倒计时小插件"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.REBOOT" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLE" />
+                <action android:name="android.appwidget.action.UPDATE_ALL" />
+                <action android:name="android.appwidget.action.REFRESH" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/count_down_widget_provider_info" />
+        </receiver>
+        <receiver
+            android:name=".appwidget.TodayScheduleWidgetProvider"
+            android:label="今日课表小插件"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_today_schedule_info" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.REBOOT" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLE" />
+                <action android:name="com.example.wusthelper.appwidget.SETTING_CHANGE" />
+                <action android:name="com.example.wusthelper.appwidget.UPDATE_ALL" />
+                <action android:name="com.example.wusthelper.appwidget.REFRESH" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".appwidget.WeekScheduleWidgetProvider"
+            android:label="周课表小插件"
+            android:permission="android.permission.RECEIVE_BOOT_COMPLETED">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_week_schedule_info" />
+
+            <intent-filter>
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.REBOOT" />
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.appwidget.action.APPWIDGET_ENABLE" />
+                <action android:name="com.linghang.andoid.wustcampus.AppWidget.REFRESH" />
+                <action android:name="com.android.linghang.wustcampus.AppWidget.UP" />
+                <action android:name="com.android.linghang.wustcampus.AppWidget.DOWN" />
+                <action android:name="com.android.linghang.wustcampus.AppWidget.CONTENT.CLICK" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".appwidget.service.TodayScheduleWidgetService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+        <service
+            android:name=".appwidget.service.CountDownWidgetService"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+    </application>
+
+</manifest>

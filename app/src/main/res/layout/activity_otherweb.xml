@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_bg"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_otherweb"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize">
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+            <ImageView
+                android:id="@+id/iv_otherweb_back"
+                android:padding="12dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_gray_24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ripple_bg_light"/>
+            <TextView
+                android:id="@+id/tv_otherweb_title"
+                style="@style/mToolbarTitle"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_otherweb_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/iv_otherweb_more"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="15dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/more"
+                android:background="@drawable/ripple_bg_light"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/wv_otherweb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ProgressBar
+            android:id="@+id/progress_otherwb"
+            android:layout_width="match_parent"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_height="5dp"
+            android:maxHeight="2dip"
+            android:visibility="gone"
+            android:progressDrawable="@drawable/progressbar"
+            />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fl_otherweb_no_content"
+            layout="@layout/layout_no_internet"
+            android:visibility="gone"
+            />
+    </FrameLayout>
+
+</LinearLayout>

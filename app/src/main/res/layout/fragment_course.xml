@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:id="@+id/course_week"
+        android:background="@color/default_bg"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.example.wusthelper.widget.AutoScaleWidthImageView
+                android:id="@+id/iv_background_full_screen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <View
+                    android:id="@+id/view_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp"/>
+                <include
+                    android:id="@+id/tb_course"
+                    layout="@layout/title_course"/>
+
+                <com.example.wusthelper.widget.ExpandableLinearLayout
+                    android:id="@+id/el_week_select"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:el_duration="400"
+                    app:el_expanded="false">
+
+                    <com.example.wusthelper.widget.TabIconView
+                        android:id="@+id/ti_week_select"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_expandable="true">
+
+                    </com.example.wusthelper.widget.TabIconView>
+
+                </com.example.wusthelper.widget.ExpandableLinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <com.example.wusthelper.widget.AutoScaleWidthImageView
+                        android:scaleType="centerCrop"
+                        android:id="@+id/iv_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <androidx.core.widget.NestedScrollView
+                            android:id="@+id/ns_class"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never">
+
+                            <LinearLayout
+                                android:id="@+id/ll_class_container"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="40dp"
+                                android:orientation="horizontal">
+                                <!--                    android:background="#33ffffff"-->
+
+                                <LinearLayout
+                                    android:id="@+id/classes_time"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.8"
+                                    android:background="@color/default_bg_half"
+                                    android:orientation="vertical">
+
+                                    <include layout="@layout/layout_course_time_huangjiahu"/>
+
+                                </LinearLayout>
+
+                                <FrameLayout
+                                    android:layout_weight="7"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent">
+                                    <!--<ImageView-->
+                                    <!--android:id="@+id/iv_background"-->
+                                    <!--android:alpha="0.8"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="match_parent" />-->
+
+                                    <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <RelativeLayout
+                                            android:id="@+id/rl_mon"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/rl_tue"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/rl_wed"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/rl_thu"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/rl_fri"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/rl_sat"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+
+                                        </RelativeLayout>
+
+                                        <RelativeLayout
+                                            android:id="@+id/rl_sun"
+                                            android:layout_width="0dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_weight="1">
+                                        </RelativeLayout>
+                                    </LinearLayout>
+
+                                </FrameLayout>
+
+                            </LinearLayout>
+
+                        </androidx.core.widget.NestedScrollView>
+                        <!--            android:background="#33ffffff"-->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:background="#33ffffff"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:text="11月"
+                                android:id="@+id/tv_month"
+                                android:gravity="center"
+                                android:textSize="13sp"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.8"
+                                android:textStyle="bold"
+                                style="@style/mCourseTopItem"/>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_weight="7"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp">
+                                    <TextView
+                                        android:text="14日"
+                                        android:id="@+id/tv_monday"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItem"
+                                        />
+
+                                    <TextView
+                                        android:text="15日"
+                                        android:id="@+id/tv_tuesday"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItem"/>
+
+                                    <TextView
+                                        android:text="16日"
+                                        android:id="@+id/tv_wednesday"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItem"/>
+
+                                    <TextView
+                                        android:text="17日"
+                                        android:id="@+id/tv_thursday"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItem"/>
+
+                                    <TextView
+                                        android:text="18日"
+                                        android:id="@+id/tv_friday"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItem"/>
+                                    <!--                android:lineSpacingExtra="5dp"-->
+
+                                    <TextView
+                                        android:text="19日"
+                                        android:id="@+id/tv_saturday"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItem"/>
+
+                                    <TextView
+                                        android:text="20日"
+                                        android:id="@+id/tv_sunday"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItem"/>
+                                </LinearLayout>
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="20dp">
+                                    <TextView
+                                        android:text="14"
+                                        android:id="@+id/tv_monday_day"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItemDay"
+                                        />
+
+                                    <TextView
+                                        android:text="15"
+                                        android:id="@+id/tv_tuesday_day"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItemDay"/>
+
+                                    <TextView
+                                        android:text="16"
+                                        android:id="@+id/tv_wednesday_day"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItemDay"/>
+
+                                    <TextView
+                                        android:text="17"
+                                        android:id="@+id/tv_thursday_day"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItemDay"/>
+
+                                    <TextView
+                                        android:text="18"
+                                        android:id="@+id/tv_friday_day"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItemDay"/>
+                                    <!--                android:lineSpacingExtra="5dp"-->
+
+                                    <TextView
+                                        android:text="19"
+                                        android:id="@+id/tv_saturday_day"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItemDay"/>
+
+                                    <TextView
+                                        android:text="20"
+                                        android:id="@+id/tv_sunday_day"
+                                        android:gravity="center"
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        style="@style/mCourseTopItemDay"/>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </FrameLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/course_today"
+        android:layout_height="match_parent">
+        <com.example.wusthelper.widget.FlexibleScrollView
+            android:id="@+id/flex_scroll_view"
+            android:layout_width="match_parent"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            android:background="#FFFFFF"
+            app:overScrollMode="TOP"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:clipChildren="false"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <com.example.wusthelper.helper.AnimationHelper
+                    android:id="@+id/title_animation"
+                    android:layout_width="match_parent"
+                    app:startPosition="TOP"
+                    app:animationAble="true"
+                    android:layout_height="wrap_content">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@mipmap/bg_top"
+                            android:adjustViewBounds="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+                        <LinearLayout
+                            android:id="@+id/time_linearlayout"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+                                android:layout_weight="4"
+                                android:layout_width="0dp"
+                                android:orientation="vertical"
+                                android:paddingLeft="30dp"
+                                android:layout_height="match_parent">
+                                <TextView
+                                    android:id="@+id/date"
+                                    android:textColor="#FFFFFF"
+                                    android:text="12月7日 星期一"
+                                    android:textSize="16dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                                <TextView
+                                    android:id="@+id/greetings"
+                                    android:layout_marginTop="5dp"
+                                    android:textColor="#FFFFFF"
+                                    android:textStyle="bold"
+                                    android:text="早上好！打工人"
+                                    android:textSize="24dp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"/>
+                        </LinearLayout>
+                    </FrameLayout>
+                </com.example.wusthelper.helper.AnimationHelper>
+                <com.example.wusthelper.helper.AnimationHelper
+                    app:startPosition="BOTTOM"
+                    android:id="@+id/content_animation"
+                    app:animationAble="true"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="-40dp"
+                    android:layout_height="match_parent">
+                    <ScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:id="@+id/course_linearlayout"
+                            android:background="@drawable/bg_course_linearlayout"
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:clipChildren="false"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+                                android:clipChildren="false"
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp">
+                                <LinearLayout
+                                    android:layout_weight="3"
+                                    android:layout_width="0dp"
+                                    android:orientation="vertical"
+                                    android:layout_height="match_parent"/>
+                                <LinearLayout
+                                    android:clipChildren="false"
+                                    android:layout_weight="2"
+                                    android:layout_width="0dp"
+                                    android:gravity="center_horizontal"
+                                    android:layout_height="match_parent">
+                                </LinearLayout>
+                            </LinearLayout>
+                            <TextView
+                                android:paddingTop="2dp"
+                                android:alpha="0.3"
+                                android:gravity="center"
+                                android:layout_gravity="center"
+                                android:text="@string/course_explain"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="12dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="上午"
+                                android:textColor="@color/color_default_text"
+                                android:layout_marginTop="40dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:id="@+id/course_morning"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="下午"
+                                android:textColor="@color/color_default_text"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:id="@+id/course_afternoon"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:text="晚上"
+                                android:textColor="@color/color_default_text"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginLeft="20dp"
+                                android:layout_height="wrap_content"/>
+                            <LinearLayout
+                                android:id="@+id/course_evening"
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </ScrollView>
+
+                </com.example.wusthelper.helper.AnimationHelper>
+
+            </LinearLayout>
+        </com.example.wusthelper.widget.FlexibleScrollView>
+    </LinearLayout>
+
+
+
+</LinearLayout>

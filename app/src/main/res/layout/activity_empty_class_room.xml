@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_emptyclassroom"
+        app:titleTextColor="@color/colorEditText"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize">
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:padding="12dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_gray_24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/textView_toolbar_title"
+                style="@style/mToolbarTitle"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="教室查询"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <WebView
+            android:id="@+id/wv_emptyclassroom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ProgressBar
+            android:id="@+id/empty_classroom_progress"
+            android:layout_width="match_parent"
+            android:background="@drawable/progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_height="5dp"
+            android:maxHeight="2dip"
+            android:visibility="gone"
+            android:progressDrawable="@drawable/progressbar"
+            />
+        <FrameLayout
+            android:id="@+id/fl_emptyclassroom_no_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+            <include
+                layout="@layout/layout_no_internet"
+                />
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

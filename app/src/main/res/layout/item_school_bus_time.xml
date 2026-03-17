@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="76dp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="@dimen/sub_big_spacing"
+            android:layout_marginRight="@dimen/sub_big_spacing"
+            android:layout_width="8dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="@dimen/line"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="@color/line_outer_gray"/>
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/shape_dot_gray"/>
+
+            <View
+                android:layout_width="@dimen/line"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="@color/line_outer_gray"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tv_item_hour"
+                tools:text="7"
+                android:textSize="@dimen/big_text"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/big_text"
+                android:gravity="center"
+                android:text=" : "/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/tv_item_minute"
+                tools:text="50"
+                android:textSize="@dimen/big_text"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_bus_item_tag"
+            android:gravity="center|end"
+            android:layout_weight="1"
+            tools:text="错过"
+            android:textSize="13sp"
+            android:padding="@dimen/small_spacing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <View
+            android:id="@+id/view_item_bus_cycle"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_gray_cycle"/>
+
+        <View
+            android:id="@+id/view_item_bus_line"
+            android:layout_width="@dimen/sub_medium_spacing"
+            android:layout_height="@dimen/bold_line"
+            android:layout_gravity="center"
+            android:background="@color/colorLine"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        android:background="@color/colorLineLight"
+        android:layout_marginStart="@dimen/big_spacing"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

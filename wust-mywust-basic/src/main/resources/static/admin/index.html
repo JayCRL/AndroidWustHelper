@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WUST 后台管理系统</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #09090b; --bg-surface: #121214; --bg-muted: #18181b;
+            --border: #27272a; --border-bright: #3f3f46;
+            --text-main: #fafafa; --text-dim: #a1a1aa;
+            --brand: #6366f1; --success: #10b981; --error: #ef4444; --warning: #f59e0b;
+            --radius-sm: 6px; --radius-md: 10px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--bg-base); color: var(--text-main); font-family: 'Inter', -apple-system, sans-serif; height: 100vh; overflow: hidden; }
+        .mesh-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; background-image: radial-gradient(circle at 2px 2px, var(--border) 1px, transparent 0); background-size: 32px 32px; mask-image: radial-gradient(circle at center, black, transparent 80%); opacity: 0.3; }
+        .app-container { position: relative; z-index: 1; display: flex; height: 100vh; }
+        .sidebar { width: 240px; background: var(--bg-surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; padding: 1.5rem 1rem; }
+        .logo { padding: 0 0.75rem; margin-bottom: 2.5rem; display: flex; align-items: center; gap: 10px; font-size: 1rem; font-weight: 700; }
+        .nav-section { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+        .nav-item { padding: 0.6rem 0.75rem; border-radius: var(--radius-sm); color: var(--text-dim); display: flex; align-items: center; gap: 10px; cursor: pointer; transition: 0.15s; font-size: 0.875rem; font-weight: 500; text-decoration: none; }
+        .nav-item:hover { color: var(--text-main); background: var(--bg-muted); }
+        .nav-item.active { color: var(--text-main); background: var(--bg-muted); box-shadow: 0 0 0 1px var(--border); }
+        .nav-item.active i { color: var(--brand); }
+        .mobile-topbar { display: none; }
+        .hamburger-btn { background: var(--bg-muted); color: var(--text-main); border: 1px solid var(--border); border-radius: var(--radius-sm); height: 34px; width: 42px; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+        .nav-overlay { display: none; }
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+        header { height: 64px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; background: rgba(9, 9, 11, 0.5); backdrop-filter: blur(8px); }
+        .view-container { flex: 1; overflow-y: auto; padding: 2rem; }
+        .grid { display: grid; gap: 1.5rem; } .grid-stats { grid-template-columns: repeat(4, 1fr); }
+        .card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem; }
+        .card-title { font-size: 0.875rem; color: var(--text-dim); margin-bottom: 0.5rem; } .card-value { font-size: 1.5rem; font-weight: 700; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; } th { text-align: left; padding: 0.75rem 1rem; color: var(--text-dim); border-bottom: 1px solid var(--border); } td { padding: 1rem; border-bottom: 1px solid var(--border); }
+        .status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px; border-radius: 99px; font-size: 0.75rem; font-weight: 600; border: 1px solid transparent; }
+        .status-success { background: rgba(16, 185, 129, 0.1); color: #34d399; border-color: rgba(16, 185, 129, 0.2); }
+        .status-error { background: rgba(239, 68, 68, 0.1); color: #f87171; border-color: rgba(239, 68, 68, 0.2); }
+        .status-warn { background: rgba(245, 158, 11, 0.1); color: #fbbf24; border-color: rgba(245, 158, 11, 0.2); }
+        .terminal { background: #000; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; height: calc(100vh - 280px); overflow-y: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; line-height: 1.6; }
+        .btn { height: 36px; padding: 0 1rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: 0.15s; border: 1px solid transparent; }
+        .btn-primary { background: var(--text-main); color: var(--bg-base); } .btn-secondary { background: var(--bg-muted); color: var(--text-main); border-color: var(--border); } .btn-danger { background: rgba(239, 68, 68, 0.1); color: #f87171; border-color: rgba(239, 68, 68, 0.2); }
+        .form-input { background: var(--bg-base); border: 1px solid var(--border); padding: 0.5rem 0.75rem; border-radius: var(--radius-sm); color: white; outline: none; font-size: 0.875rem; }
+        .img-card { border-radius: var(--radius-md); overflow: hidden; background: var(--bg-surface); border: 1px solid var(--border); position: relative; } 
+        .img-preview { width: 100%; height: 180px; object-fit: cover; }
+        .l-info { color: #10b981; } .l-warn { color: #f59e0b; } .l-error { color: #ef4444; } .l-ts { color: var(--text-dim); }
+        .fade-in { animation: fadeIn 0.2s ease-out; } @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        .filter-bar { display: flex; gap: 12px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .risk-badge { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.8); padding: 4px 8px; border-radius: 4px; font-size: 10px; color: var(--error); border: 1px solid var(--error); display: flex; align-items: center; gap: 4px; z-index: 2; }
+        .upload-area { border: 2px dashed var(--border); border-radius: var(--radius-md); padding: 2rem; text-align: center; cursor: pointer; transition: 0.2s; }
+        .upload-area:hover { border-color: var(--brand); background: var(--bg-muted); }
+
+        @media (max-width: 1024px) {
+            .grid-stats { grid-template-columns: repeat(2, 1fr); }
+            .view-container { padding: 1rem; }
+            header { padding: 0 1rem; }
+        }
+
+        @media (max-width: 768px) {
+            body { height: auto; overflow: auto; }
+            .app-container { flex-direction: column; height: auto; min-height: 100vh; }
+            .mobile-topbar { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem; border-bottom: 1px solid var(--border); background: var(--bg-surface); position: sticky; top: 0; z-index: 40; }
+            .sidebar { width: min(78vw, 320px); border-right: 1px solid var(--border); border-bottom: none; padding: 0.75rem; position: fixed; left: 0; top: 0; bottom: 0; z-index: 50; transform: translateX(-105%); transition: transform 0.2s ease; overflow-y: auto; }
+            .sidebar.mobile-open { transform: translateX(0); }
+            .nav-overlay { display: block; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 45; }
+            .logo { margin-bottom: 1rem; }
+            .nav-section { flex-direction: column; flex-wrap: nowrap; gap: 6px; }
+            .nav-item { font-size: 13px; padding: 0.5rem 0.6rem; }
+            .main-content { overflow: visible; width: 100%; }
+            .view-container { overflow: visible; padding: 0.75rem; }
+            .grid, .grid-stats { grid-template-columns: 1fr !important; }
+            .filter-bar { flex-direction: column; align-items: stretch; }
+            .form-input, .btn { width: 100%; }
+            table { display: block; overflow-x: auto; white-space: nowrap; }
+            .terminal { height: 50vh; }
+            header { height: auto; min-height: 52px; padding: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mesh-bg"></div><div id="root"></div>
+    <script type="text/babel">
+        const { useState, useEffect, useRef, useMemo } = React;
+
+        const encryptLoginPassword = async (plaintext) => {
+            try {
+                const webCrypto = window.crypto;
+                if (!webCrypto || !webCrypto.subtle || typeof TextEncoder === 'undefined') {
+                    return plaintext;
+                }
+                const keyBytes = new TextEncoder().encode('0123456789abcdef0123456789abcdef');
+                const iv = webCrypto.getRandomValues(new Uint8Array(12));
+                const key = await webCrypto.subtle.importKey('raw', keyBytes, { name: 'AES-GCM' }, false, ['encrypt']);
+                const cipherBuffer = await webCrypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, new TextEncoder().encode(plaintext));
+                const cipherBytes = new Uint8Array(cipherBuffer);
+                const combined = new Uint8Array(iv.length + cipherBytes.length);
+                combined.set(iv, 0);
+                combined.set(cipherBytes, iv.length);
+                let binary = '';
+                combined.forEach(b => binary += String.fromCharCode(b));
+                return 'ENC:' + btoa(binary);
+            } catch (e) {
+                console.warn('WebCrypto 不可用，登录密码降级为明文传输（建议启用 HTTPS）', e);
+                return plaintext;
+            }
+        };
+        const api = {
+            async fetch(url, options = {}) {
+                const token = localStorage.getItem('admin_token');
+                const headers = { ...(token ? { 'Authorization': `Bearer ${token}` } : {}), ...options.headers };
+                if(!(options.body instanceof FormData)) headers['Content-Type'] = 'application/json';
+                try {
+                    const res = await fetch(url, { ...options, headers });
+                    if (res.status === 401) { localStorage.removeItem('admin_token'); window.location.reload(); }
+                    return await res.json();
+                } catch(e) { return { code: 500, message: '网络异常' }; }
+            },
+            async fetchGateway(path, options = {}) {
+                const token = localStorage.getItem('admin_token');
+                const base = 'http://localhost:8088';
+                const headers = { ...(token ? { 'Authorization': `Bearer ${token}` } : {}), ...options.headers };
+                if(!(options.body instanceof FormData)) headers['Content-Type'] = 'application/json';
+                try {
+                    const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+                    const res = await fetch(`${base}${normalizedPath}`, { ...options, headers });
+                    return await res.json();
+                } catch (e) {
+                    return { code: 500, message: '网关请求失败，请确认网关地址和跨域配置' };
+                }
+            }
+        };
+        const Icon = ({ name, size=18, className }) => {
+            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, [name]);
+            return <i data-lucide={name} style={{ width: size, height: size }} className={className}></i>;
+        };
+
+        const DashboardView = () => {
+            const [services, setServices] = useState([]);
+            const [overview, setOverview] = useState({});
+            const load = async () => {
+                const [s, o] = await Promise.all([api.fetch('/service/status'), api.fetch('/service/overview')]);
+                if (s.code === 200) setServices(s.data);
+                if (o.code === 200) setOverview(o.data);
+            };
+            useEffect(() => { load(); const t = setInterval(load, 5000); return () => clearInterval(t); }, []);
+            return (
+                <div className="fade-in">
+                    <div className="grid grid-stats">
+                        <div className="card"><div className="card-title">在线服务</div><div className="card-value">{overview.runningServices || 0} / {overview.totalServices || 0}</div></div>
+                        <div className="card"><div className="card-title">CPU 占用</div><div className="card-value">{overview.cpuUsage || '--'}</div></div>
+                        <div className="card"><div className="card-title">内存占用</div><div className="card-value">{overview.memoryUsage || '--'}</div></div>
+                        <div className="card"><div className="card-title">系统状态</div><div className="card-value" style={{color:'var(--success)'}}>正常运行</div></div>
+                    </div>
+                    <div className="card" style={{marginTop:'2rem'}}>
+                        <div style={{display:'flex', justifyContent:'space-between', marginBottom:'1.5rem'}}><h3>微服务实例</h3><button className="btn btn-secondary" onClick={load}><Icon name="refresh-cw" size={14}/> 刷新</button></div>
+                        <table><thead><tr><th>服务</th><th>状态</th><th>注册</th><th>PID</th><th>日志</th></tr></thead><tbody>
+                            {services.map(s => (
+                                <tr key={s.serviceName}>
+                                    <td style={{fontWeight:600}}>{s.serviceName}</td>
+                                    <td><span className={`status-pill ${s.running ? 'status-success' : 'status-error'}`}>{s.running ? '在线' : '停机'}</span></td>
+                                    <td><span style={{color: s.nacosRegistered ? 'var(--success)' : 'var(--text-dim)'}}>{s.nacosRegistered ? '已注册' : '未注册'}</span></td>
+                                    <td style={{fontFamily:'JetBrains Mono'}}>{s.pid || '--'}</td>
+                                    <td><button className="btn btn-secondary" style={{height:'28px'}} onClick={() => window.location.hash = `#/logs/${s.serviceName}`}>追踪</button></td>
+                                </tr>
+                            ))}
+                        </tbody></table>
+                    </div>
+                </div>
+            );
+        };
+
+        const MultimediaView = () => {
+            const [images, setImages] = useState([]);
+            const [calendar, setCalendar] = useState('');
+            const [loading, setLoading] = useState(false);
+            const load = async () => {
+                const [list, cal] = await Promise.all([api.fetch('/admin/common/listPictures'), api.fetch('/admin/common/getCalendar')]);
+                if (list.code === 200) setImages(list.data);
+                if (cal.code === 200) setCalendar(cal.data);
+            };
+            useEffect(() => { load(); }, []);
+            const handleUpload = async (e, platform) => {
+                const file = e.target.files[0]; if(!file) return;
+                setLoading(true); const formData = new FormData(); formData.append('file', file); formData.append('platform', platform); formData.append('uid', '1');
+                const res = await api.fetch('/admin/common/uploadMultimedia', { method: 'POST', body: formData });
+                if(res.code === 200) { alert('成功！'); load(); } else alert('失败: ' + res.message);
+                setLoading(false);
+            };
+            const audit = async (pid, type) => {
+                await api.fetch(`/admin/common/${type}Picture`, { method: 'POST', body: JSON.stringify([pid]) });
+                load();
+            };
+            const carousels = images.filter(i => i.platform === 2);
+            return (
+                <div className="fade-in">
+                    <div className="grid" style={{gridTemplateColumns: '1fr 400px'}}>
+                        <div className="card">
+                            <div style={{display:'flex', justifyContent:'space-between', marginBottom:'1.5rem'}}><h3>轮播图 (CAROUSEL)</h3><label className="btn btn-primary" style={{height:'32px'}}><Icon name="upload" size={14}/> 上传<input type="file" hidden onChange={e => handleUpload(e, 2)} accept="image/*" /></label></div>
+                            <div className="grid" style={{gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))'}}>
+                                {carousels.map(i => (
+                                    <div className="img-card" key={i.pid}>
+                                        <img src={i.url} className="img-preview" />
+                                        <div style={{padding:'10px'}}>
+                                            <div className={`status-pill ${i.status === 1 ? 'status-success' : 'status-warn'}`} style={{marginBottom:'10px', fontSize:'10px'}}>{i.status === 1 ? '展示中' : '待发布'}</div>
+                                            <div style={{display:'flex', gap:'6px'}}>
+                                                {i.status === 0 ? <button className="btn btn-primary" style={{flex:1, height:'24px', fontSize:'11px'}} onClick={()=>audit(i.pid,'accept')}>发布</button> : <button className="btn btn-secondary" style={{flex:1, height:'24px', fontSize:'11px'}} onClick={()=>audit(i.pid,'ignore')}>下架</button>}
+                                                <button className="btn btn-danger" style={{height:'24px'}} onClick={()=>audit(i.pid,'delete')}><Icon name="trash" size={12}/></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="card">
+                            <h3 style={{marginBottom:'1.5rem'}}>日历管理 (CALENDAR)</h3>
+                            <div className="img-card" style={{marginBottom:'1.5rem', background:'#000', minHeight:'200px', display:'flex', alignItems:'center'}}>{calendar ? <img src={calendar} style={{width:'100%', maxHeight:'300px', objectFit:'contain'}} /> : <div style={{width:'100%', textAlign:'center', color:'var(--text-dim)'}}>未设置</div>}</div>
+                            <div className="upload-area" onClick={() => document.getElementById('cal-up').click()}><Icon name="image-plus" size={32} style={{marginBottom:'10px', color:'var(--brand)'}}/><div style={{fontSize:'13px', fontWeight:600}}>点击上传新日历</div><input id="cal-up" type="file" hidden onChange={e => handleUpload(e, 3)} accept="image/*" /></div>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const ImagesView = () => {
+            const [images, setImages] = useState([]);
+            const [filter, setFilter] = useState({ id: '', status: 'all', risk: 'all' });
+            const load = async () => { const res = await api.fetch('/admin/common/listPictures'); if (res.code === 200) setImages(res.data); };
+            useEffect(() => { load(); }, []);
+            const list = useMemo(() => images.filter(i => {
+                if(i.platform === 2 || i.platform === 3) return false;
+                return (filter.id ? String(i.pid).includes(filter.id) : true) && (filter.status === 'all' ? true : (filter.status === 'pub' ? i.status === 1 : i.status === 0)) && (filter.risk === 'all' ? true : (filter.risk === 'risk' ? i.riskLevel === 1 : i.riskLevel === 0));
+            }), [images, filter]);
+            const audit = async (pid, type) => { await api.fetch(`/admin/common/${type}Picture`, { method: 'POST', body: JSON.stringify([pid]) }); load(); };
+            return (
+                <div className="fade-in">
+                    <div className="filter-bar">
+                        <input className="form-input" placeholder="ID 搜索..." value={filter.id} onChange={e=>setFilter({...filter, id:e.target.value})} />
+                        <select className="form-input" value={filter.status} onChange={e=>setFilter({...filter, status:e.target.value})}><option value="all">全部状态</option><option value="wait">待审核</option><option value="pub">已发布</option></select>
+                        <select className="form-input" value={filter.risk} onChange={e=>setFilter({...filter, risk:e.target.value})}><option value="all">全部风险</option><option value="risk">存疑/机审未过</option><option value="safe">安全</option></select>
+                        <button className="btn btn-secondary" onClick={load}><Icon name="refresh-cw" size={14}/> 刷新</button>
+                    </div>
+                    <div className="grid" style={{gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))'}}>
+                        {list.map(i => (
+                            <div className="img-card" key={i.pid}>
+                                <img src={i.url} className="img-preview" onClick={()=>window.open(i.url)} />
+                                {i.riskLevel === 1 && <div className="risk-badge"><Icon name="alert-circle" size={12}/> 存疑</div>}
+                                <div style={{padding:'1rem'}}>
+                                    <div style={{display:'flex', justifyContent:'space-between', marginBottom:'12px'}}><span className={`status-pill ${i.status === 1 ? 'status-success' : 'status-warn'}`}>{i.status === 1 ? '已发布' : '待审核'}</span><span style={{fontSize:'0.75rem', color:'var(--text-dim)'}}>ID: {i.pid}</span></div>
+                                    <div style={{display:'flex', gap:'6px'}}>{i.status === 0 ? <button className="btn btn-primary" style={{flex:1}} onClick={()=>audit(i.pid,'accept')}>通过</button> : <button className="btn btn-secondary" style={{flex:1}} onClick={()=>audit(i.pid,'ignore')}>下架</button>}<button className="btn btn-danger" onClick={()=>audit(i.pid,'delete')}><Icon name="trash-2" size={14}/></button></div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            );
+        };
+
+        const NotifyView = () => {
+            const [list, setList] = useState([]);
+            const [form, setForm] = useState({
+                title: '',
+                context: '',
+                platform: -1,
+                catogories: 22   // 默认：全校
+            });
+
+            const load = async () => {
+                const res = await api.fetch('/operationLog/listAll');
+                if (res.code === 200) setList(res.data);
+            };
+
+            useEffect(() => { load(); }, []);
+
+            const send = async (e) => {
+                e.preventDefault();
+
+                await api.fetch('/operationLog/addNotice', {
+                    method: 'POST',
+                    body: JSON.stringify(form)
+                });
+
+                setForm({
+                    title: '',
+                    context: '',
+                    platform: -1,
+                    catogories: 22
+                });
+
+                load();
+            };
+
+            const toggle = async (id, type) => {
+                await api.fetch(
+                    type === 'pub'
+                        ? '/operationLog/publishedNotices'
+                        : `/operationLog/ignore?id=${id}`,
+                    {
+                        method: 'POST',
+                        body: type === 'pub' ? JSON.stringify([id]) : null
+                    }
+                );
+                load();
+            };
+
+            return (
+                <div className="grid fade-in" style={{ gridTemplateColumns:'1fr 380px' }}>
+                    <div className="card">
+                        <h3>发布全局广播</h3>
+
+                        <form onSubmit={send} style={{ marginTop:'1.5rem' }}>
+                            {/* 标题 */}
+                            <div style={{ marginBottom:'1rem' }}>
+                                <label style={{ fontSize:'12px', color:'var(--text-dim)' }}>
+                                    标题
+                                </label>
+                                <input
+                                    className="form-input"
+                                    style={{ width:'100%', marginTop:'6px' }}
+                                    value={form.title}
+                                    onChange={e => setForm({ ...form, title:e.target.value })}
+                                    required
+                                />
+                            </div>
+
+                            {/* 平台 */}
+                            <div style={{ marginBottom:'1rem' }}>
+                                <label style={{ fontSize:'12px', color:'var(--text-dim)' }}>
+                                    平台
+                                </label>
+                                <select
+                                    className="form-input"
+                                    style={{ width:'100%', marginTop:'6px' }}
+                                    value={form.platform}
+                                    onChange={e =>
+                                        setForm({ ...form, platform: Number(e.target.value) })
+                                    }
+                                >
+                                    <option value={0}>全平台</option>
+                                    <option value={2}>Android</option>
+                                    <option value={1}>iOS</option>
+                                </select>
+                            </div>
+
+                            {/* 发布范围 / 学院 */}
+                            <div style={{ marginBottom:'1rem' }}>
+                                <label style={{ fontSize:'12px', color:'var(--text-dim)' }}>
+                                    发布范围（学院）
+                                </label>
+                                <select
+                                    className="form-input"
+                                    style={{ width:'100%', marginTop:'6px' }}
+                                    value={form.catogories}
+                                    onChange={e =>
+                                        setForm({ ...form, catogories: Number(e.target.value) })
+                                    }
+                                >
+                                    <option value={22}>全校</option>
+                                    <option value={1}>计算机学院</option>
+                                    <option value={2}>自动化学院</option>
+                                    <option value={3}>机械学院</option>
+                                    <option value={4}>信息工程学院</option>
+                                </select>
+                            </div>
+
+                            {/* 正文 */}
+                            <div style={{ marginBottom:'1.5rem' }}>
+                                <label style={{ fontSize:'12px', color:'var(--text-dim)' }}>
+                                    正文
+                                </label>
+                                <textarea
+                                    className="form-input"
+                                    style={{ width:'100%', marginTop:'6px' }}
+                                    rows="5"
+                                    value={form.context}
+                                    onChange={e => setForm({ ...form, context:e.target.value })}
+                                    required
+                                />
+                            </div>
+
+                            <button className="btn btn-primary" style={{ width:'100%' }}>
+                                <Icon name="send" size={14}/> 立即发布
+                            </button>
+                        </form>
+                    </div>
+
+                    {/* 历史记录 */}
+                    <div className="card">
+                        <h3>历史记录</h3>
+                        <div style={{ marginTop:'1.5rem', display:'flex', flexDirection:'column', gap:'12px' }}>
+                            {list.map(n => (
+                                <div key={n.id} style={{ padding:'1rem', border:'1px solid var(--border)', borderRadius:'8px' }}>
+                                    <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'8px' }}>
+                                        <span style={{ fontWeight:600 }}>{n.title}</span>
+                                        <span className={`status-pill ${n.status === 1 ? 'status-success' : ''}`}>
+                  {n.status === 1 ? '已推' : '草稿'}
+                </span>
+                                    </div>
+                                    <p style={{ fontSize:'12px', color:'var(--text-dim)', marginBottom:'10px' }}>
+                                        {n.context}
+                                    </p>
+                                    <div style={{ textAlign:'right' }}>
+                                        {n.status === 0 ? (
+                                            <button className="btn btn-primary" style={{ height:'28px' }}
+                                                    onClick={() => toggle(n.id,'pub')}
+                                            >
+                                                发布
+                                            </button>
+                                        ) : (
+                                            <button className="btn btn-danger" style={{ height:'28px' }}
+                                                    onClick={() => toggle(n.id,'ignore')}
+                                            >
+                                                撤回
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+        const SchoolClassroomMasterView = () => {
+            const [list, setList] = useState([]);
+            const [buildings, setBuildings] = useState([]);
+            const [buildingFilter, setBuildingFilter] = useState('');
+            const [form, setForm] = useState({ building: '', roomNumber: '', type: '普通教室' });
+
+            const load = async () => {
+                const [r1, r2] = await Promise.all([
+                    api.fetch(`/UnderGraduateStudent/listSchoolClassrooms${buildingFilter ? `?building=${buildingFilter}` : ''}`),
+                    api.fetch('/UnderGraduateStudent/listBuildings')
+                ]);
+                if (r1.code === 200) setList(r1.data);
+                if (r2.code === 200) setBuildings(r2.data);
+            };
+
+            const submit = async (e) => {
+                e.preventDefault();
+                const res = await api.fetch('/UnderGraduateStudent/addSchoolClassroom', { method:'POST', body:JSON.stringify(form) });
+                if (res.code === 200) { load(); setForm({...form, roomNumber:''}); } else alert('失败');
+            };
+
+            const del = async (id) => {
+                if(!confirm('确定删除?')) return;
+                await api.fetch(`/UnderGraduateStudent/deleteSchoolClassroom?id=${id}`, { method:'POST' });
+                load();
+            };
+
+            useEffect(() => { load(); }, [buildingFilter]);
+
+            return (
+                <div className="grid fade-in" style={{ gridTemplateColumns:'350px 1fr' }}>
+                    <div className="card">
+                        <h3>导入/录入教室</h3>
+                        <form onSubmit={submit} style={{ marginTop:'1rem' }}>
+                            <div style={{ marginBottom:'12px' }}>
+                                <label style={{fontSize:'12px'}}>教学楼</label>
+                                <input className="form-input" style={{width:'100%'}} value={form.building} onChange={e=>setForm({...form, building:e.target.value})} placeholder="如: 教五" required />
+                            </div>
+                            <div style={{ marginBottom:'12px' }}>
+                                <label style={{fontSize:'12px'}}>教室号</label>
+                                <input className="form-input" style={{width:'100%'}} value={form.roomNumber} onChange={e=>setForm({...form, roomNumber:e.target.value})} placeholder="如: 301" required />
+                            </div>
+                            <div style={{ marginBottom:'15px' }}>
+                                <label style={{fontSize:'12px'}}>类型</label>
+                                <select className="form-input" style={{width:'100%'}} value={form.type} onChange={e=>setForm({...form, type:e.target.value})}>
+                                    <option value="普通教室">普通教室</option>
+                                    <option value="实验室">实验室</option>
+                                    <option value="多媒体教室">多媒体教室</option>
+                                </select>
+                            </div>
+                            <button className="btn btn-primary" style={{width:'100%'}}>保存到数据库</button>
+                        </form>
+                    </div>
+
+                    <div className="card">
+                        <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'1rem' }}>
+                            <h3>全校教室名单 ({list.length})</h3>
+                            <select className="form-input" value={buildingFilter} onChange={e=>setBuildingFilter(e.target.value)}>
+                                <option value="">全部教学楼</option>
+                                {buildings.map(b => <option key={b} value={b}>{b}</option>)}
+                            </select>
+                        </div>
+                        <table>
+                            <thead><tr><th>教学楼</th><th>教室号</th><th>全称</th><th>类型</th><th>操作</th></tr></thead>
+                            <tbody>
+                                {list.map(c => (
+                                    <tr key={c.id}>
+                                        <td>{c.building}</td>
+                                        <td>{c.roomNumber}</td>
+                                        <td style={{fontWeight:600}}>{c.fullName}</td>
+                                        <td>{c.type}</td>
+                                        <td><button className="btn btn-danger" style={{height:'24px'}} onClick={()=>del(c.id)}><Icon name="trash" size={12}/></button></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            );
+        };
+
+        const ClassroomView = () => {
+            const [occs, setOccs] = useState([]);
+            const [form, setForm] = useState({ classroom: '', startWeek: 1, endWeek: 20, weekDay: 1, startSection: 1, endSection: 13, reason: '', college: '' });
+
+            const load = async () => {
+                const res = await api.fetch('/UnderGraduateStudent/listOccupations');
+                if (res.code === 200) setOccs(res.data);
+            };
+
+            const submit = async (e) => {
+                e.preventDefault();
+                const res = await api.fetch('/UnderGraduateStudent/addOccupation', { method: 'POST', body: JSON.stringify(form) });
+                if (res.code === 200) { load(); alert('成功'); } else alert('失败');
+            };
+
+            const del = async (id) => {
+                if(!confirm('确定删除?')) return;
+                await api.fetch(`/UnderGraduateStudent/deleteOccupation?id=${id}`, { method: 'POST' });
+                load();
+            };
+
+            useEffect(() => { load(); }, []);
+
+            return (
+                <div className="grid fade-in" style={{ gridTemplateColumns:'400px 1fr' }}>
+                    <div className="card">
+                        <h3>手动占用教室</h3>
+                        <form onSubmit={submit} style={{ marginTop:'1rem' }}>
+                            <div style={{ marginBottom:'10px' }}>
+                                <label style={{fontSize:'12px'}}>教室/楼栋 (如: 教五 或 教五-302)</label>
+                                <input className="form-input" style={{width:'100%'}} value={form.classroom} onChange={e=>setForm({...form, classroom:e.target.value})} required />
+                            </div>
+                            <div style={{ display:'flex', gap:'10px', marginBottom:'10px' }}>
+                                <div style={{flex:1}}>
+                                    <label style={{fontSize:'12px'}}>开始周</label>
+                                    <input className="form-input" style={{width:'100%'}} type="number" value={form.startWeek} onChange={e=>setForm({...form, startWeek:parseInt(e.target.value)})} />
+                                </div>
+                                <div style={{flex:1}}>
+                                    <label style={{fontSize:'12px'}}>结束周</label>
+                                    <input className="form-input" style={{width:'100%'}} type="number" value={form.endWeek} onChange={e=>setForm({...form, endWeek:parseInt(e.target.value)})} />
+                                </div>
+                            </div>
+                            <div style={{ marginBottom:'10px' }}>
+                                <label style={{fontSize:'12px'}}>星期</label>
+                                <select className="form-input" style={{width:'100%'}} value={form.weekDay} onChange={e=>setForm({...form, weekDay:parseInt(e.target.value)})}>
+                                    {[1,2,3,4,5,6,7].map(d => <option key={d} value={d}>周{['一','二','三','四','五','六','日'][d-1]}</option>)}
+                                </select>
+                            </div>
+                            <div style={{ display:'flex', gap:'10px', marginBottom:'10px' }}>
+                                <div style={{flex:1}}>
+                                    <label style={{fontSize:'12px'}}>开始节</label>
+                                    <input className="form-input" style={{width:'100%'}} type="number" value={form.startSection} onChange={e=>setForm({...form, startSection:parseInt(e.target.value)})} />
+                                </div>
+                                <div style={{flex:1}}>
+                                    <label style={{fontSize:'12px'}}>结束节</label>
+                                    <input className="form-input" style={{width:'100%'}} type="number" value={form.endSection} onChange={e=>setForm({...form, endSection:parseInt(e.target.value)})} />
+                                </div>
+                            </div>
+                            <div style={{ marginBottom:'10px' }}>
+                                <label style={{fontSize:'12px'}}>事由/学院</label>
+                                <input className="form-input" style={{width:'100%'}} value={form.reason} onChange={e=>setForm({...form, reason:e.target.value, college:e.target.value})} placeholder="如: 计算机学院开会" />
+                            </div>
+                            <button className="btn btn-primary" style={{width:'100%'}}>标记占用</button>
+                        </form>
+                    </div>
+
+                    <div className="card">
+                        <h3>当前手动占用列表</h3>
+                        <table style={{marginTop:'1rem'}}>
+                            <thead>
+                                <tr><th>范围</th><th>周次</th><th>时间</th><th>原因</th><th>操作</th></tr>
+                            </thead>
+                            <tbody>
+                                {occs.map(o => (
+                                    <tr key={o.id}>
+                                        <td>{o.classroom}</td>
+                                        <td>{o.startWeek}-{o.endWeek}</td>
+                                        <td>周{o.weekDay} {o.startSection}-{o.endSection}节</td>
+                                        <td>{o.reason}</td>
+                                        <td><button className="btn btn-danger" style={{height:'24px'}} onClick={()=>del(o.id)}><Icon name="trash" size={12}/></button></td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            );
+        };
+
+        const CourseSearchView = () => {
+            const [courses, setCourses] = useState([]);
+            const [filters, setFilters] = useState({ name: '', teacher: '', classroom: '', weekDay: '', section: '' });
+
+            const load = async () => {
+                const params = new URLSearchParams();
+                Object.keys(filters).forEach(k => { if(filters[k]) params.append(k, filters[k]); });
+                const res = await api.fetch(`/UnderGraduateStudent/searchCourses?${params.toString()}`);
+                if (res.code === 200) setCourses(res.data);
+            };
+
+            useEffect(() => { load(); }, []);
+
+            return (
+                <div className="fade-in">
+                    <div className="card" style={{ marginBottom:'1.5rem' }}>
+                        <div className="filter-bar" style={{ marginBottom:0 }}>
+                            <input className="form-input" placeholder="课程名..." value={filters.name} onChange={e=>setFilters({...filters, name:e.target.value})} />
+                            <input className="form-input" placeholder="教师..." value={filters.teacher} onChange={e=>setFilters({...filters, teacher:e.target.value})} />
+                            <input className="form-input" placeholder="教室..." value={filters.classroom} onChange={e=>setFilters({...filters, classroom:e.target.value})} />
+                            <select className="form-input" value={filters.weekDay} onChange={e=>setFilters({...filters, weekDay:e.target.value})}>
+                                <option value="">星期...</option>
+                                {[1,2,3,4,5,6,7].map(d => <option key={d} value={d}>周{['一','二','三','四','五','六','日'][d-1]}</option>)}
+                            </select>
+                            <input className="form-input" type="number" placeholder="节次..." style={{width:'80px'}} value={filters.section} onChange={e=>setFilters({...filters, section:e.target.value})} />
+                            <button className="btn btn-primary" onClick={load}><Icon name="search" size={14}/> 搜索</button>
+                        </div>
+                    </div>
+
+                    <div className="card">
+                        <h3>全校课表数据库 (由抓取数据自动维护)</h3>
+                        <table style={{ marginTop:'1.5rem' }}>
+                            <thead>
+                                <tr>
+                                    <th>课程名称</th>
+                                    <th>教师</th>
+                                    <th>时间</th>
+                                    <th>节次</th>
+                                    <th>教室</th>
+                                    <th>周次</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {courses.map(c => (
+                                    <tr key={c.id}>
+                                        <td style={{ fontWeight:600 }}>{c.name}</td>
+                                        <td>{c.teacher}</td>
+                                        <td>周{['一','二','三','四','五','六','日'][c.weekDay-1]}</td>
+                                        <td style={{ fontFamily:'JetBrains Mono' }}>{c.startSection}-{c.endSection} 节</td>
+                                        <td style={{ color:'var(--brand)', fontWeight:500 }}>{c.classroom}</td>
+                                        <td style={{ color:'var(--text-dim)', fontSize:'12px' }}>{c.startWeek}-{c.endWeek} 周</td>
+                                    </tr>
+                                ))}
+                                {courses.length === 0 && <tr><td colSpan="6" style={{ textAlign:'center', color:'var(--text-dim)' }}>暂无匹配课程</td></tr>}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            );
+        };
+
+        const StudentsView = () => {
+            const [students, setStudents] = useState([]);
+            const [search, setSearch] = useState('');
+            const [selectedStudent, setSelectedStudent] = useState(null);
+            const [history, setHistory] = useState([]);
+
+            const loadStatus = async (query = '') => {
+                const res = await api.fetch(`/LogController/studentStatus${query ? `?username=${query}` : ''}`);
+                if (res.code === 200) setStudents(res.data);
+            };
+
+            const loadHistory = async (username) => {
+                const res = await api.fetch(`/LogController/loginLogs?username=${username}`);
+                if (res.code === 200) {
+                    setHistory(res.data);
+                    setSelectedStudent(username);
+                }
+            };
+
+            useEffect(() => { loadStatus(); }, []);
+
+            const handleSearch = (e) => {
+                e.preventDefault();
+                loadStatus(search);
+            };
+
+            return (
+                <div className="fade-in">
+                    <div className="filter-bar">
+                        <form onSubmit={handleSearch} style={{ display:'flex', gap:'10px', flex:1 }}>
+                            <input 
+                                className="form-input" 
+                                style={{ flex:1 }} 
+                                placeholder="按学号搜索学生..." 
+                                value={search} 
+                                onChange={e => setSearch(e.target.value)} 
+                            />
+                            <button className="btn btn-primary" type="submit"><Icon name="search" size={14}/> 搜索</button>
+                        </form>
+                        <button className="btn btn-secondary" onClick={() => { setSearch(''); loadStatus(); }}><Icon name="refresh-cw" size={14}/> 重置</button>
+                    </div>
+
+                    <div className="grid" style={{ gridTemplateColumns: selectedStudent ? '1fr 400px' : '1fr' }}>
+                        <div className="card">
+                            <h3>学生最新状态</h3>
+                            <table style={{ marginTop:'1rem' }}>
+                                <thead>
+                                    <tr>
+                                        <th>学号</th>
+                                        <th>状态</th>
+                                        <th>最后登录时间</th>
+                                        <th>结果</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {students.map(s => (
+                                        <tr key={s.id}>
+                                            <td style={{ fontWeight:600 }}>{s.username}</td>
+                                            <td>
+                                                <span className={`status-pill ${s.status === 'SUCCESS' ? 'status-success' : 'status-error'}`}>
+                                                    {s.status === 'SUCCESS' ? '登录成功' : '登录失败'}
+                                                </span>
+                                            </td>
+                                            <td style={{ color:'var(--text-dim)', fontSize:'12px' }}>
+                                                {new Date(s.loginTime).toLocaleString()}
+                                            </td>
+                                            <td style={{ fontSize:'12px' }}>{s.message}</td>
+                                            <td>
+                                                <button className="btn btn-secondary" style={{ height:'28px', fontSize:'11px' }} onClick={() => loadHistory(s.username)}>
+                                                    历史记录
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    {students.length === 0 && <tr><td colSpan="5" style={{ textAlign:'center', color:'var(--text-dim)' }}>暂无数据</td></tr>}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        {selectedStudent && (
+                            <div className="card fade-in">
+                                <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'1.5rem' }}>
+                                    <h3>历史: {selectedStudent}</h3>
+                                    <button className="btn btn-secondary" style={{ height:'24px', padding:'0 8px' }} onClick={() => setSelectedStudent(null)}>
+                                        <Icon name="x" size={14}/>
+                                    </button>
+                                </div>
+                                <div style={{ display:'flex', flexDirection:'column', gap:'10px', maxHeight:'600px', overflowY:'auto' }}>
+                                    {history.map(h => (
+                                        <div key={h.id} style={{ padding:'10px', border:'1px solid var(--border)', borderRadius:'8px', fontSize:'12px' }}>
+                                            <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'4px' }}>
+                                                <span className={h.status === 'SUCCESS' ? 'l-info' : 'l-error'} style={{ fontWeight:700 }}>{h.status}</span>
+                                                <span className="l-ts">{new Date(h.loginTime).toLocaleString()}</span>
+                                            </div>
+                                            <div style={{ color:'var(--text-main)' }}>{h.message}</div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const ManagerManagementView = () => {
+            const [form, setForm] = useState({ username: '', password: '' });
+            const [loading, setLoading] = useState(false);
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                setLoading(true);
+                const res = await api.fetch('/auth/manager/create', { method: 'POST', body: JSON.stringify(form) });
+                if (res.code === 200 || res.code === 0) {
+                    alert('管理员账号创建成功！');
+                    setForm({ username: '', password: '' });
+                } else alert('创建失败: ' + (res.message || res.msg || '权限不足'));
+                setLoading(false);
+            };
+            return (
+                <div className="fade-in">
+                    <div className="card" style={{ maxWidth: '500px' }}>
+                        <h3>创建新管理员账号</h3>
+                        <p style={{ fontSize: '12px', color: 'var(--text-dim)', marginTop: '8px', marginBottom: '1.5rem' }}>注意：新创建的账号默认为“普通管理员”权限。</p>
+                        <form onSubmit={handleSubmit}>
+                            <div style={{ marginBottom: '1rem' }}><label style={{ fontSize: '12px', color: 'var(--text-dim)' }}>学号 / 用户名</label><input className="form-input" style={{ width: '100%', marginTop: '8px' }} value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} required /></div>
+                            <div style={{ marginBottom: '1.5rem' }}><label style={{ fontSize: '12px', color: 'var(--text-dim)' }}>初始密码</label><input className="form-input" style={{ width: '100%', marginTop: '8px' }} type="password" value={form.password} onChange={e => setForm({ ...form, password: e.target.value })} required /></div>
+                            <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }} disabled={loading}><Icon name="user-plus" size={14}/> {loading ? '创建中...' : '立即创建'}</button>
+                        </form>
+                    </div>
+                </div>
+            );
+        };
+
+        const LogsView = ({ target, isSystem }) => {
+            const [logs, setLogs] = useState([]);
+            const [lines, setLines] = useState(200);
+            const [search, setSearch] = useState('');
+            const [level, setLevel] = useState('ALL');
+            const ref = useRef();
+            const load = async () => { const res = await api.fetch(isSystem ? `/service/system/log?lines=${lines}` : `/service/log/${target}?lines=${lines}`); if (res.code === 200) setLogs(res.content || []); };
+            useEffect(() => { load(); const t = setInterval(load, 5000); return () => clearInterval(t); }, [target, lines]);
+            useEffect(() => { if(ref.current) ref.current.scrollTop = ref.current.scrollHeight; }, [logs]);
+            const filtered = useMemo(() => logs.filter(l => (level === 'ALL' || l.includes(level)) && l.toLowerCase().includes(search.toLowerCase())), [logs, search, level]);
+            const parse = (line) => {
+                const timeM = line.match(/^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})/); const levelM = line.match(/(INFO|WARN|ERROR|DEBUG)/);
+                let cls = levelM?.[1] === 'INFO' ? 'l-info' : levelM?.[1] === 'WARN' ? 'l-warn' : levelM?.[1] === 'ERROR' ? 'l-error' : '';
+                return <div style={{marginBottom:'2px'}}>{timeM && <span className="l-ts" style={{marginRight:'8px'}}>{timeM[1].split('T')[1]}</span>}{levelM && <span className={cls} style={{marginRight:'8px', fontWeight:700}}>{levelM[1]}</span>}<span>{line.substring(timeM?.[0].length || 0).replace(/INFO|WARN|ERROR|DEBUG/, '')}</span></div>;
+            };
+            return (
+                <div className="fade-in">
+                    <div className="filter-bar">
+                        <select className="form-input" value={lines} onChange={e=>setLines(e.target.value)}><option value="100">100行</option><option value="500">500行</option><option value="1000">1000行</option></select>
+                        <select className="form-input" value={level} onChange={e=>setLevel(e.target.value)}><option value="ALL">全部</option><option value="INFO">INFO</option><option value="WARN">WARN</option><option value="ERROR">ERROR</option></select>
+                        <input className="form-input" style={{flex:1}} placeholder="关键词搜索..." value={search} onChange={e=>setSearch(e.target.value)} />
+                    </div>
+                    <div className="terminal" ref={ref}>{filtered.map((l,i)=><div key={i}>{parse(l)}</div>)}</div>
+                </div>
+            );
+        };
+
+        const CampusCatAdminView = () => {
+            const emptyForm = { id: null, name: '', age: '', variety: '', meetMessage: '', catStatus: 0, coverPhotoId: '' };
+            const [cats, setCats] = useState([]);
+            const [articles, setArticles] = useState([]);
+            const [form, setForm] = useState(emptyForm);
+            const [keyword, setKeyword] = useState('');
+            const [loading, setLoading] = useState(false);
+            const [uploading, setUploading] = useState(false);
+            const [commentArticleId, setCommentArticleId] = useState(null);
+            const [comments, setComments] = useState([]);
+
+            const load = async () => {
+                const [catRes, articleRes] = await Promise.all([
+                    api.fetchGateway('/campus-cat/cat/admin/list?current=1&size=100'),
+                    api.fetchGateway('/campus-cat/article/list?current=1&size=50')
+                ]);
+                setCats(catRes?.data?.records || []);
+                setArticles(articleRes?.data?.records || []);
+            };
+
+            const filteredCats = useMemo(() => {
+                if (!keyword.trim()) return cats;
+                const k = keyword.trim().toLowerCase();
+                return cats.filter(c =>
+                    String(c.id || '').includes(k) ||
+                    String(c.name || '').toLowerCase().includes(k) ||
+                    String(c.variety || '').toLowerCase().includes(k)
+                );
+            }, [cats, keyword]);
+
+            const submitCat = async (e) => {
+                e.preventDefault();
+                if (!form.coverPhotoId) {
+                    alert('请先上传猫咪封面图片');
+                    return;
+                }
+                setLoading(true);
+                const payload = {
+                    ...(form.id ? { id: form.id } : {}),
+                    name: form.name,
+                    age: form.age,
+                    variety: form.variety,
+                    meetMessage: form.meetMessage,
+                    catStatus: Number(form.catStatus),
+                    coverPhotoId: form.coverPhotoId ? Number(form.coverPhotoId) : null
+                };
+                const res = await api.fetchGateway(form.id ? '/campus-cat/cat/update' : '/campus-cat/cat/add', {
+                    method: form.id ? 'PUT' : 'POST',
+                    body: JSON.stringify(payload)
+                });
+                if (res.code === 200 || res.code === 0) {
+                    alert(form.id ? '更新成功' : '新增成功');
+                    setForm(emptyForm);
+                    load();
+                } else {
+                    alert((form.id ? '更新失败: ' : '新增失败: ') + (res.message || res.msg || '未知错误'));
+                }
+                setLoading(false);
+            };
+
+            const editCat = (cat) => {
+                setForm({
+                    id: cat.id,
+                    name: cat.name || '',
+                    age: cat.age || '',
+                    variety: cat.variety || '',
+                    meetMessage: cat.meetMessage || '',
+                    catStatus: cat.catStatus ?? 1,
+                    coverPhotoId: cat.coverPhotoId || ''
+                });
+            };
+
+            const removeCat = async (id) => {
+                if(!confirm('确定删除该猫咪档案?')) return;
+                await api.fetchGateway(`/campus-cat/cat/${id}`, { method: 'DELETE' });
+                load();
+            };
+
+            const loadComments = async (articleId) => {
+                const res = await api.fetchGateway(`/campus-cat/article/${articleId}/comments`);
+                if (res.code === 200 || res.code === 0) {
+                    setCommentArticleId(articleId);
+                    setComments(res.data || []);
+                } else {
+                    alert('评论加载失败: ' + (res.message || res.msg || '未知错误'));
+                }
+            };
+
+            const uploadCatCover = async (e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                setUploading(true);
+                const formData = new FormData();
+                formData.append('file', file);
+                formData.append('platform', '1');
+                formData.append('uid', '1');
+                const res = await api.fetch('/admin/common/uploadMultimediaWithId', { method: 'POST', body: formData });
+                if (res.code === 200 || res.code === 0) {
+                    const pid = res.data?.pid;
+                    const url = res.data?.url;
+                    setForm(prev => ({ ...prev, coverPhotoId: pid ? String(pid) : prev.coverPhotoId }));
+                    alert(`图片上传成功，图片ID: ${pid}` + (url ? `\nURL: ${url}` : ''));
+                } else {
+                    alert('图片上传失败: ' + (res.message || res.msg || '未知错误'));
+                }
+                setUploading(false);
+                e.target.value = '';
+            };
+
+            useEffect(() => { load(); }, []);
+
+            return (
+                <div className="grid fade-in" style={{ gridTemplateColumns:'1fr', gap:'1.5rem' }}>
+                    <div className="card">
+                        <h3>{form.id ? '编辑猫咪档案' : '新增猫咪档案'}</h3>
+                        <form onSubmit={submitCat} style={{ marginTop:'1rem' }}>
+                            <div className="grid" style={{ gridTemplateColumns:'repeat(3,1fr)' }}>
+                                <input className="form-input" placeholder="名称" value={form.name} onChange={e=>setForm({...form, name:e.target.value})} required />
+                                <input className="form-input" placeholder="年龄" value={form.age} onChange={e=>setForm({...form, age:e.target.value})} required />
+                                <input className="form-input" placeholder="品种" value={form.variety} onChange={e=>setForm({...form, variety:e.target.value})} required />
+                                <div style={{ display:'flex', gap:'8px' }}>
+                                    <input className="form-input" placeholder="封面图片ID(必填)" value={form.coverPhotoId} onChange={e=>setForm({...form, coverPhotoId:e.target.value})} required />
+                                    <label className="btn btn-secondary" style={{height:'36px', whiteSpace:'nowrap'}}>
+                                        <Icon name="upload" size={14}/> {uploading ? '上传中...' : '上传图片'}
+                                        <input type="file" hidden accept="image/*" onChange={uploadCatCover} disabled={uploading} />
+                                    </label>
+                                </div>
+                                <select className="form-input" value={form.catStatus} onChange={e=>setForm({...form, catStatus:e.target.value})}>
+                                    <option value="0">待审核</option>
+                                    <option value="1">审核通过</option>
+                                </select>
+                            </div>
+                            <textarea className="form-input" style={{ width:'100%', minHeight:'72px', marginTop:'10px' }} placeholder="相遇描述" value={form.meetMessage} onChange={e=>setForm({...form, meetMessage:e.target.value})} required />
+                            <div style={{ display:'flex', gap:'10px', marginTop:'10px' }}>
+                                <button className="btn btn-primary" disabled={loading}>{form.id ? '保存修改' : '立即新增'}</button>
+                                {form.id && <button type="button" className="btn btn-secondary" onClick={()=>setForm(emptyForm)}>取消编辑</button>}
+                            </div>
+                        </form>
+                    </div>
+
+                    <div className="card">
+                        <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'1rem' }}>
+                            <h3>校园猫 - 猫咪卡片审核与管理</h3>
+                            <div style={{ display:'flex', gap:'8px' }}>
+                                <input className="form-input" placeholder="按ID/名称/品种筛选" value={keyword} onChange={e=>setKeyword(e.target.value)} />
+                                <button className="btn btn-secondary" onClick={load}><Icon name="refresh-cw" size={14}/>刷新</button>
+                            </div>
+                        </div>
+                        <table>
+                            <thead><tr><th>ID</th><th>名称</th><th>品种</th><th>年龄</th><th>状态</th><th>操作</th></tr></thead>
+                            <tbody>
+                                {filteredCats.map(c => (
+                                    <tr key={c.id}>
+                                        <td>{c.id}</td>
+                                        <td style={{ fontWeight:600 }}>{c.name || '-'}</td>
+                                        <td>{c.variety || '-'}</td>
+                                        <td>{c.age || '-'}</td>
+                                        <td><span className={`status-pill ${c.catStatus === 1 ? 'status-success' : 'status-warn'}`}>{c.catStatus === 1 ? '已通过' : '待审核'}</span></td>
+                                        <td style={{ display:'flex', gap:'6px' }}>
+                                            <button className="btn btn-secondary" style={{height:'26px'}} onClick={()=>editCat(c)}>编辑</button>
+                                            <button className="btn btn-danger" style={{height:'26px'}} onClick={()=>removeCat(c.id)}>删除</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                                {filteredCats.length===0 && <tr><td colSpan="6" style={{textAlign:'center', color:'var(--text-dim)'}}>暂无数据</td></tr>}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="card">
+                        <h3>校园猫 - 文章与评论管理</h3>
+                        <table style={{ marginTop:'1rem' }}>
+                            <thead><tr><th>ID</th><th>标题</th><th>作者</th><th>时间</th><th>操作</th></tr></thead>
+                            <tbody>
+                                {articles.map(a => (
+                                    <tr key={a.id}>
+                                        <td>{a.id}</td>
+                                        <td style={{ fontWeight:600 }}>{a.title}</td>
+                                        <td>{a.author || '-'}</td>
+                                        <td style={{ color:'var(--text-dim)', fontSize:'12px' }}>{a.createdAt || '-'}</td>
+                                        <td><button className="btn btn-secondary" style={{height:'26px'}} onClick={()=>loadComments(a.id)}>查看评论</button></td>
+                                    </tr>
+                                ))}
+                                {articles.length===0 && <tr><td colSpan="5" style={{textAlign:'center', color:'var(--text-dim)'}}>暂无数据</td></tr>}
+                            </tbody>
+                        </table>
+                        {commentArticleId && (
+                            <div style={{ marginTop:'1rem', borderTop:'1px solid var(--border)', paddingTop:'1rem' }}>
+                                <div style={{ display:'flex', justifyContent:'space-between', marginBottom:'8px' }}>
+                                    <div style={{ fontWeight:600 }}>文章 {commentArticleId} 的评论 ({comments.length})</div>
+                                    <button className="btn btn-secondary" style={{height:'24px'}} onClick={()=>{setCommentArticleId(null); setComments([]);}}>关闭</button>
+                                </div>
+                                <div style={{ maxHeight:'200px', overflowY:'auto', display:'flex', flexDirection:'column', gap:'8px' }}>
+                                    {comments.map(c => (
+                                        <div key={c.id} style={{ border:'1px solid var(--border)', borderRadius:'8px', padding:'8px' }}>
+                                            <div style={{ fontSize:'12px', color:'var(--text-dim)' }}>{c.userId || '-'} · {c.createdAt || '-'}</div>
+                                            <div style={{ marginTop:'4px' }}>{c.content}</div>
+                                        </div>
+                                    ))}
+                                    {comments.length===0 && <div style={{ color:'var(--text-dim)' }}>暂无评论</div>}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            );
+        };
+
+        const CampusMateAdminView = () => {
+            const [activities, setActivities] = useState([]);
+            const [keyword, setKeyword] = useState('');
+            const [statusFilter, setStatusFilter] = useState('ALL');
+            const [selectedActivityId, setSelectedActivityId] = useState(null);
+            const [comments, setComments] = useState([]);
+
+            const load = async () => {
+                const res = await api.fetchGateway('/campus-mate/api/activities?page=1&size=100');
+                setActivities(Array.isArray(res?.data) ? res.data : []);
+            };
+
+            const filtered = useMemo(() => {
+                return activities.filter(a => {
+                    const matchKeyword = !keyword.trim() ||
+                        String(a.id || '').includes(keyword) ||
+                        String(a.title || '').toLowerCase().includes(keyword.toLowerCase()) ||
+                        String(a.campus || '').toLowerCase().includes(keyword.toLowerCase());
+                    const matchStatus = statusFilter === 'ALL' || String(a.status || '') === statusFilter;
+                    return matchKeyword && matchStatus;
+                });
+            }, [activities, keyword, statusFilter]);
+
+            const removeActivity = async (id) => {
+                if (!confirm('确定删除该活动?')) return;
+                const res = await api.fetchGateway(`/campus-mate/api/activities/${id}`, { method:'DELETE' });
+                if (res.code !== 200 && res.code !== 0) {
+                    alert('删除失败: ' + (res.message || res.msg || '无权限或活动不存在'));
+                }
+                load();
+            };
+
+            const loadStats = async (id) => {
+                const res = await api.fetchGateway(`/campus-mate/api/activities/${id}/stats`);
+                if (res.code === 200 || res.code === 0) {
+                    const d = res.data || {};
+                    alert(`活动 ${id} 统计\n申请: ${d.applicationCount ?? 0}\n点赞: ${d.likeCount ?? 0}\n收藏: ${d.favoriteCount ?? 0}`);
+                } else {
+                    alert('统计获取失败');
+                }
+            };
+
+            const loadComments = async (activityId) => {
+                const res = await api.fetchGateway(`/campus-mate/api/comments/activity/getAllComments/${activityId}`);
+                if (res.code === 200 || res.code === 0) {
+                    setSelectedActivityId(activityId);
+                    setComments(res.data || []);
+                } else {
+                    alert('评论加载失败: ' + (res.message || res.msg || '未知错误'));
+                }
+            };
+
+            const removeComment = async (commentId) => {
+                if (!confirm('确定删除这条评论?')) return;
+                const res = await api.fetchGateway(`/campus-mate/api/comments/${commentId}`, { method:'DELETE' });
+                if (res.code === 200 || res.code === 0) {
+                    loadComments(selectedActivityId);
+                } else {
+                    alert('删除失败: ' + (res.message || res.msg || '未知错误'));
+                }
+            };
+
+            useEffect(() => { load(); }, []);
+
+            return (
+                <div className="fade-in">
+                    <div className="card" style={{ marginBottom:'1rem' }}>
+                        <div className="filter-bar" style={{ marginBottom:0 }}>
+                            <input className="form-input" placeholder="按ID/标题/校区搜索" value={keyword} onChange={e=>setKeyword(e.target.value)} />
+                            <select className="form-input" value={statusFilter} onChange={e=>setStatusFilter(e.target.value)}>
+                                <option value="ALL">全部状态</option>
+                                <option value="PUBLISHED">PUBLISHED</option>
+                                <option value="DRAFT">DRAFT</option>
+                                <option value="EXPIRED">EXPIRED</option>
+                            </select>
+                            <button className="btn btn-secondary" onClick={load}><Icon name="refresh-cw" size={14}/>刷新</button>
+                        </div>
+                    </div>
+
+                    <div className="card">
+                        <h3>校园搭子 - 活动管理（仅活动与评论）</h3>
+                        <table style={{ marginTop:'1rem' }}>
+                            <thead><tr><th>ID</th><th>标题</th><th>校区</th><th>发起人</th><th>状态</th><th>操作</th></tr></thead>
+                            <tbody>
+                                {filtered.map(a => (
+                                    <tr key={a.id}>
+                                        <td>{a.id}</td>
+                                        <td style={{ fontWeight:600 }}>{a.title || '-'}</td>
+                                        <td>{a.campus || '-'}</td>
+                                        <td>{a.creatorId || '-'}</td>
+                                        <td><span className={`status-pill ${a.status === 'PUBLISHED' ? 'status-success' : 'status-warn'}`}>{a.status || '-'}</span></td>
+                                        <td style={{ display:'flex', gap:'6px' }}>
+                                            <button className="btn btn-secondary" style={{height:'26px'}} onClick={()=>loadStats(a.id)}>统计</button>
+                                            <button className="btn btn-secondary" style={{height:'26px'}} onClick={()=>loadComments(a.id)}>评论</button>
+                                            <button className="btn btn-danger" style={{height:'26px'}} onClick={()=>removeActivity(a.id)}>删除活动</button>
+                                        </td>
+                                    </tr>
+                                ))}
+                                {filtered.length===0 && <tr><td colSpan="6" style={{textAlign:'center', color:'var(--text-dim)'}}>暂无数据</td></tr>}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    {selectedActivityId && (
+                        <div className="card" style={{ marginTop:'1rem' }}>
+                            <div style={{ display:'flex', justifyContent:'space-between' }}>
+                                <h3>活动 {selectedActivityId} 的评论列表</h3>
+                                <button className="btn btn-secondary" style={{height:'24px'}} onClick={()=>{setSelectedActivityId(null); setComments([]);}}>关闭</button>
+                            </div>
+                            <table style={{ marginTop:'1rem' }}>
+                                <thead><tr><th>评论ID</th><th>用户</th><th>内容</th><th>时间</th><th>操作</th></tr></thead>
+                                <tbody>
+                                    {comments.map(c => (
+                                        <tr key={c.id}>
+                                            <td>{c.id}</td>
+                                            <td>{c.userId || '-'}</td>
+                                            <td>{c.content || '-'}</td>
+                                            <td style={{ color:'var(--text-dim)', fontSize:'12px' }}>{c.createdAt || '-'}</td>
+                                            <td>
+                                                <button className="btn btn-danger" style={{height:'24px'}} onClick={()=>removeComment(c.id)}>删除评论</button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                    {comments.length===0 && <tr><td colSpan="5" style={{textAlign:'center', color:'var(--text-dim)'}}>暂无评论</td></tr>}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const SecondHandAdminView = () => {
+            const [commodities, setCommodities] = useState([]);
+            const [keyword, setKeyword] = useState('');
+            const [statusFilter, setStatusFilter] = useState('ALL');
+            const [typeFilter, setTypeFilter] = useState('ALL');
+
+            const load = async () => {
+                const res = await api.fetchGateway('/second-hand/commodity/show/all/1/100');
+                setCommodities(res?.data?.records || []);
+            };
+
+            const filtered = useMemo(() => {
+                return commodities.filter(c => {
+                    const matchKeyword = !keyword.trim() ||
+                        String(c.pid || '').includes(keyword) ||
+                        String(c.name || '').toLowerCase().includes(keyword.toLowerCase()) ||
+                        String(c.uid || '').toLowerCase().includes(keyword.toLowerCase());
+                    const matchStatus = statusFilter === 'ALL' || String(c.status) === statusFilter;
+                    const matchType = typeFilter === 'ALL' || String(c.type) === typeFilter;
+                    return matchKeyword && matchStatus && matchType;
+                });
+            }, [commodities, keyword, statusFilter, typeFilter]);
+
+            useEffect(() => { load(); }, []);
+
+            return (
+                <div className="fade-in">
+                    <div className="card">
+                        <div className="filter-bar" style={{ marginBottom:'1rem' }}>
+                            <input className="form-input" placeholder="按ID/名称/发布者搜索" value={keyword} onChange={e=>setKeyword(e.target.value)} />
+                            <select className="form-input" value={statusFilter} onChange={e=>setStatusFilter(e.target.value)}>
+                                <option value="ALL">全部状态</option>
+                                <option value="0">出售</option>
+                                <option value="1">求购</option>
+                            </select>
+                            <select className="form-input" value={typeFilter} onChange={e=>setTypeFilter(e.target.value)}>
+                                <option value="ALL">全部类型</option>
+                                <option value="1">数码</option>
+                                <option value="2">书籍</option>
+                                <option value="3">生活用品</option>
+                                <option value="4">其他</option>
+                            </select>
+                            <button className="btn btn-secondary" onClick={load}><Icon name="refresh-cw" size={14}/>刷新</button>
+                        </div>
+                        <h3>二手交易 - 商品管理（只读）</h3>
+                        <table>
+                            <thead><tr><th>ID</th><th>名称</th><th>发布者</th><th>价格(分)</th><th>状态</th><th>类型</th><th>发布时间</th></tr></thead>
+                            <tbody>
+                                {filtered.map(c => (
+                                    <tr key={c.pid}>
+                                        <td>{c.pid}</td>
+                                        <td style={{ fontWeight:600 }}>{c.name || '-'}</td>
+                                        <td>{c.uid || '-'}</td>
+                                        <td>{c.price ?? '-'}</td>
+                                        <td><span className={`status-pill ${c.status === 0 ? 'status-success' : 'status-warn'}`}>{c.status === 0 ? '出售' : '求购'}</span></td>
+                                        <td>{c.type ?? '-'}</td>
+                                        <td style={{ color:'var(--text-dim)', fontSize:'12px' }}>{c.publishTime || c.date || '-'}</td>
+                                    </tr>
+                                ))}
+                                {filtered.length===0 && <tr><td colSpan="7" style={{textAlign:'center', color:'var(--text-dim)'}}>暂无数据</td></tr>}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            );
+        };
+
+        const App = () => {
+            const [token, setToken] = useState(localStorage.getItem('admin_token'));
+            const [role, setRole] = useState(parseInt(localStorage.getItem('admin_role') || '0'));
+            const [route, setRoute] = useState({ view: 'dash', target: null });
+            const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+            const parse = () => {
+                const h = window.location.hash || '#/';
+                if (h.startsWith('#/logs/')) setRoute({ view: 'logs', target: h.split('/')[2] });
+                else if (h === '#/module-cat') setRoute({ view: 'module-cat', target: null });
+                else if (h === '#/module-mate') setRoute({ view: 'module-mate', target: null });
+                else if (h === '#/module-secondhand') setRoute({ view: 'module-secondhand', target: null });
+                else if (h === '#/module-basic') setRoute({ view: 'module-basic', target: null });
+                else if (h === '#/multimedia') setRoute({ view: 'multimedia', target: null });
+                else if (h === '#/images') setRoute({ view: 'images', target: null });
+                else if (h === '#/notify') setRoute({ view: 'notify', target: null });
+                else if (h === '#/students') setRoute({ view: 'students', target: null });
+                else if (h === '#/managers') setRoute({ view: 'managers', target: null });
+                else if (h === '#/cengke') setRoute({ view: 'cengke', target: null });
+                else if (h === '#/classroom_master') setRoute({ view: 'classroom_master', target: null });
+                else if (h === '#/classroom') setRoute({ view: 'classroom', target: null });
+                else if (h === '#/syslog') setRoute({ view: 'syslog', target: null });
+                else setRoute({ view: 'dash', target: null });
+            };
+            useEffect(() => { window.addEventListener('hashchange', parse); parse(); return () => window.removeEventListener('hashchange', parse); }, []);
+            useEffect(() => { setMobileMenuOpen(false); }, [route.view, route.target]);
+            if (!token) return (
+                <div className="app-container" style={{justifyContent:'center', alignItems:'center'}}>
+                    <div className="card fade-in" style={{width:'360px', padding:'2.5rem', position:'relative', zIndex:10}}>
+                        <h2 style={{marginBottom:'2rem', textAlign:'center'}}>管理登录</h2>
+                        <form onSubmit={async (e) => {
+                            e.preventDefault();
+                            const encryptedPassword = await encryptLoginPassword(e.target.p.value);
+                            const res = await api.fetch('/auth/login', { method: 'POST', body: JSON.stringify({username: e.target.u.value, password: encryptedPassword}) });
+                            if(res.code === 200 || res.code === 0) { 
+                                const tk = res.data?.token || res.token || res.data; 
+                                const r = res.data?.role ?? 0;
+                                if(tk) { 
+                                    localStorage.setItem('admin_token', tk); 
+                                    localStorage.setItem('admin_role', r);
+                                    setToken(tk); 
+                                    setRole(r);
+                                    window.location.hash='#/'; 
+                                } 
+                            } else alert(res.message || '登录失败');
+                        }}>
+                            <div style={{marginBottom:'1rem'}}><label style={{fontSize:'12px', color:'var(--text-dim)'}}>账号</label><input className="form-input" style={{width:'100%', marginTop:'8px'}} name="u" required /></div>
+                            <div style={{marginBottom:'1.5rem'}}><label style={{fontSize:'12px', color:'var(--text-dim)'}}>密码</label><input className="form-input" style={{width:'100%', marginTop:'8px'}} type="password" name="p" required /></div>
+                            <button className="btn btn-primary" style={{width:'100%', justifyContent:'center'}}>登录</button>
+                        </form>
+                    </div>
+                </div>
+            );
+            return (
+                <div className="app-container">
+                    <div className="mobile-topbar">
+                        <button className="hamburger-btn" onClick={() => setMobileMenuOpen(v => !v)}>
+                            <Icon name={mobileMenuOpen ? 'x' : 'menu'} size={18} />
+                        </button>
+                        <div style={{display:'flex', alignItems:'center', gap:'8px', fontWeight:700}}>
+                            <Icon name="shield-check" style={{color:'#6366f1'}} />
+                            <span>WUST 面板</span>
+                        </div>
+                    </div>
+                    {mobileMenuOpen && <div className="nav-overlay" onClick={() => setMobileMenuOpen(false)}></div>}
+                    <aside className={`sidebar ${mobileMenuOpen ? 'mobile-open' : ''}`}>
+                        <div className="logo"><Icon name="shield-check" style={{color:'#6366f1'}} /><span>WUST 面板</span></div>
+                        <nav className="nav-section">
+                            <a className={`nav-item ${route.view === 'dash' ? 'active' : ''}`} href="#/"><Icon name="activity" /> 系统概览</a>
+                            <a className={`nav-item ${route.view === 'module-cat' ? 'active' : ''}`} href="#/module-cat"><Icon name="cat" /> 校园猫管理</a>
+                            <a className={`nav-item ${route.view === 'module-mate' ? 'active' : ''}`} href="#/module-mate"><Icon name="users" /> 搭子管理</a>
+                            <a className={`nav-item ${route.view === 'module-secondhand' ? 'active' : ''}`} href="#/module-secondhand"><Icon name="shopping-bag" /> 二手管理</a>
+                            <a className={`nav-item ${route.view === 'module-basic' ? 'active' : ''}`} href="#/module-basic"><Icon name="server" /> 基础服务管理</a>
+                            <a className={`nav-item ${route.view === 'multimedia' ? 'active' : ''}`} href="#/multimedia"><Icon name="monitor" /> 多媒体管理</a>
+                            <a className={`nav-item ${route.view === 'images' ? 'active' : ''}`} href="#/images"><Icon name="image" /> 业务图审核</a>
+                            <a className={`nav-item ${route.view === 'notify' ? 'active' : ''}`} href="#/notify"><Icon name="send" /> 消息推送</a>
+                            <a className={`nav-item ${route.view === 'students' ? 'active' : ''}`} href="#/students"><Icon name="users" /> 学生管理</a>
+                            {role === 1 && <a className={`nav-item ${route.view === 'managers' ? 'active' : ''}`} href="#/managers"><Icon name="user-cog" /> 管理员管理</a>}
+                            <a className={`nav-item ${route.view === 'cengke' ? 'active' : ''}`} href="#/cengke"><Icon name="search" /> 蹭课查询</a>
+                            <a className={`nav-item ${route.view === 'classroom_master' ? 'active' : ''}`} href="#/classroom_master"><Icon name="building" /> 教室基础库</a>
+                            <a className={`nav-item ${route.view === 'classroom' ? 'active' : ''}`} href="#/classroom"><Icon name="door-closed" /> 教室占用</a>
+                            <a className={`nav-item ${route.view === 'syslog' ? 'active' : ''}`} href="#/syslog"><Icon name="file-text" /> 运行日志</a>
+                        </nav>
+                        <div className="nav-item" style={{marginTop:'auto'}} onClick={() => { localStorage.removeItem('admin_token'); localStorage.removeItem('admin_role'); setToken(null); }}><Icon name="log-out" /> 退出</div>
+                    </aside>
+                    <main className="main-content">
+                        <header><div style={{fontSize:'14px', fontWeight:600}}>{route.view === 'dash' && '系统状态'} {route.view === 'module-cat' && '校园猫后台'} {route.view === 'module-mate' && '校园搭子后台'} {route.view === 'module-secondhand' && '二手交易后台'} {route.view === 'module-basic' && '基础服务后台'} {route.view === 'multimedia' && '多媒体更新'} {route.view === 'images' && '内容安全'} {route.view === 'notify' && '消息广播'} {route.view === 'students' && '学生在线状态'} {route.view === 'managers' && '管理员账号管理'} {route.view === 'cengke' && '蹭课数据查询'} {route.view === 'classroom_master' && '全校教室基础信息库'} {route.view === 'classroom' && '教室手动占用管理'} {route.view === 'logs' && `详情: ${route.target}`} {route.view === 'syslog' && '底层日志'}</div></header>
+                        <div className="view-container">
+                            {route.view === 'dash' && <DashboardView />}
+                            {route.view === 'module-cat' && <CampusCatAdminView />}
+                            {route.view === 'module-mate' && <CampusMateAdminView />}
+                            {route.view === 'module-secondhand' && <SecondHandAdminView />}
+                            {route.view === 'module-basic' && <DashboardView />}
+                            {route.view === 'multimedia' && <MultimediaView />}
+                            {route.view === 'images' && <ImagesView />}
+                            {route.view === 'notify' && <NotifyView />}
+                            {route.view === 'students' && <StudentsView />}
+                            {route.view === 'managers' && <ManagerManagementView />}
+                            {route.view === 'cengke' && <CourseSearchView />}
+                            {route.view === 'classroom_master' && <SchoolClassroomMasterView />}
+                            {route.view === 'classroom' && <ClassroomView />}
+                            {route.view === 'logs' && <LogsView target={route.target} />}
+                            {route.view === 'syslog' && <LogsView isSystem={true} />}
+                        </div>
+                    </main>
+                </div>
+            );
+        };
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+    </script>
+</body>
+</html>

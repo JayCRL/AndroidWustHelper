@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AnimationHelper">
+        <attr name="animationAble" format="boolean"/>
+        <attr name="startPosition" format="flags">
+            <flag name="LEFT" value="0x1"/>
+            <flag name="RIGHT" value="0x2"/>
+            <flag name="TOP" value="0x4"/>
+            <flag name="BOTTOM" value="0x8"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="ExpandableLayout">
+        <attr name="el_duration" format="integer" />
+        <attr name="el_expanded" format="boolean" />
+        <attr name="layout_expandable" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="FlexibleScrollView">
+        <attr name="overScrollMode" format="flags">
+            <flag name="NONE" value="0x01"/>
+            <flag name="TOP" value="0x02"/>
+            <flag name="BOTTOM" value="0x04"/>
+        </attr>
+    </declare-styleable>
+
+    //这个是带箭头父布局的属性
+    <declare-styleable name="MyArrowRectangleView">
+        <attr name="arrow_width" format="dimension" />
+        <attr name="arrow_height" format="dimension" />
+        <attr name="arrow_offset" format="dimension" />
+        <attr name="radius" format="dimension" />
+        <attr name="background_color" format="color" />
+        <attr name="shadow_color" format="color" />
+        <attr name="shadow_thickness" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="XNumberProgressBar">
+        <attr format="integer" name="xnpb_current"/>
+        <attr format="integer" name="xnpb_max"/>
+
+        <attr format="color" name="xnpb_unreached_color"/>
+        <attr format="color" name="xnpb_reached_color"/>
+
+        <attr format="dimension" name="xnpb_reached_bar_height"/>
+        <attr format="dimension" name="xnpb_unreached_bar_height"/>
+
+        <attr format="dimension" name="xnpb_text_size"/>
+        <attr format="color" name="xnpb_text_color"/>
+
+        <attr format="dimension" name="xnpb_text_offset"/>
+
+        <attr format="enum" name="xnpb_text_visibility">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="SwitchView">
+        <attr name="bgColor" format="color|reference" />
+        <attr name="leftColor" format="color|reference" />
+        <attr name="rightColor" format="color|reference" />
+        <attr name="textLeftColor" format="color" />
+        <attr name="textRightColor" format="color" />
+        <attr name="textLeftClickColor" format="color" />
+        <attr name="textRightClickColor" format="color" />
+        <attr name="textLeft" format="string" />
+        <attr name="textRight" format="string" />
+        <attr name="setChecked" format="boolean" />
+        <attr name="padding" format="dimension" />
+        <attr name="time" format="integer" />
+    </declare-styleable>
+
+</resources>

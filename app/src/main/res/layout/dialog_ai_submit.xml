@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="投稿内容"
+        android:textColor="@color/title_text_black"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_ai_input"
+        android:gravity="top"
+        android:hint="请输入要投稿的知识内容（必填）"
+        android:inputType="textMultiLine"
+        android:minHeight="120dp"
+        android:padding="12dp"
+        android:textColor="@color/title_text_black"
+        android:textColorHint="@color/color_hint_text" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/et_tag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_ai_input"
+        android:hint="标签（可选，如：图书馆/选课/宿舍）"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColor="@color/title_text_black"
+        android:textColorHint="@color/color_hint_text" />
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/et_source"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_ai_input"
+        android:hint="来源（可选，如：移动端学生投稿）"
+        android:inputType="text"
+        android:padding="12dp"
+        android:textColor="@color/title_text_black"
+        android:textColorHint="@color/color_hint_text" />
+
+    <EditText
+        android:id="@+id/et_expire_at"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_ai_input"
+        android:clickable="true"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:hint="失效时间（可选，格式：yyyy-MM-dd HH:mm）"
+        android:padding="12dp"
+        android:textColor="@color/title_text_black"
+        android:textColorHint="@color/color_hint_text" />
+
+</LinearLayout>

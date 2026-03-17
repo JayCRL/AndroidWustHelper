@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="8dp"
+    android:elevation="8dp"
+    android:layout_margin="15dp"
+    android:padding="8dp"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/dialog_background_rel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        >
+ <!--       <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/mLottieView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:lottie_fileName="stay_1.json"
+                app:lottie_loop="false"
+                app:lottie_speed="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#22FFFFFF"/>
+
+        </FrameLayout>
+-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/card_content_padding"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/iv_grade_detail_good"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="-30dp"
+                    android:layout_toStartOf="@+id/tv_dialog_grade_name"
+                    android:src="@drawable/ic_detail_grade_name_left"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_grade_name"
+                    android:layout_width="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/black"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textSize="20sp"
+                    tools:text="高等数学"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_dialog_grade_grade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/sub_medium_spacing"
+                android:gravity="center"
+                android:textSize="@dimen/huge_text"
+                android:layout_gravity="center"
+                android:textColor="@color/colorAccent"
+                tools:text="81"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/colorDarkGray"
+                    android:gravity="center"
+                    android:text="@string/gpa"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_grade_point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/black_60"
+                    android:layout_marginLeft="@dimen/sub_small_spacing"
+                    android:gravity="center"
+                    tools:text="3.0"/>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sub_medium_spacing"
+                android:paddingTop="8dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/color_default_text"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/small_spacing"
+                    android:text="@string/credit"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_grade_credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/black_60"
+                    android:layout_marginEnd="@dimen/small_spacing"
+                    android:layout_alignParentEnd="true"
+                    tools:text="6"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/color_default_text"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/small_spacing"
+                    android:text="@string/period"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_grade_hours"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/black_60"
+                    android:layout_marginEnd="@dimen/small_spacing"
+                    android:layout_alignParentEnd="true"
+                    tools:text="56"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/color_default_text"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/small_spacing"
+                    android:text="@string/type"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_grade_evaluation_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/black_60"
+                    android:layout_marginEnd="@dimen/small_spacing"
+                    android:layout_alignParentEnd="true"
+                    tools:text="选修"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/line"
+                android:background="@color/colorLineLight"
+                android:layout_margin="@dimen/sub_small_spacing"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/color_default_text"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/small_spacing"
+                    android:text="@string/term"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_grade_term"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/black_60"
+                    android:layout_marginEnd="@dimen/small_spacing"
+                    android:layout_alignParentEnd="true"
+                    tools:text="2017-2018-1"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:gravity="center"
+                    android:textColor="@color/color_default_text"
+                    android:layout_marginStart="@dimen/small_spacing"
+                    android:text="@string/exam_quality"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_grade_exam_nature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/black_60"
+                    android:layout_marginEnd="@dimen/small_spacing"
+                    android:layout_alignParentEnd="true"
+                    tools:text="正常考试"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/color_default_text"
+                    android:gravity="center"
+                    android:layout_marginStart="@dimen/small_spacing"
+                    android:text="@string/class_quality"/>
+
+                <TextView
+                    android:id="@+id/tv_dialog_grade_course_nature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="@dimen/medium_text"
+                    android:textColor="@color/black_60"
+                    android:layout_marginEnd="@dimen/small_spacing"
+                    android:layout_alignParentEnd="true"
+                    tools:text="通识教育平台课程"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
+
+

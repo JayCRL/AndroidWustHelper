@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--悬浮按钮-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:visibility="gone"
+            android:id="@+id/fab_course"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:src="@drawable/current_week"
+            app:backgroundTint="#ffffff"
+            app:elevation="8dp"
+            app:pressedTranslationZ="12dp"
+            app:fabSize="normal"
+            app:borderWidth="0dp"
+            app:rippleColor="#cccccc"/>
+        <!--全屏背景-->
+        <com.example.wusthelper.widget.AutoScaleWidthImageView
+            android:id="@+id/iv_course_background_full_screen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--非全屏背景-->
+        <com.example.wusthelper.widget.AutoScaleWidthImageView
+            android:id="@+id/iv_course_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop" />
+        <!--白色透明度-->
+        <ImageView
+            android:id="@+id/iv_course_background_white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:alpha="0"/>
+
+        <!--主体部分-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!--预留高度5dp的状态栏-->
+            <View
+                android:id="@+id/view_status"
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+            <!--自定义的toolbar-->
+            <include
+                android:id="@+id/tb_course"
+                layout="@layout/title_course" />
+            <!--新学期课程的文字提示，一般是隐形的-->
+            <TextView
+                android:id="@+id/tv_course_notice_new_semester"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:background="@color/color_yellow_orange_light"
+                android:textColor="@color/black_60"
+                android:text="@string/notice_have_new_semester"
+                android:gravity="center"/>
+            <!--可展开的，周数选项-->
+            <com.example.wusthelper.widget.ExpandableLinearLayout
+                android:id="@+id/el_week_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:el_duration="400"
+                app:el_expanded="false">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_expandable="true">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_course_week"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:overScrollMode="never" />
+                </RelativeLayout>
+
+            </com.example.wusthelper.widget.ExpandableLinearLayout>
+            <!--日期列表-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginEnd="3dp"
+                android:background="#33ffffff"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_month"
+                    style="@style/mCourseTopItem"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:text="11月"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycler_course_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:overScrollMode="never" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+            <!--课程表界面，可滑动，包含校区-->
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/ns_class"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/ll_class_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/classes_time"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:background="@color/default_bg_half"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/layout_course_time_huangjiahu" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="7">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recycler_course_content"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:overScrollMode="never" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

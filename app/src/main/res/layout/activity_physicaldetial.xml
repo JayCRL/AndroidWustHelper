@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/default_bg">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_about_us"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize">
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+
+            android:layout_height="?android:actionBarSize">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:padding="12dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_gray_24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+            <TextView
+                android:id="@+id/textView_toolbar_title"
+                style="@style/mToolbarTitle"
+                android:textSize="18sp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="物理实验系统"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorEditText"
+                    android:layout_marginStart="15dp"
+                    android:text="学号"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/physicalDetailID"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:layout_alignParentEnd="true"
+                    android:text="201913137713"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"/>
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/whiteGrayFromQQ"
+                android:orientation="horizontal" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorEditText"
+                    android:layout_marginStart="15dp"
+                    android:text="课程数"
+                    android:textSize="16dp" />
+                <TextView
+                    android:id="@+id/physicalDetailNumber"
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:layout_alignParentEnd="true"
+                    android:text="201"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/whiteGrayFromQQ"
+                android:orientation="horizontal" />
+
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/ll_change_background_content"-->
+<!--                android:background="@color/white"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="45dp">-->
+<!--                <TextView-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:textColor="@color/colorEditText"-->
+<!--                    android:layout_marginStart="15dp"-->
+<!--                    android:text="课表是否显示物理实验"-->
+<!--                    android:textSize="16dp" />-->
+<!--                <Switch-->
+<!--                    android:id="@+id/physical_switch_status"-->
+<!--                    android:paddingLeft="10dp"-->
+<!--                    android:paddingRight="20dp"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:thumb="@drawable/switch_custom_thumb_selector"-->
+<!--                    android:track="@drawable/switch_custom_track_selector" />-->
+<!--            </RelativeLayout>-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/whiteGrayFromQQ"
+                android:orientation="horizontal" />
+
+            <RelativeLayout
+                android:id="@+id/ll_physical_login_out"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/white">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorEditText"
+                    android:layout_marginStart="15dp"
+                    android:text="退出登录"
+                    android:textSize="16dp" />
+                <ImageView
+                    android:padding="12dp"
+                    android:layout_centerVertical="true"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+            </RelativeLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="详细课程:"
+                android:textSize="16dp"
+                android:layout_marginStart="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:descendantFocusability="blocksDescendants"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/physicalClassRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+            <TextView
+                android:gravity="center"
+                android:textSize="10dp"
+                android:text="物理实验课程可能与正常的课程冲突,在课表卡片右下角会有角标提示冲突,点击卡片查看详细信息"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:gravity="center"
+                android:textSize="12dp"
+                android:text="数据来源：武汉科技大学大学物理实验系统"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

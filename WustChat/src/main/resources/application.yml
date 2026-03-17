@@ -1,0 +1,55 @@
+server:
+  port: 8096
+
+spring:
+  data:
+    redis:
+      host: localhost
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      database: ${REDIS_DATABASE:0}
+      timeout: 5000ms
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+jwt:
+  secret: defaultSecretKeyMustBeLongerThan256BitsForSecurityReasons
+  expiration: 7200
+  token-head: Bearer
+
+wust-chat:
+  cache:
+    qa-ttl-minutes: 15
+    corpus-list-ttl-minutes: 5
+    corpus-detail-ttl-minutes: 10
+    tags-ttl-minutes: 10
+    kb-version-key: wust:chat:kb:version
+
+rag:
+  store-file: ./rag-store.json
+  corpus-file: ./rag-corpus.json
+  pending-corpus-file: ./rag-pending-corpus.json
+  tag-file: ./rag-tags.json
+  config-file: ./rag-config.properties
+  expire-pattern: yyyy-MM-dd HH:mm
+  retrieval:
+    max-results: 3
+    min-score: 0.6
+  deepseek:
+    base-url: https://api.deepseek.com/v1
+    api-key: ${DEEPSEEK_API_KEY:}
+    model: deepseek-chat
+
+basic:
+  auth:
+    base-url: ${BASIC_AUTH_BASE_URL:http://localhost:8082}
+    connect-timeout-ms: 3000
+    read-timeout-ms: 5000

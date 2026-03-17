@@ -1,0 +1,234 @@
+<resources>
+    <string name="app_name">武科大助手</string>
+
+    <!--权责声明-->
+    <string name="power_statement_1">Copyright ©2015-2022</string>
+    <string name="power_statement_2">LingHang Studio.武科大领航工作室</string>
+    <string name="power_statment_lib">领航工作室 x 武科大图书馆</string>
+    <string name="power_statement_3">All rights reserved</string>
+    <string name="linghang_signed" translatable="false">领航工作室出品</string>
+
+
+    <!--主界面UI元素-->
+    <string name="title_volunteering">志愿者</string>
+    <string name="title_consult">校园</string>
+    <string name="title_home">主页</string>
+    <string name="title_news">新闻</string>
+    <string name="title_course">课表</string>
+    <string name="title_mine">个人</string>
+    <string name="title_grade">成绩查询</string>
+    <string name="GPA_segment_table">绩点分段</string>
+    <string name="view_grade">图表统计</string>
+    <string name="view_scholarship">奖学金计算</string>
+    <string name="scholar_menu_1">大一</string>
+    <string name="scholar_menu_2">大二</string>
+    <string name="scholar_menu_3">大三</string>
+    <string name="scholar_menu_4">大四</string>
+    <string name="scholar_choose_name">请勾选计算科目</string>
+    <string name="view_explain">成绩说明</string>
+    <string name="select_image">选择图片</string>
+
+    <!--成绩界面-->
+    <string name="menu_search">搜索</string>
+    <string name="menu_setting">设置</string>
+    <string name="loading">加载中…</string>
+    <string name="only_optional_course">只看选修</string>
+    <string name="only_compulsory">只看必修</string>
+    <string name="look_all_course">查看所有</string>
+    <string name="title_detail_grade">成绩详情</string>
+    <string name="dean_boom">教务系统繁忙或出错，系统已记录本次错误，我们将尽快找到原因并解决！</string>
+    <string name="grade_access_error">成绩信息访问出错！</string>
+    <string name="grade_null">成绩列表为空</string>
+    <string name="net_not_conneted">网络未连接！</string>
+
+    <!--成绩属性-->
+    <string name="gpa">绩点</string>
+    <string name="term">开课学期</string>
+    <string name="type">课程类别</string>
+    <string name="exam_quality">考试性质</string>
+    <string name="credit">学分</string>
+    <string name="period">学时</string>
+    <string name="class_quality">课程性质</string>
+    <string name="gpa_bar">学期绩点</string>
+    <string name="gpa_pie">分类</string>
+
+    <!--校区-->
+    <string name="huangjiahu">黄家湖</string>
+    <string name="hongshan">洪山</string>
+    <string name="qingshan">青山</string>
+    <!--登录注册-->
+    <string name="modify">修改</string>
+    <string name="student_id_number">学号</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="login_problem">登录遇到问题？</string>
+    <!--更新-->
+    <string name="important_update">重要更新</string>
+    <string name="update_tip">当前功能不能使用，请升级后使用</string>
+    <string name="update_now">立即升级</string>
+    <string name="open_the_link">官网下载</string>
+    <string name="update_later">暂不升级</string>
+    <string name="is_lastest_version">已是最新版本！</string>
+    <string name="update_dialog_title">最新版本(%1$s)</string>
+    <string name="update_test">1.没有网络连接</string>
+    <string name="forced_updating_state">此次升级对之前版本做了很多重大更改。\n如果您不升级软件，可能会出现意想不到的错误，甚至导致软件崩溃。\n所以我们强制您进行更新，为此带来的不便还请谅解。</string>
+    <string name="author_introduce">作者介绍</string>
+
+    <string name="login_notice">这款App是服务武科大学子的教务App，所以需要通过您的教务处账号和密码登录</string>
+    <string name="library_login_notice">图书馆登录的初始密码是身份证后8位</string>
+    <string name="tv_class_room">教室</string>
+    <string name="tv_class_name">课程名称</string>
+    <string name="edit_hint">还未填写</string>
+    <string name="tv_class_no">教学班号</string>
+    <string name="tv_class_week">周数</string>
+    <string name="tv_class_weekday">星期</string>
+    <string name="tv_class_time">节数</string>
+    <string name="tv_class_teacher">老师</string>
+
+    <string name="privacy_protocol">本应用尊重并保护所有使用服务用户的个人隐私权。为了给您提供更准确、更有个性化的服务，本应用会按照本隐私权政策的规定使用和披露您的个人信息。但本应用将以高度的勤勉、审慎义务对待这些信息。除本隐私权政策另有规定外，在未征得您事先许可的情况下，本应用不会将这些信息对外披露或向第三方提供。本应用会不时更新本隐私权政策。 您在同意本应用服务使用协议之时，即视为您已经同意本隐私权政策全部内容。本隐私权政策属于本应用服务使用协议不可分割的一部分。\n\n
+
+    1. 适用范围\n
+(a) 在您登陆本应用帐号时，您根据本应用要求提供的个人信息；\n
+
+(b) 在您使用本应用网络服务，或访问本应用平台网页时，本应用自动接收并记录的您的APP的信息，包括但不限于您的IP地址、APP的类型、使用的语言、访问日期和时间、软硬件特征信息及您需求的网页记录等数据；\n
+
+(c) 本应用通过合法途径从商业伙伴处取得的用户个人数据。\n
+
+    您了解并同意，以下信息不适用本隐私权政策：\n
+
+(a) 您在使用本应用平台提供的搜索服务时输入的关键字信息；\n
+
+(b) 本应用收集到的您在本应用发布的有关信息数据，包括但不限于参与活动、成交信息及评价详情；\n
+
+(c) 违反法律规定或违反本应用规则行为及本应用已对您采取的措施。\n\n
+
+    2. 信息使用\n
+(a) 本应用不会向任何无关第三方提供、出售、出租、分享或交易您的个人信息，除非事先得到您的许可，或该第三方和本应用（含本应用关联工作室）单独或共同为您提供服务，且在该服务结束后，其将被禁止访问包括其以前能够访问的所有这些资料。\n
+
+(b) 本应用亦不允许任何第三方以任何手段收集、编辑、出售或者无偿传播您的个人信息。任何本应用平台用户如从事上述活动，一经发现，本应用有权立即终止与该用户的服务协议。\n
+
+(c) 为服务用户的目的，本应用可能通过使用您的个人信息，向您提供您感兴趣的信息，包括但不限于向您发出产品和服务信息，或者与本应用合作伙伴共享信息以便他们向您发送有关其产品和服务的信息（后者需要您的事先同意）。\n\n
+
+    3. 信息披露\n
+在如下情况下，本应用将依据您的个人意愿或法律的规定全部或部分的披露您的个人信息：\n
+
+(a) 经您事先同意，向第三方披露；\n
+
+(b)为提供您所要求的产品和服务，而必须和第三方分享您的个人信息；\n
+
+(c) 根据法律的有关规定，或者行政或司法机构的要求，向第三方或者行政、司法机构披露；\n
+
+(d) 如您出现违反中国有关法律、法规或者本应用服务协议或相关规则的情况，需要向第三方披露；\n
+
+(e) 如您是适格的知识产权投诉人并已提起投诉，应被投诉人要求，向被投诉人披露，以便双方处理可能的权利纠纷；\n
+
+(f) 在本应用平台上创建的某一交易中，如交易任何一方履行或部分履行了交易义务并提出信息披露请求的，本应用有权决定向该用户提供其交易对方的联络方式等必要信息，以促成交易的完成或纠纷的解决。\n
+
+(g) 其它本应用根据法律、法规或者网站政策认为合适的披露。\n\n
+
+    4. 信息存储和交换\n
+本应用收集的有关您的信息和资料将保存在本应用及（或）其关联工作室的服务器上，这些信息和资料可能传送至您所在国家、地区或本应用收集信息和资料所在地的境外并在境外被访问、存储和展示。\n\n
+
+    5. Cookie的使用\n
+(a) 在您未拒绝接受cookies的情况下，本应用会在您的计算机上设定或取用cookies ，以便您能登录或使用依赖于cookies的本应用平台服务或功能。本应用使用cookies可为您提供更加周到的个性化服务，包括推广服务。\n
+
+(b) 您有权选择接受或拒绝接受cookies。您可以通过修改APP设置的方式拒绝接受cookies。但如果您选择拒绝接受cookies，则您可能无法登录或使用依赖于cookies的本应用网络服务或功能。\n
+
+(c) 通过本应用所设cookies所取得的有关信息，将适用本政策。\n\n
+
+    6. 信息安全\n
+(a) 本应用帐号均有安全保护功能，请妥善保管您的用户名及密码信息。本应用将通过对用户密码进行加密等安全措施确保您的信息不丢失，不被滥用和变造。尽管有前述安全措施，但同时也请您注意在信息网络上不存在“完善的安全措施”。\n
+
+(b) 在使用本应用网络服务进行网上交易时，您不可避免的要向交易对方或潜在的交易对方披露自己的个人信息，如联络方式或者邮政地址。请您妥善保护自己的个人信息，仅在必要的情形下向他人提供。如您发现自己的个人信息泄密，尤其是本应用用户名及密码发生泄露，请您立即联络本应用客服，以便本应用采取相应措施。\n\n
+
+    7. 本隐私政策的更改\n
+
+(a)如果决定更改隐私政策，我们会在本政策中、本工作室网站中以及我们认为适当的位置发布这些更改，以便您了解我们如何收集、使用您的个人信息，哪些人可以访问这些信息，以及在什么情况下我们会透露这些信息。\n
+
+(b)本工作室保留随时修改本政策的权利，因此请经常查看。如对本政策作出重大更改，本工作室会通过网站通知的形式告知。\n\n
+
+</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+    <!--Token拦截器 -->
+    <string name="TokenTimeReconnectError">重连失败</string>
+    <string name="notice_delete_course_content">\t\t\t\t\t您可能添加过与该课程名相同课程。您可以选择删除当前查看的课程信息，也可以选择删除所有该课程信息，不想删除可点击弹窗外取消。</string>
+    <string name="notice_errorTitle_01">错误登录提醒</string>
+    <string name="notice_errorTitle_02">！账号锁定提醒</string>
+    <string name="notice_errorContent_01">\t\t\t\t\t该账号已三次登录”武科大助手“密码错误，您可以去帮助中心寻求帮助，也可联系相关管理员为您解决。</string>
+    <string name="notice_errorContent_02">\t\t\t\t\t该账号已五次或以上登录”武科大助手“密码错误，您可以去新版教务处官网查验此账号是否被锁定，也可以去帮助中心寻求帮助。</string>
+    <string name="notice_Content">公告内容：1.。。。\n2.。。。。\n3.。。。</string>
+    <string name="notice_never">不再提醒</string>
+    <string name="notice_later">稍后提醒</string>
+    <string name="notice_get_it">我知道了</string>
+    <string name="notice_confirm">确认</string>
+    <string name="notice_permission">为保障程序功能正常运行，应用需要以下必要权限：\n1.读取和写入内置储存权限\n点击确定以申请权限。</string>
+    <string name="notice_permission_never_permit">应用的必要权限申请被永久禁止，请打开权限管理并允许下列必要权限以正常运行此应用：\n1.读取和写入内置储存权限</string>
+    <string name="notice_permission_not_permit">为保证你正常使用本应用的功能，请设置开启储存访问权限</string>
+    <string name="notice_lost_card">你有一个证卡消息提醒，可能遗失的卡被捡到，请按确定按钮前往证卡招领页面，查看具体内容</string>
+    <string name="volunteer_footer_name">武科大青年志愿者服务总队</string>
+    <string name="volunteer_our_name">武科大领航工作室</string>
+    <string name="string_grade_years">学年绩点</string>
+    <string name="make_sure">确认</string>
+    <string name="make_attention">提示</string>
+    <string name="make_attention_warm">温馨提示</string>
+    <string name="make_confirm">同意</string>
+    <string name="make_not_confirm">不同意</string>
+    <string name="make_confirm_and_make_permission">同意并且授权</string>
+    <string name="notice_policy_content">欢迎使用武科大助手。\n1.为向您提供教务系统课表、成绩查询、学分统计、图书馆馆藏与借阅查询、工时查询等功能服务，我们会根据您使用服务的具体功能需要，收集必要的用户信息。\n2.为了实现图片缓存与取用，降低流量消耗，您需要授权读取存储权限。您有权拒绝或者取消授权。\n3.未经您的允许，我们不会与第三方共享或对外提供您的信息。</string>
+    <string name="notice_policy_content_after">1.您需要同意本用户协议和隐私政策才能继续使用武科大助手\n2.若您不同意本用户协议和隐私政策，很遗憾我们无法为您提供服务</string>
+    <string name="make_not_confirm_still">仍不同意</string>
+    <string name="make_confirm_and_goto_policy">查看协议</string>
+    <string name="make_not_confirm_final">退出应用</string>
+    <string name="notice_policy_content_final">要不再想想？</string>
+    <string name="QA">忘记密码？登录遇到问题？</string>
+    <string name="like">点赞</string>
+    <string name="collect">收藏</string>
+    <string name="history">历史</string>
+    <string name="str_grade_explain_str_4">4.如果出现数据有-1的情况，可能是教务处相关数据显示为空""</string>
+    <string name="str_grade_explain_str_3">3.标识符说明:\n 缓=缓考，补=补考，重=重修，缺=缺考</string>
+    <string name="str_grade_explain_str_2">2.关于成绩标识符\n\n有缓考的标识符，不纳入计算，同样课程名只取最高一次的成绩计算</string>
+    <string name="str_grade_explain_str_1">本软件的成绩数据仅供参考，具体请以教务处官网为准\n\n1.计算平均学分绩点（GPA）\n\n平均学分绩点=∑学分*绩点 ÷ ∑学分</string>
+    <string name="settings_widget_today">每日课表</string>
+    <string name="settings_widget_week">一周课表</string>
+    <string name="settings_widget_countDown">倒计时</string>
+    <string name="widget_explain_title">小组件设置说明</string>
+    <string name="widget_explain_content_001">1.小组件设置选择的背景图片来自手机本身，如果删除文件，则小组件的背景变成默认</string>
+    <string name="widget_explain_content_002">2.小组件可以进行放大缩小，在手机桌面实现，图片显示按照小组件大小裁剪，需要手动调节至合适</string>
+    <string name="widget_explain_content_003">3.使用图片作为背景，某些图片可能会导致小组件失效，需要恢复默认主题，重新添加</string>
+    <string name="widget_explain_content_004">4.选择背景图片分辨率不要太大，体积不要大于6mb,否则加载不出来，还会有很大的卡顿</string>
+    <string name="widget_explain_content_005">5.小组件需要在手机桌面手动添加</string>
+    <string name="background_change_explain_title">背景与字体设置说明</string>
+    <string name="background_change_explain_content_001">1.选择背景图片分辨率太大，加载会很慢</string>
+    <string name="background_change_explain_content_002">2.GIF动图不能设置模糊</string>
+    <string name="background_change_explain_content_003">3.某些深色图片全屏样式可能导致课程表图标难以辨认</string>
+
+    <string name="calendar_import_explain_title">课表设置与导入日程说明</string>
+    <string name="calendar_import_explain_001">5.课表数据源于教务处，如果武科大助手数据和教务处冲突，请以教务处为准</string>
+    <string name="calendar_import_explain_002">5.导入日程功能需要开启日历权限</string>
+    <string name="calendar_import_explain_003">6.两种导入方式只能选其一，且以周一为当前周首日导入</string>
+
+    <string name="font_size_explain_title">字体设置说明</string>
+    <string name="font_size_explain_content_001">4.字体设置太小会看不清噢</string>
+    <string name="font_size_explain_content_002">5.字体设置太大课表会显示不完全</string>
+
+    <string name="schedule_settings_explain_title">课程表设置说明</string>
+    <string name="schedule_settings_explain_content_001">1.课表数据源于教务处，如果武科大助手数据和教务处冲突，请以教务处为准</string>
+    <string name="schedule_settings_explain_content_002">2.武科大助手默认是周一为第一天，与教务处一致</string>
+    <string name="schedule_settings_explain_content_003">3.选择周日为第一天，在显示周日的课程时，开始周和结束周都在真实数据上加一</string>
+    <string name="schedule_settings_explain_content_004">4.这样的操作不会导致课程的上课时间显示错误</string>
+
+    <string name="course_explain">下滑即可返回课程表首页</string>
+    <string name="physicalExperimentLogin">物理实验登录</string>
+    <string name="physicalLoginPassword">物理实验密码</string>
+    <string name="explain_physical_login">密码是物理实验预约系统的密码</string>
+    <string name="still_refuse">仍不同意</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="all_grade">全部成绩</string>
+    <string name="make_installed">立即安装</string>
+    <string name="notice_have_new_semester">有新的学期，请刷新课表或者切换学期</string>
+</resources>

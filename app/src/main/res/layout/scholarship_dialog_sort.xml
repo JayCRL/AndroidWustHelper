@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/scholarship_sort_dialog"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/scholarship_sort_credit"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:background="@color/white"
+        android:layout_height="wrap_content"
+        >
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/scholarship_sort_credit"-->
+<!--            />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学分"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/scholarship_sort_gpa"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        >
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/scholarship_sort_gpa"-->
+<!--            />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="绩点"
+            android:padding="5dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+</LinearLayout>

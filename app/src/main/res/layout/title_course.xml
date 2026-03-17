@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:elevation="0dp"
+    android:clipToPadding="false"
+    app:contentInsetStart="0dp">
+
+    <RelativeLayout
+        android:id="@+id/title_class_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        >
+
+        <ImageView
+            android:id="@+id/iv_refresh"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/iv_more"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/refresh" />
+
+        <ImageView
+            android:id="@+id/iv_scan"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/iv_refresh"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/scan_qr_code" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/iv_day"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/iv_refresh"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/course_day" />
+
+        <TextView
+            android:id="@+id/tv_week_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:text="4周"
+            android:textColor="#606060"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:textColor="@color/color_default"
+            android:id="@+id/tv_week_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_week_selected"
+            android:paddingTop="15sp"
+            android:text="ˇ"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/tv_not_this_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="1dp"
+            android:layout_marginBottom="18dp"
+            android:layout_toRightOf="@id/tv_week_arrow"
+            android:text="(非本周)"
+            android:textColor="@color/colorGray"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:src="@drawable/more" />
+
+    </RelativeLayout>
+
+</androidx.appcompat.widget.Toolbar>

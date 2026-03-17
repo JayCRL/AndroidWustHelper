@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @author yuandalai
+  ~ @date 2018/11/18
+  ~ @email yuanlai0611@gmail.com
+  ~ @github https://github.com/yuanlai0611
+  ~ @blog https://yuanlai0611.github.io/
+  -->
+<!--TODO 待恢复功能-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_user_data_setting"
+        app:title="信息设置"
+        app:titleTextColor="@color/colorEditText"
+        app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fl_head_setting"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <TextView
+                android:textColor="#434343"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="头像"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_head"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="right|center_vertical"
+                android:src="@drawable/user_img_holder"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <View
+                android:layout_marginLeft="15dp"
+                android:background="#7af4f4f4"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+            <View
+                android:layout_gravity="top"
+                android:background="#42d9d9d9"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fl_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textColor="#434343"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="昵称"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:textColor="@color/color_default_text"
+                android:layout_gravity="right|center_vertical"
+                android:text="来"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginLeft="15dp"
+                android:background="#7af4f4f4"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fl_major"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textColor="#434343"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="专业"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_major"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:layout_gravity="right|center_vertical"
+                android:text="计算机科学与技术"
+                android:textColor="@color/color_default_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginLeft="15dp"
+                android:background="#7af4f4f4"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fl_academy"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textColor="#434343"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="院系"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_academy"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:layout_gravity="right|center_vertical"
+                android:text="计算机科学与技术学院"
+                android:textColor="@color/color_default_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginLeft="15dp"
+                android:background="#7af4f4f4"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fl_grade"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textColor="#434343"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="年级"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_grade"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:layout_gravity="right|center_vertical"
+                android:text="2020"
+                android:textColor="@color/color_default_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginLeft="15dp"
+                android:background="#7af4f4f4"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fl_tutorName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textColor="#434343"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="导师"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_tutorName"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:layout_gravity="right|center_vertical"
+                android:text="2020"
+                android:textColor="@color/color_default_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginLeft="15dp"
+                android:background="#7af4f4f4"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fl_degree"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:textColor="#434343"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="学位"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_degree"
+                android:layout_marginRight="10dp"
+                android:textSize="14sp"
+                android:layout_gravity="right|center_vertical"
+                android:text="2020"
+                android:textColor="@color/color_default_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_marginLeft="15dp"
+                android:background="#7af4f4f4"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:id="@+id/fl_qr_code"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:visibility="gone">
+
+            <TextView
+                android:textColor="#434343"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:text="课表二维码"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/QR_code"
+                android:layout_width="23dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/qrcode" />
+
+            <View
+                android:background="#42d9d9d9"
+                android:layout_gravity="bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

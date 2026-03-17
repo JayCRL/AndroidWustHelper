@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@android:color/transparent">
+
+    <!--宽高比：1.935484-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <!-- 370 - 147 = 223dp-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_dialog_bg_round_corners"
+        android:orientation="vertical">
+        <com.example.wusthelper.widget.FlexibleScrollView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/shape_dialog_bg_round_corners"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/tv_notice_dialog_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="权限申请"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:paddingTop="@dimen/small_spacing"
+                    android:paddingLeft="@dimen/medium_spacing"
+                    android:gravity="center"
+                    android:textSize="19sp"/>
+
+                <TextView
+                    android:id="@+id/tv_notice_dialog_content"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/notice_permission"
+                    android:gravity="left"
+                    android:padding="@dimen/medium_spacing"
+                    android:textSize="14dp"/>
+
+            </LinearLayout>
+
+
+        </com.example.wusthelper.widget.FlexibleScrollView>
+
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            >
+            <TextView
+                android:id="@+id/btn_notice_dialog_update"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/medium_spacing"
+                android:layout_height="32dp"
+                android:textColor="@color/color_dialog_confirm"
+                style="@style/dialog_button_text"
+                android:text="@string/notice_confirm"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

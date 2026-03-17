@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_80">#CC000000</color>
+
+    <color name="colorPrimary">#1EC98D</color>
+    <color name="colorPrimaryDark">#65BC6D</color>
+    <color name="colorAccent">#FFA858</color>
+    <color name="lightgray">#F3F1F1</color>
+    <color name="red">#FF0000</color>
+    <color name="red_light">#FA5D76</color>
+    <color name="red_btn_bg_color">#DD6B55</color>
+    <color name="white_with_alpha_80">#CCFFFFFF</color>
+    <color name="whiteGrayFromQQ">#F5F6FA</color>
+    <color name="colorGray">#ADB4BE</color>
+    <color name="colorLine">#64adb4be</color>
+    <color name="colorLineGap">#78adb4be</color>
+    <color name="colorLineLight">#32adb4be</color>
+    <color name="color_list_separator">#DEE0E2</color>
+    <color name="text_color">#b41a1a1a</color>
+    <color name="colorDarkGray">#646464</color>
+
+    <color name="colorBlue">#1295ff</color>
+    <color name="colorBlueDark">#008AB8</color>
+    <color name="colorCountDownText">#B4404040</color>
+    <color name="colorCountDownTextTitle">#CF1A1A1A</color>
+
+    <color name="colorBottomMenuTextNoChecked">#646464</color>
+
+
+    <!--<color name="colorAccent">#ff99cc00</color>-->
+    <!--主页小标题颜色-->
+    <color name="itemtitle_home">#787878</color>
+    <!--默认背景颜色-->
+    <color name="default_bg">#F4F5F7</color>
+    <color name="default_bg_half">#2EF4F5F6</color>
+    <color name="default_nav_bg">#B3F7F7F7</color>
+    <color name="default_launch_bg">#FEFEFE</color>
+
+    <!--波纹颜色-->
+    <color name="ripple_color_70">#B321272B</color>
+    <color name="ripple_color_50">#8021272B</color>
+    <color name="ripple_color_10">#1A21272B</color>
+    <!--主界面卡片颜色组-->
+    <!--    #ECE5F5-->
+    <color name="color_card_bg1" >#E8F6E9</color>
+    <color name="color_card_bg2" >#E8eaf6</color>
+    <color name="color_card_bg3" >#E4F2FD</color>
+    <color name="color_card_bg4" >#FFF2DF</color>
+    <color name="color_card_bg5">#ECE5F5</color>
+    <color name="color_card_bg6">#FFEBED</color>
+    <color name="color_card_bg7">#E7F5E8</color>
+    <color name="color_card_bg8">#EFEBE8</color>
+    <color name="color_card_bg9">#E8F6E9</color>
+    <color name="color_card_bg10">#FFF2DF</color>
+
+    <color name="color_title1">#4CB04E</color>
+    <color name="color_title2">#5963ba</color>
+    <color name="color_title3">#2095F2</color>
+    <color name="color_title4">#FF9700</color>
+    <color name="color_title5">#673BB7</color>
+    <color name="color_title6">#F44236</color>
+    <color name="color_title7">#4CB050</color>
+    <color name="color_title8">#795547</color>
+    <color name="color_title9">#5F7C8A</color>
+    <color name="color_title10">#FF9700</color>
+    <color name="color_title11">#FFDA44</color>
+
+
+    <color name="color_detail1">#E64CB04E</color>
+    <color name="color_detail2">#E65963BA</color>
+    <color name="color_detail3">#E62095F2</color>
+    <color name="color_detail4">#E6FF9700</color>
+    <color name="color_detail5">#E6673BB7</color>
+    <color name="color_detail6">#E6F44236</color>
+    <color name="color_detail7">#E64CB050</color>
+    <color name="color_detail8">#E6795547</color>
+    <color name="color_detail9">#E65F7C8A</color>
+    <color name="color_detail10">#E6FF9700</color>
+    <color name="color_lost_card_detail">#2095F2</color>
+
+    <!-- 检查网络和成绩更新弹出的snackBar背景颜色 -->
+    <color name="color_snack_bar_no_internet">#b4fa5151</color>
+    <color name="color_snack_bar_update_score">#b485c771</color>
+
+    <color name="red_bad_grade_text">#d64038</color>
+
+    <color name="transparent">#00000000</color>
+
+    <color name="title_text_black">#c8000000</color>
+    <color name="line_center_gray">#b9b9b9</color>
+    <color name="line_outer_gray">#d6d6d6</color>
+    <color name="color_yellow_orange">#fcbb42</color>
+    <color name="color_yellow_orange_light">#F4FF81</color>
+    <color name="green_ok">#91e194</color>
+
+    <color name="color_weekday">#ebfde5</color>
+    <color name="color_hint">#cfffffff</color>
+
+    <color name="color_book_classify">#e7e7e7</color>
+    <color name="color_book_classify_choose">#a1e47b</color>
+    <color name="color_book_classify_item_background">#f1f1f1</color>
+    <color name="color_book_classify_text">#a3a3a3</color>
+
+    <color name="color_white">#fff</color>
+    <color name="color_alpha_white">#b3ffffff</color>
+
+    <color name="color_beyond_time">#ff5454</color>
+    <color name="color_borrowing">#96eba1</color>
+    <color name="color_history_book">#f3ca7e</color>
+
+    <color name="color_library_background">#f9f9f9</color>
+
+    <color name="colorTab">#CCEBFDF0</color>
+    <color name="colorTabText">#768486</color>
+    <color name="colorText">#ffffff</color>
+    <color name="colorBlock">#74ff90</color>
+    <color name="colorTabViewDefault">#cecccc</color>
+    <color name="colorThisWeek">#d7fcd2</color>
+
+    <!--课程框背景色-->
+    <color name="colorClassTitle">#66FFFFFF</color>
+    <color name="colorClassTodayTitle">#78B59D9D</color>
+    <color name="colorClassText">#5A5A5A</color>
+
+    <!--课程的颜色-->
+    <color name="colorClass1">#E6FD999A</color>
+    <color name="colorClass2">#E666CC99</color>
+    <color name="colorClass3">#E666BDB0</color>
+    <color name="colorClass4">#E62196F3</color>
+    <color name="colorClass5">#E6BF83DA</color>
+    <color name="colorClass6">#E668C4CF</color>
+    <color name="colorClass7">#E6FF5722</color>
+    <color name="colorClass8">#E600D4BB</color>
+    <color name="colorClass9">#968CDC</color>
+    <color name="colorClass10">#E6FF7878</color>
+
+    <!--课程的阴影颜色-->
+    <color name="colorClassShadow1">#2dfd999a</color>
+    <color name="colorClassShadow2">#2d66CC99</color>
+    <color name="colorClassShadow3">#2d66BDB0</color>
+    <color name="colorClassShadow4">#2dBF83DA</color>
+    <color name="colorClassShadow5">#2dBF83DA</color>
+    <color name="colorClassShadow6">#2d68C4CF</color>
+    <color name="colorClassShadow7">#2dFF5722</color>
+    <color name="colorClassShadow8">#2d00D4BB</color>
+    <color name="colorClassShadow9">#2d968CDC</color>
+    <color name="colorClassShadow10">#2dFF7878</color>
+
+    //课程图标非本周时的背景色，我调低了透明度，从100%调到了80%
+    <color name="colorNoClass">#CCD6DCE0</color>
+    <!--    <color name="colorNoClass">#D6DCE0</color>-->
+    <color name="colorNoClassText">#91969B</color>
+    <color name="colorNoClassShadow">#4DD2D7DC</color>
+
+    <color name="transparent_background">#bbffffff</color>
+
+    <color name="colorPopSelect">#dedede</color>
+
+    <color name="color_radio_button_default">#9f9f9f</color>
+    <color name="color_radio_button_select">#4afd77</color>
+    <color name="color_radio_button_delete">#f74646</color>
+    <color name="color_pop_text">#B34B4B4B</color>
+
+
+    <color name="color_pop_normal">#ffffff</color>
+    <color name="color_edit">#c8e1f9e4</color>
+
+    <color name="colorEditText">#323232</color>
+    <color name="color_class">#fc6464</color>
+
+    <color name="theme_color">#1EC98D</color>
+    <color name="color_black">#000</color>
+
+    <color name="color_hint_text">#c7c7c7</color>
+    <color name="color_hint_control">#9B9595</color>
+
+    <color name="color_highlight">#81c784</color>
+
+    <color name="toast_bg_loading">#50000000</color>  //半透明
+
+    <color name="color_book_collection">#f3ff5797</color>
+    <color name="color_book_no_collection">#ee939393</color>
+
+    <color name="color_widget_background">#ffffff</color>
+    <color name="color_widget_black_style_001">#000000</color>
+    <color name="color_widget_bottom">#F5F5F5</color>
+
+    <color name="color_class_edit_block">#e9e7e7e7</color>
+    <color name="color_class_edit_divider">#eef4f4f4</color>
+    <color name="color_class_edit_text">#3d3d3d</color>
+
+
+
+    <color name="scholarship_bottom">#999999</color>
+
+    <color name="shadow">#B3434933</color>
+
+    <color name="scholarship_toolbar">#615797</color>
+
+
+    <color name="color_grades_coreTag_missing">#FFA500</color>
+    <color name="color_grades_coreTag_resit">#27BE85</color>
+    <color name="color_grades_coreTag_rebuild">#FF0000</color>
+
+    <color name="color_widget_text">#CC4A4A4A</color>
+
+
+    <color name="color_default_text">#DE000000</color>
+
+
+
+    <color name="color_love_background">#FE90AB</color>
+
+    <color name="color_background_change_white_light">#F5F5F5</color>
+
+    <color name="color_background_change_white_light_246">#F6F6F6</color>
+    <color name="color_background_change_seekbar_progress">#26BE85</color>
+
+    <color name="color_dialog_confirm">#2785EF</color>
+
+    <color name="color_blue_light">#B32095F2</color>
+    <color name="gray_list_divider">#33888888</color>
+
+    <color name="color_import_calendar">#B6D6FE</color>
+    <color name="color_delete_calendar">#E3E3E3</color>
+
+    <color name="color_default">#8A000000</color>
+
+</resources>

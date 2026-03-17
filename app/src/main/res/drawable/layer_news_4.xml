@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @author yuandalai
+  ~ @date 2018/11/14
+  ~ @email yuanlai0611@gmail.com
+  ~ @github https://github.com/yuanlai0611
+  ~ @blog https://yuanlai0611.github.io/
+  -->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+<item>
+    <shape>
+        <corners android:radius="5dp"/>
+        <solid android:color="#6c41c6de"/>
+    </shape>
+</item>
+
+<item
+    android:right="2dp"
+    android:bottom="2dp">
+    <shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <corners
+            android:radius="5dp"/>
+
+        <solid
+            android:color="#c241c6de"/>
+
+    </shape>
+
+</item>
+
+
+
+</layer-list>

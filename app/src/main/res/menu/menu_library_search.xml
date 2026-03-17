@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        android:id="@+id/action_search"
+        android:title="搜索"
+        app:showAsAction="always" />
+
+    <item
+        android:title="按名称"
+        android:id="@+id/menu_grade_gpa_segment_table"
+        app:showAsAction="never"/>
+
+    <item
+        android:title="按书号"
+        android:id="@+id/menu_grade_view_grade"
+        app:showAsAction="never"/>
+
+</menu>

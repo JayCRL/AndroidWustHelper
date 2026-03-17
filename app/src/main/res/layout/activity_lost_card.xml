@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<!--    <androidx.appcompat.widget.Toolbar-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?android:attr/actionBarSize">-->
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_back"-->
+<!--                android:layout_width="50dp"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:padding="12dp"-->
+<!--                android:src="@drawable/ic_arrow_back_gray_24dp" />-->
+<!--            <TextView-->
+<!--                android:id="@+id/textView_toolbar_title"-->
+<!--                style="@style/mToolbarTitle"-->
+<!--                android:textSize="18sp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_toRightOf="@+id/iv_back"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="失物招领"/>-->
+<!--        </RelativeLayout>-->
+<!--    </androidx.appcompat.widget.Toolbar>-->
+
+<!--    <View-->
+<!--        android:id="@+id/view_status"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="5dp"/>-->
+    <WebView
+        android:id="@+id/lost_card_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fl_emptyclassroom_no_content"
+        android:visibility="gone">
+        <include
+            layout="@layout/layout_no_internet"
+            />
+    </FrameLayout>
+
+</LinearLayout>

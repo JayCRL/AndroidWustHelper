@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: wust-mywust-basic
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        ephemeral: false
+        group: DEFAULT_GROUP
+      config:
+        file-extension: yml

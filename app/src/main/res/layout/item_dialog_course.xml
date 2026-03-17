@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="8dp"
+    android:elevation="8dp"
+    android:layout_margin="15dp"
+    android:padding="8dp"
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/dialog_background_rel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        >
+        <FrameLayout
+            android:id="@+id/normal_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/mLottieView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:lottie_fileName="stay_1.json"
+                app:lottie_loop="false"
+                app:lottie_speed="1"
+                android:alpha="0.9"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0DFFFFFF"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/qr_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/mLottieView_qr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:lottie_fileName="stay_2.json"
+                app:lottie_loop="true"
+                app:lottie_speed="1"
+                android:alpha="0.9"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0DFFFFFF"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:visibility="gone"
+            android:id="@+id/searchClass_type"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/mLottieView_searchClass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:lottie_fileName="stay_3.json"
+                app:lottie_loop="true"
+                app:lottie_speed="1"
+                android:alpha="0.9"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#0DFFFFFF"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:layout_marginTop="30dp"
+            android:id="@+id/dialog_qr_course"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:text="情侣课表（Ta）"
+            android:textSize="21dp"
+            android:textColor="#F44336"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+
+            <View
+                android:visibility="gone"
+                android:id="@+id/qr_view"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+            <TextView
+                android:id="@+id/dialog_is_current_week"
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:text="测试"
+                android:textSize="@dimen/dialog_txt_small"
+                android:textColor="@color/black_60"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/dialog_class_name"
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:textSize="@dimen/dialog_txt_big"
+                android:textColor="@color/black_80"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/dialog_classroom"
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:textSize="@dimen/dialog_txt_med"
+                android:textColor="@color/black_60"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/dialog_teacher_name"
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:textSize="@dimen/dialog_txt_med"
+                android:textColor="@color/black_60"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/dialog_class"
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:textSize="@dimen/dialog_txt_med"
+                android:textColor="@color/black_60"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                />
+            <TextView
+                android:id="@+id/dialog_class_week"
+                android:layout_width="match_parent"
+                android:padding="8dp"
+                android:textSize="@dimen/dialog_txt_med"
+                android:textColor="@color/black_60"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/default_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View
+        android:id="@+id/view_status"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+    <include
+        layout="@layout/title_general"
+        android:id="@+id/include_title"/>
+    <com.example.wusthelper.widget.FlexibleScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tb_title"
+        android:overScrollMode="never"
+        android:background="@color/default_bg"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <com.bigkoo.convenientbanner.ConvenientBanner
+                android:id="@+id/banner1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:visibility="invisible"
+                app:canLoop="true"
+                app:autoTurningTime="3000"
+                />
+
+            <TextView
+                android:id="@+id/tv_home_notice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/bg_white_round_20"
+                android:padding="12dp"
+                android:textColor="@color/color_default"
+                android:textSize="14sp"
+                android:visibility="gone" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="热门功能"
+                    android:textColor="@color/itemtitle_home"
+
+                    android:layout_marginLeft="15dp"
+                    android:textSize="21dp"
+                    android:textStyle="bold"
+                    >
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                >
+                <com.meetsl.scardview.SCardView
+                    android:id="@+id/card_score_new"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    app:cardBackgroundColor="@color/color_card_bg1"
+                    style="@style/mViewShadow_BigSize"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="5dp"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="成绩查询"
+                                android:textSize="21dp"
+                                android:textColor="@color/color_title1"
+                                android:textStyle="bold"
+                                android:id="@+id/card_main_title"
+                                >
+                            </TextView>
+                            <LinearLayout
+                                android:layout_below="@id/card_main_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="成绩查询"
+                                    android:textColor="@color/color_detail1"
+                                    style="@style/mView_introduce_textSize"
+                                    android:textSize="12dp"
+                                    ></TextView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="绩点计算"
+                                    style="@style/mView_introduce_textSize"
+
+                                    android:textColor="@color/color_detail1"
+                                    android:layout_marginLeft="10dp"
+                                    android:textSize="12dp"
+
+                                    ></TextView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="平均绩点"
+                                    style="@style/mView_introduce_textSize"
+
+                                    android:textColor="@color/color_detail1"
+                                    android:layout_marginLeft="10dp"
+                                    android:textSize="12dp"
+
+                                    ></TextView>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:scrollY="-15dp"
+                            android:scrollX="-35dp"
+                            >
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:rotation="-30"
+                                android:src="@drawable/home_score"
+                                tools:visibility="visible" />
+
+                        </FrameLayout>
+
+
+                    </RelativeLayout>
+
+                </com.meetsl.scardview.SCardView>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+                    <com.meetsl.scardview.SCardView
+                        android:id="@+id/card_countdown_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="4dp"
+
+                        app:cardBackgroundColor="@color/color_card_bg3"
+                        style="@style/mViewShadow"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical"
+                            >
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_centerInParent="true"
+                                >
+                                <ImageView
+                                    android:layout_width="54dp"
+                                    android:layout_height="55dp"
+                                    android:src="@drawable/home_countdown"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_gravity="center"
+                                    >
+
+
+                                </ImageView>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.75"
+                                    android:orientation="vertical"
+                                    android:layout_marginTop="5dp"
+                                    >
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="倒计时"
+                                        android:textColor="@color/color_title2"
+                                        android:layout_gravity="center"
+                                        android:textStyle="bold"
+                                        android:textSize="18dp"
+                                        android:layout_centerVertical="true"
+                                        >
+                                    </TextView>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="鸽子模拟器 咕咕咕"
+                                        android:textSize="12dp"
+
+                                        android:layout_gravity="center"
+
+                                        android:textColor="@color/color_detail2"
+                                        >
+
+                                    </TextView>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                    </com.meetsl.scardview.SCardView>
+                </LinearLayout>
+                
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    >
+                        <com.meetsl.scardview.SCardView
+                            android:id="@+id/card_credits_statistics_new"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:layout_marginRight="10dp"
+
+                            app:cardBackgroundColor="@color/color_card_bg10"
+
+                            style="@style/mViewShadow"
+
+                            >
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.99"
+                                    android:orientation="vertical"
+                                    >
+                                    <TextView
+                                        android:id="@+id/credit"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="培养方案"
+                                        android:textColor="@color/color_title10"
+                                        android:textSize="18dp"
+
+                                        android:layout_marginLeft="8dp"
+                                        android:layout_marginTop="15dp"
+                                        android:textStyle="bold"
+                                        >
+                                    </TextView>
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="掌握修读情况"
+                                        android:textSize="12dp"
+
+                                        android:textColor="@color/color_detail10"
+                                        android:layout_marginLeft="8dp"
+
+                                        >
+
+                                    </TextView>
+                                </LinearLayout>
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    >
+                                    <ImageView
+
+                                        android:src="@drawable/home_credit"
+                                        android:scrollX="-20dp"
+                                        android:scrollY="-8dp"
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp"
+                                        android:layout_centerVertical="true"
+                                        android:layout_marginRight="0dp"
+                                        >
+
+
+                                    </ImageView>
+
+                                </RelativeLayout>
+
+
+                            </LinearLayout>
+
+
+                        </com.meetsl.scardview.SCardView>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                >
+                <com.meetsl.scardview.SCardView
+                    android:id="@+id/card_second_hand"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    app:cardBackgroundColor="#E3F2FD"
+                    style="@style/mViewShadow"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="二手平台"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </com.meetsl.scardview.SCardView>
+
+                <com.meetsl.scardview.SCardView
+                    android:id="@+id/card_competition"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    app:cardBackgroundColor="#F3E5F5"
+                    style="@style/mViewShadow"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="竞赛组队"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </com.meetsl.scardview.SCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                >
+                <com.meetsl.scardview.SCardView
+                    android:id="@+id/card_campus_partner"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    app:cardBackgroundColor="#E8F5E9"
+                    style="@style/mViewShadow"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="校园搭子"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </com.meetsl.scardview.SCardView>
+
+                <com.meetsl.scardview.SCardView
+                    android:id="@+id/card_study_help"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    app:cardBackgroundColor="#FFF3E0"
+                    style="@style/mViewShadow"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="学习互助"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </com.meetsl.scardview.SCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                >
+                <com.meetsl.scardview.SCardView
+                    android:id="@+id/card_ai_qa"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp"
+                    app:cardBackgroundColor="#E0F7FA"
+                    style="@style/mViewShadow"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AI 问答"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </com.meetsl.scardview.SCardView>
+
+                <com.meetsl.scardview.SCardView
+                    android:id="@+id/card_campus_cat"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="10dp"
+                    app:cardBackgroundColor="#FFEBEE"
+                    style="@style/mViewShadow"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="校园猫"
+                        android:layout_gravity="center"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+                </com.meetsl.scardview.SCardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="小工具"
+                    android:textColor="@color/itemtitle_home"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    >
+
+                </TextView>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85.5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    >
+                    <com.meetsl.scardview.SCardView
+                        android:id="@+id/card_school_bus_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10dp"
+                        style="@style/mViewShadow_SmallSize"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.75"
+                                >
+                                <ImageView
+                                    android:src="@drawable/home_school_bus"
+
+                                    android:layout_width="50dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginRight="0dp"
+                                    >
+
+
+                                </ImageView>
+
+                            </RelativeLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.75"
+                                android:orientation="vertical"
+                                android:gravity="left|center_vertical"
+                                >
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:text="校车时刻"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/color_black"
+                                    android:textStyle="bold"
+
+
+                                    >
+                                </TextView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="发车时间查询"
+                                    android:textSize="12dp"
+                                    android:textColor="@color/itemtitle_home"
+                                    >
+
+                                </TextView>
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+
+                    </com.meetsl.scardview.SCardView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+
+
+                    >
+                    <com.meetsl.scardview.SCardView
+                        android:id="@+id/card_school_calendar_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        style="@style/mViewShadow_SmallSize"
+
+                        app:cardCornerRadius="10dp"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.75"
+                                >
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/schoolcalendar"
+                                    >
+
+
+                                </ImageView>
+
+                            </RelativeLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.75"
+                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical"
+                                >
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:text="学校校历"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/color_black"
+                                    android:textStyle="bold"
+
+                                    >
+                                </TextView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="了解假期安排"
+                                    android:textSize="12dp"
+
+                                    android:textColor="@color/itemtitle_home"
+                                    >
+
+                                </TextView>
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+
+                    </com.meetsl.scardview.SCardView>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="85.5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    >
+                    <com.meetsl.scardview.SCardView
+                        android:id="@+id/card_physical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        style="@style/mViewShadow_SmallSize"
+                        app:cardCornerRadius="10dp"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.75"
+
+                                >
+                                <ImageView
+                                    android:src="@drawable/home_physical"
+                                    android:layout_width="50dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    android:layout_marginRight="0dp"
+                                    >
+                                </ImageView>
+
+                            </RelativeLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.75"
+                                android:orientation="vertical"
+                                android:layout_gravity="center"
+                                >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="物理实验"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/color_black"
+                                    android:textStyle="bold"
+                                    >
+                                </TextView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="导入实验课表"
+                                    android:textSize="12dp"
+                                    android:textColor="@color/itemtitle_home"
+                                    >
+
+                                </TextView>
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+
+                    </com.meetsl.scardview.SCardView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:padding="10dp"
+                    >
+                    <com.meetsl.scardview.SCardView
+                        android:id="@+id/card_yellow_page_new"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:cardCornerRadius="10dp"
+                        style="@style/mViewShadow_SmallSize"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.75"
+                                >
+                                <ImageView
+                                    android:src="@drawable/home_yellow_page"
+                                    android:layout_width="50dp"
+                                    android:layout_height="30dp"
+                                    android:layout_centerInParent="true"
+                                    >
+                                </ImageView>
+
+                            </RelativeLayout>
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.75"
+                                android:orientation="vertical"
+                                android:layout_gravity="center_vertical"
+                                >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="校园黄页"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/color_black"
+                                    android:textStyle="bold"
+
+                                    >
+                                </TextView>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="号码通讯录"
+                                    android:textSize="12dp"
+                                    android:textColor="@color/itemtitle_home"
+                                    >
+                                </TextView>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.meetsl.scardview.SCardView>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linghang_signed"
+                    >
+
+                </TextView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.example.wusthelper.widget.FlexibleScrollView>
+</LinearLayout>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:background="@color/default_bg_half"
+    >
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:clipToPadding="true"
+            android:fitsSystemWindows="true"
+            app:titleEnabled="false"
+            >
+
+            <RelativeLayout
+                    android:id="@+id/rl_describe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="160dp"
+                    android:background="@color/colorPrimary"
+                    app:layout_collapseMode="parallax"
+                    >
+
+                <TextView
+                    android:id="@+id/tv_countdown_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="60dp"
+                    android:text="2020年11月18日"
+                    android:textColor="@color/white"></TextView>
+
+                <TextView
+                    android:id="@+id/tv_countdown_NumofTosize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_countdown_date"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="正在进行：10"
+                    android:textColor="@color/white"></TextView>
+                    <TextView
+                        android:id="@+id/tv_countdown_saying"
+                        android:layout_below="@id/tv_countdown_NumofTosize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="时间比理性创造出更多的皈依者。"
+                        android:textColor="@color/white"
+
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        >
+                    </TextView>
+                </RelativeLayout>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/tb_count_down"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/colorPrimary"
+                app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+                app:titleTextColor="@android:color/white"
+                app:layout_collapseMode="pin"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="倒计时"
+                        android:textSize="20dp"
+                        android:gravity="center"
+                        android:paddingLeft="8dp"
+                        android:textColor="@color/white"
+                        />
+
+                    <ImageView
+                        android:id="@+id/countdown_scan"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:src="@drawable/scan" />
+
+                    <CheckBox
+                        android:visibility="gone"
+                        android:id="@+id/countdown_select"
+                        style="@style/SelectCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_toLeftOf="@+id/countdown_scan"
+                        android:checked="false" />
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tb_count_down"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:overScrollMode="never"
+        >
+
+
+        <FrameLayout
+            android:id="@+id/fv_countdown_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"
+
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@color/colorPrimary"
+                >
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:overScrollMode="never"
+                android:id="@+id/recycler_countdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </FrameLayout>
+
+    </androidx.core.widget.NestedScrollView>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+        <include
+            android:id="@+id/countdown_no_content"
+            layout="@layout/layout_no_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/tb_count_down"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+    </FrameLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        app:backgroundTint="@color/colorAccent"
+        android:src="@drawable/add"
+        android:layout_gravity="bottom|end"
+        />
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="gone"
+        android:id="@+id/fab_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        app:backgroundTint="@color/red"
+        android:src="@drawable/ic_baseline_close_128"
+        android:layout_gravity="bottom|start"
+        />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,91 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+
+    <!--PADDING & MARGIN-->
+    <dimen name="huge_spacing">36dp</dimen>
+    <dimen name="big_spacing">24dp</dimen>
+    <dimen name="sub_big_spacing">20dp</dimen>
+    <dimen name="medium_spacing">16dp</dimen>
+    <dimen name="sub_medium_spacing">12dp</dimen>
+    <dimen name="small_spacing">8dp</dimen>
+    <dimen name="sub_small_spacing">5dp</dimen>
+    <dimen name="s_small_spacing">3dp</dimen>
+
+    <!--TEXT-->
+    <dimen name="s_huge_text">38sp</dimen>
+    <dimen name="huge_text">30sp</dimen>
+    <dimen name="big_text">24sp</dimen>
+    <dimen name="sub_big_text">18sp</dimen>
+    <dimen name="medium_text">16sp</dimen>
+    <dimen name="sub_medium_text">14sp</dimen>
+    <dimen name="small_text">12sp</dimen>
+    <dimen name="sub_small_text">10sp</dimen>
+
+
+    <!-- Dialog Course-->
+    <dimen name="dialog_txt_small">13dp</dimen>
+    <dimen name="dialog_txt_big">19dp</dimen>
+    <dimen name="dialog_txt_med">16dp</dimen>
+
+    <!--VIEWS-->
+    <dimen name="scroll_bar_size">4dp</dimen>
+    <dimen name="card_corner_radius">0dp</dimen>
+    <dimen name="card_corner_radius_normal">10dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="card_spacing">10dp</dimen>
+    <dimen name="card_content_padding">16dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="icon_big">96dp</dimen>
+
+    <dimen name="line">0.5dp</dimen>
+    <dimen name="bold_line">1dp</dimen>
+    <dimen name="nav_height">48dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+    <dimen name="toast_corner">20dp</dimen>
+    <dimen name="toast_icon_size">32dp</dimen>
+    <dimen name="icon_size">72dp</dimen>
+    <dimen name="icon_size_big">96dp</dimen>
+    <dimen name="corner">6dp</dimen>
+
+    <dimen name="classLength">120dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="big_corner">8dp</dimen>
+
+    <dimen name="widget_course_text">10dp</dimen>
+
+    <dimen name="widget_margin">8dp</dimen>
+    <!--
+Refer to App Widget Documentation for margin information
+http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
+    -->
+
+
+    <!--
+
+    以下代码为控制底部导航栏的属性的
+
+
+    按住ctrl点击第一个   即可跳转到系统设置的默认值   可以与之进行比较
+    active_size  为控制点击之后的字体大小
+    text_size  为控制点击之前的字体大小   或者写一个system  加到BottomNavigationView的theme属性中
+
+    design_bottom_navigation_margin    为控制图片对于上边栏的距离
+
+    design_navigation_icon_padding   控制图片大小  控制之前一定要增大与上边栏的距离   可能无效。。。。
+
+    design_navigation_icon_size  同上
+
+    -->
+
+    <dimen name="design_bottom_navigation_active_text_size">12dp</dimen>
+    <dimen name="design_bottom_navigation_text_size">12dp</dimen>
+    <dimen name="design_bottom_navigation_margin">8dp</dimen>
+
+
+    <dimen name="design_navigation_icon_padding">40dp</dimen>
+    <dimen name="design_navigation_icon_size">5dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+</resources>

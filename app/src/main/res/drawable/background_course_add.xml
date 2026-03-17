@@ -1,0 +1,10 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/ripple_color_10"><!--波纹颜色#B321272B-->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/transparent" />
+            <corners android:radius="7dp" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/bg_course_add" />
+</ripple>

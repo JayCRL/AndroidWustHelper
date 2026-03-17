@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@android:color/white"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize">
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:padding="12dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_arrow_back_gray_24dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/ClassEditText_title"
+        android:textColor="@color/colorEditText"
+        android:textSize="18sp"
+        android:layout_centerInParent="true"
+        android:text="课程编辑"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_finish"
+        android:layout_marginRight="15dp"
+        android:textColor="@color/colorEditText"
+        android:textSize="16sp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:text="完成"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

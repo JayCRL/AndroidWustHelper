@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/test_linear"
+    android:background="@color/colorLineLight"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_chart"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        style="@style/ToolbarStyle"
+        app:title="@string/view_grade"
+        app:titleTextColor="@android:color/white"
+        app:navigationIcon="@drawable/ic_arrow_back_white_24dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:background="@drawable/shape_grade_chart_top_line"
+            android:layout_height="@dimen/sub_medium_spacing"
+            android:layout_marginLeft="@dimen/medium_spacing"
+            android:layout_marginRight="@dimen/medium_spacing"
+            android:layout_marginTop="@dimen/sub_big_spacing"/>
+
+        <View
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:background="@drawable/shape_grade_chart_top_line"
+            android:layout_height="@dimen/sub_medium_spacing"
+            android:layout_marginLeft="@dimen/medium_spacing"
+            android:layout_marginRight="@dimen/medium_spacing"
+            android:layout_marginBottom="@dimen/sub_big_spacing"/>
+
+        <com.example.wusthelper.widget.BounceScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="26dp"
+            android:background="@android:color/white"
+            android:layout_marginBottom="26dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/big_spacing"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_spacing"
+                    android:layout_marginBottom="@dimen/small_spacing"
+                    android:padding="@dimen/sub_small_spacing">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/text_color"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:layout_marginStart="@dimen/sub_medium_spacing"
+                        android:text="平均学分绩点"/>
+
+                    <TextView
+                        android:id="@+id/tv_grade_chart_gpa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="22sp"
+                        android:textColor="@color/title_text_black"
+                        android:layout_marginEnd="@dimen/sub_medium_spacing"
+                        android:layout_alignParentEnd="true"
+                        tools:text="6"/>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="-5dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_dot"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="6dp"
+                        android:layout_gravity="center"
+                        android:layerType="software"
+                        android:background="@drawable/shape_virture_line"/>
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="-5dp"
+                        android:background="@drawable/shape_dot"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="135dp"
+                    android:layout_height="26dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/shape_round_corner">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="绩点分布"
+                        android:textSize="@dimen/small_text"
+                        android:gravity="center"
+                        android:background="@drawable/shape_left_round"
+                        android:layout_weight="1"/>
+
+                </LinearLayout>
+
+
+
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pie_chart_grade_view"
+                    android:layout_width="286dp"
+                    android:layout_height="270dp"
+                    android:layout_marginBottom="@dimen/medium_spacing"
+                    android:layout_gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="-5dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_dot"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="6dp"
+                        android:layout_gravity="center"
+                        android:layerType="software"
+                        android:background="@drawable/shape_virture_line"/>
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="-5dp"
+                        android:background="@drawable/shape_dot"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="135dp"
+                    android:layout_height="26dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/shape_round_corner">
+
+
+                    <TextView
+                        android:background="@drawable/shape_left_round"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/gpa_bar"
+                        android:textSize="@dimen/small_text"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/bar_chart_grade"
+                    android:layout_width="286dp"
+                    android:layout_height="270dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/medium_spacing"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_marginLeft="-5dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/shape_dot"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:layout_height="6dp"
+                        android:layout_gravity="center"
+                        android:layerType="software"
+                        android:background="@drawable/shape_virture_line"/>
+                    <View
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="-5dp"
+                        android:background="@drawable/shape_dot"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="135dp"
+                    android:layout_height="26dp"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/shape_round_corner">
+
+
+                    <TextView
+                        android:id="@+id/tv_chart_bar_academic_year"
+                        android:background="@drawable/shape_left_round"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="@string/string_grade_years"
+                        android:textSize="@dimen/small_text"
+                        android:gravity="center"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/bar_chart_grade_academic_year"
+                    android:layout_width="286dp"
+                    android:layout_height="270dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/medium_spacing"
+                    />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/small_spacing"
+                    android:padding="@dimen/sub_small_spacing">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/medium_text"
+                        android:textColor="@color/text_color"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/sub_medium_spacing"
+                        android:text="平均成绩"/>
+
+                    <TextView
+                        android:id="@+id/tv_grade_chart_score"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/title_text_black"
+                        android:layout_marginEnd="@dimen/sub_medium_spacing"
+                        android:layout_alignParentEnd="true"
+                        tools:text="6"/>
+
+                </RelativeLayout>
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
+
+            </LinearLayout>
+
+        </com.example.wusthelper.widget.BounceScrollView>
+
+    </FrameLayout>
+
+</LinearLayout>

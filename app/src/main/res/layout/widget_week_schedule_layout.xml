@@ -1,0 +1,1481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ImageView
+        android:id="@+id/widget_week_bg_imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </ImageView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <LinearLayout
+            android:layout_below="@id/fl_bottom"
+            android:id="@+id/ll_title"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="25dp">
+
+            <TextView
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/week_sun"
+                android:gravity="center"
+                android:text="日"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/week_mon"
+                android:gravity="center"
+                android:text="一"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/week_tue"
+                android:gravity="center"
+                android:text="二"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/week_wed"
+                android:gravity="center"
+                android:text="三"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/week_thu"
+                android:gravity="center"
+                android:text="四"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/week_fri"
+                android:gravity="center"
+                android:text="五"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/week_sta"
+                android:gravity="center"
+                android:text="六"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/ll_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_weight="0.7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/tv_time_1"
+
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_time_1_start"
+                        android:text="08:00"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_time_1_end"
+                        android:textSize="10sp"
+                        android:text="10:00"
+                        >
+
+                    </TextView>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/tv_time_2"
+
+
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_time_2_start"
+                        android:text="08:00"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_time_2_end"
+                        android:textSize="10sp"
+                        android:text="10:00"
+                        >
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tv_time_3"
+
+
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_time_3_start"
+                        android:text="08:00"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_time_3_end"
+                        android:textSize="10sp"
+                        android:text="10:00"
+                        >
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/tv_time_4"
+
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv_time_4_start"
+                        android:text="08:00"
+                        android:textSize="10sp"
+                        android:layout_marginBottom="5dp"
+                        >
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/tv_time_4_end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10:00"
+                        android:textSize="10sp">
+
+                    </TextView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_content"
+                android:orientation="horizontal"
+                android:layout_weight="8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:id="@+id/ll_mon"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_mon_1"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_mon_1"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_mon_2"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_mon_2"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_mon_3"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_mon_3"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_mon_4"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_mon_4"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_tue"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_tue_1"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_tue_1"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_tue_2"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_tue_2"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_tue_3"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_tue_3"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_tue_4"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_tue_4"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_wed"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_wed_1"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_wed_1"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_wed_2"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_wed_2"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_wed_3"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_wed_3"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_wed_4"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_wed_4"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_thu"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_thu_1"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_thu_1"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_thu_2"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_thu_2"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_thu_3"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_thu_3"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_thu_4"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_thu_4"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_fri"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_fri_1"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_fri_1"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_fri_2"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_fri_2"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_fri_3"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_fri_3"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_fri_4"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_fri_4"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_sat"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_sat_1"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_sat_1"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_sat_2"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_sat_2"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_sat_3"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_sat_3"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_sat_4"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_sat_4"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_sun"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_sun_1"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_sun_1"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_sun_2"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_sun_2"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_sun_3"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_sun_3"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:gravity="center_horizontal"
+                            android:id="@+id/tv_course_sun_4"
+                            android:textSize="@dimen/widget_course_text"
+                            android:lines="7"
+                            android:ellipsize="end"
+                            android:textStyle="bold"
+                            android:textColor="#fff"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_marginTop="1dp"
+                            android:layout_marginBottom="1dp"
+                            android:alpha="0.8"
+                            android:paddingTop="2dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp"
+                            android:background="@drawable/layer_color_class_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <ImageView
+                            android:visibility="invisible"
+                            android:id="@+id/iv_multiple_sun_4"
+                            android:layout_gravity="bottom|right"
+                            android:layout_marginBottom="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/multiple_class"
+                            android:layout_width="6dp"
+                            android:layout_height="6dp" />
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_bottom"
+            android:layout_alignParentBottom="false"
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_weekday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:text="Mon."
+                    android:textColor="#2b2b2b"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_week"
+                    android:textColor="#2b2b2b"
+                    android:textSize="14sp"
+                    android:layout_marginLeft="10dp"
+                    android:text="第13周"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_gravity="right|center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/btn_settings"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/btn_refresh"
+                    android:background="@drawable/ic_baseline_settings_24" />
+
+                <ImageButton
+                    android:id="@+id/btn_refresh"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/btn_up"
+                    android:background="@drawable/ic_refresh_black_24dp" />
+                <ImageButton
+                    android:id="@+id/btn_up"
+                    android:layout_marginRight="10dp"
+                    android:alpha="0.8"
+                    android:layout_alignParentEnd="true"
+                    android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:visibility="invisible"/>
+
+                <ImageButton
+                    android:id="@+id/btn_down"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="10dp"
+                    android:alpha="0.8"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp" />
+
+            </RelativeLayout>
+        </FrameLayout>
+
+    </RelativeLayout>
+
+
+
+</FrameLayout>

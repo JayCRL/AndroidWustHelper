@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ @author yuandalai
+  ~ @date 2018/11/10
+  ~ @email yuanlai0611@gmail.com
+  ~ @github https://github.com/yuanlai0611
+  ~ @blog https://yuanlai0611.github.io/
+  -->
+<!--TODO 等待恢复功能-->
+<com.example.wusthelper.widget.MyArrowRectangleView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="210dp"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:splitMotionEvents="false"
+    app:arrow_offset="35dp"
+    app:arrow_width="16dp"
+    app:arrow_height="8dp"
+    app:radius="5dp"
+    app:background_color="#FFFFFF"
+    app:shadow_color="#66000000"
+    app:shadow_thickness="5dp"
+    android:layout_height="wrap_content"
+    >
+
+    <LinearLayout
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:id="@+id/ll_show_all_class"
+            android:background="?android:attr/selectableItemBackground"
+            style="@style/mPopupWindowLay"
+            android:orientation="horizontal">
+
+            <ImageView
+
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/visible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="只显示本周课程"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:clickable="false"
+                    android:id="@+id/cb_show_all"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|right" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_change_homepage"
+            style="@style/mPopupWindowLay"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/homepage_setting" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="设置课表为主页"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:clickable="false"
+                    android:id="@+id/change_homepage_check"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|right" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/ll_choose_sunday"
+            style="@style/mPopupWindowLay"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/choosesunday_setting" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="设置周末为第一天"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:clickable="false"
+                    android:id="@+id/choose_sunday_check"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_vertical|right" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+
+
+        <!--            <LinearLayout-->
+        <!--                android:id="@+id/ll_scan"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="65dp"-->
+        <!--                android:background="@drawable/selector_pop"-->
+        <!--                android:orientation="horizontal">-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="25dp"-->
+        <!--                    android:layout_height="25dp"-->
+        <!--                    android:layout_gravity="center_vertical"-->
+        <!--                    android:layout_marginLeft="15dp"-->
+        <!--                    android:src="@drawable/scan" />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center_vertical"-->
+        <!--                    android:layout_marginLeft="15dp"-->
+        <!--                    android:text="扫一扫"-->
+        <!--                    android:textColor="@color/color_pop_text"-->
+        <!--                    android:textSize="16sp" />-->
+
+        <!--            </LinearLayout>-->
+
+
+        <LinearLayout
+            android:id="@+id/ll_select_semester"
+            style="@style/mPopupWindowLay"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/semester" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="选择课程学期"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_select_campus"
+            style="@style/mPopupWindowLay"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/campus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="设置校区"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_current_week"
+            style="@style/mPopupWindowLay"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/edit_week" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="修改本周时间"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_change_setting"
+            style="@style/mPopupWindowLay"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/schedule_settings" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="课表~"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="~日程"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/calendar" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_change_background"
+            style="@style/mPopupWindowLay"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/set_background" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="背景~"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="~字体"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/font_size_set" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_set_fontSize"
+            style="@style/mPopupWindowLay"
+            android:visibility="gone"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/font_size_set" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="设置字体"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_import_calendar"
+            style="@style/mPopupWindowLay"
+            android:visibility="gone"
+            android:background="?android:attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/calendar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:text="导入日程"
+                android:textColor="@color/color_pop_text"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!--            <LinearLayout-->
+        <!--                android:id="@+id/ll_share_my_schedule"-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="65dp"-->
+        <!--                android:background="@drawable/selector_pop">-->
+
+        <!--                <ImageView-->
+        <!--                    android:layout_width="25dp"-->
+        <!--                    android:layout_height="25dp"-->
+        <!--                    android:layout_gravity="center_vertical"-->
+        <!--                    android:layout_marginLeft="15dp"-->
+        <!--                    android:src="@drawable/share" />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_gravity="center_vertical"-->
+        <!--                    android:layout_marginLeft="15dp"-->
+        <!--                    android:text="情侣课表"-->
+        <!--                    android:textColor="@color/color_pop_text"-->
+        <!--                    android:textSize="16sp" />-->
+
+        <!--            </LinearLayout>-->
+
+
+
+    </LinearLayout>
+
+</com.example.wusthelper.widget.MyArrowRectangleView>
+
+

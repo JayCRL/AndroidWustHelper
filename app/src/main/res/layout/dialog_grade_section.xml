@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_round_corner"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="绩点分段表"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/sub_medium_spacing"
+        android:layout_marginLeft="@dimen/card_content_padding"
+        android:layout_marginRight="@dimen/card_content_padding"
+        android:stretchColumns="*">
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:text="考核成绩" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:text="等级制" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:background="@drawable/shape_table"
+                android:text="绩点" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="90-100" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="A" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="4.0" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="85-89" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="A-" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="3.7" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="82-84" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="B+" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="3.3" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="78-81" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="B" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="3.0" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="75-77" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="B-" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="2.7" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="72-74" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="C+" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="2.3" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="68-71" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="C" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="2.0" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="64-67" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="C-" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="1.5" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="60-63" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="D" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="1.0" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_table"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:text="60以下" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:background="@drawable/shape_table"
+                android:textColor="@color/text_color"
+                android:text="F" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/card_margin"
+                android:gravity="center"
+                android:textColor="@color/text_color"
+                android:background="@drawable/shape_table"
+                android:text="0" />
+        </TableRow>
+    </TableLayout>
+</LinearLayout>

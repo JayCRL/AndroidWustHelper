@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @author yuandalai
+  ~ @date 2018/11/17
+  ~ @email yuanlai0611@gmail.com
+  ~ @github https://github.com/yuanlai0611
+  ~ @blog https://yuanlai0611.github.io/
+  -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <cn.bingoogolapple.qrcode.zxing.ZXingView
+        android:id="@+id/zv_scan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        app:qrcv_animTime="800"
+        app:qrcv_barCodeTipText="将条码放入框内，即可自动扫描"
+        app:qrcv_barcodeRectHeight="40dp"
+        app:qrcv_borderColor="#0388d1ff"
+        app:qrcv_borderSize="0.1dp"
+        app:qrcv_cornerColor="#fff"
+        app:qrcv_cornerLength="20dp"
+        app:qrcv_cornerSize="3dp"
+        app:qrcv_isBarcode="false"
+        app:qrcv_isCenterVertical="false"
+        app:qrcv_isOnlyDecodeScanBoxArea="true"
+        app:qrcv_isScanLineReverse="true"
+        app:qrcv_isShowDefaultGridScanLineDrawable="false"
+        app:qrcv_isShowDefaultScanLineDrawable="true"
+        app:qrcv_isShowTipBackground="false"
+        app:qrcv_isShowTipTextAsSingleLine="false"
+        app:qrcv_isTipTextBelowRect="true"
+        app:qrcv_maskColor="#80000000"
+        app:qrcv_qrCodeTipText="请对准需要识别的二维码\n或条形码"
+        app:qrcv_rectWidth="256dp"
+        app:qrcv_scanLineColor="#48b0ff"
+        app:qrcv_scanLineMargin="0dp"
+        app:qrcv_scanLineSize="0.5dp"
+        app:qrcv_tipTextColor="#80ffffff"
+        app:qrcv_tipTextSize="14sp"
+        app:qrcv_toolbarHeight="45dp"
+        app:qrcv_topOffset="150dp" />
+
+    <ImageView
+        android:alpha="0.7"
+        android:id="@+id/iv_scan_back"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:padding="12dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/scan_back" />
+
+    <ImageView
+        android:id="@+id/iv_scan_open_album"
+        android:alpha="0.7"
+        android:src="@drawable/open_album"
+        android:layout_marginTop="32dp"
+        android:layout_marginRight="17dp"
+        android:layout_alignParentRight="true"
+        android:padding="13dp"
+        android:layout_width="52dp"
+        android:layout_height="52dp" />
+
+</RelativeLayout>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ @author yuandalai
+  ~ @date 2018/11/12
+  ~ @email yuanlai0611@gmail.com
+  ~ @github https://github.com/yuanlai0611
+  ~ @blog https://yuanlai0611.github.io/
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/bg_toast_loading">
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avl"
+        app:indicatorColor="#fefefe"
+        app:indicatorName="LineScalePartyIndicator"
+        android:layout_width="@dimen/toast_icon_size"
+        android:layout_height="@dimen/toast_icon_size"
+        android:layout_margin="@dimen/sub_small_spacing"/>
+
+    <TextView
+        tool:text="加载中..."
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fefefe"
+        android:maxEms="12"
+        android:layout_margin="@dimen/small_spacing"
+        android:textSize="@dimen/sub_medium_text"/>
+
+</LinearLayout>

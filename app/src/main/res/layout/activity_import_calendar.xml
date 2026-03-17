@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/default_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_change_bg"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize">
+
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:padding="12dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_gray_24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <TextView
+                style="@style/mToolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_back"
+                android:text="课表~~日程"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/iv_introduce"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:padding="12dp"
+                android:src="@drawable/ic_more_vert_black_24dp" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:background="@color/color_background_change_white_light_246"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorEditText"
+                android:layout_marginStart="15dp"
+                android:text="设置课表为主页"
+                android:textSize="16dp" />
+
+            <Switch
+                android:id="@+id/change_homepage_switch_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="20dp"
+                android:thumb="@drawable/switch_custom_thumb_selector"
+                android:track="@drawable/switch_custom_track_selector" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp">
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorEditText"
+                android:layout_marginStart="15dp"
+                android:text="设置周日为每周第一天"
+                android:textSize="16dp" />
+            <Switch
+                android:id="@+id/choose_sunday_switch_status"
+                android:paddingLeft="10dp"
+                android:paddingRight="20dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:thumb="@drawable/switch_custom_thumb_selector"
+                android:track="@drawable/switch_custom_track_selector" />
+        </RelativeLayout>
+
+
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/ll_change_background_blur"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white">
+            <TextView
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/colorEditText"
+                android:layout_marginStart="15dp"
+                android:text="背景模糊"
+                android:textSize="16dp" />
+            <ImageView
+                android:padding="12dp"
+                android:layout_centerVertical="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_keyboard_arrow_right_black_24dp"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/login_remind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#A2A1A1"
+                android:textSize="14sp"
+                android:text="注：教务处周一为每周第一天"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:background="@color/color_background_change_white_light_246"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:text="将当前周课程导入日程"
+                android:textColor="@color/colorEditText"
+                android:textSize="16dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_current_week"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                app:cardCornerRadius="8dp">
+
+
+                <TextView
+                    android:id="@+id/text_current_week"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="#B6D6FE"
+                    android:text="导入"
+                    android:textColor="@color/black"
+                    >
+
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <CheckBox
+                android:id="@+id/import_current_week"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@id/card_current_week"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginEnd="30dp"
+                android:clickable="false" />
+
+
+<!--            <Switch-->
+<!--                android:id="@+id/import_current_week"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:paddingRight="20dp"-->
+<!--                android:thumb="@drawable/switch_custom_thumb_selector"-->
+<!--                android:track="@drawable/switch_custom_track_selector" />-->
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_marginTop="2dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="15dp"
+                android:text="将所有周课程导入日程"
+                android:textColor="@color/colorEditText"
+                android:textSize="16dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_all_week"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+
+                app:cardCornerRadius="8dp">
+
+
+                <TextView
+                    android:id="@+id/text_all_week"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:background="#B6D6FE"
+                    android:text="导入"
+                    android:textColor="@color/black"
+                    >
+
+                </TextView>
+
+            </androidx.cardview.widget.CardView>
+
+            <CheckBox
+                android:id="@+id/import_all_week"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toLeftOf="@id/card_all_week"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginEnd="30dp"
+                android:clickable="false" />
+
+<!--            <Switch-->
+<!--                android:id="@+id/import_all_week"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:paddingLeft="10dp"-->
+<!--                android:paddingRight="20dp"-->
+<!--                android:thumb="@drawable/switch_custom_thumb_selector"-->
+<!--                android:track="@drawable/switch_custom_track_selector" />-->
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

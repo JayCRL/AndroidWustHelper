@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    android:orientation="vertical"
+    android:id="@+id/ll_item_course_page_date">
+
+    <TextView
+        android:id="@+id/tv_week"
+        android:text="周一"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        style="@style/mCourseTopItem"
+        />
+    <TextView
+        android:id="@+id/tv_week_date"
+        android:text="9/14"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        style="@style/mCourseTopItemDay"
+        />
+
+
+
+</LinearLayout>

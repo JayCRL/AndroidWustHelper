@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:padding="1dp"
+    >
+
+    <RelativeLayout
+        android:id="@+id/iv_course_item_add"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:background="@drawable/background_course_add" />
+
+
+    <LinearLayout
+        android:id="@+id/rv_course"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layer_color_class_1"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ripple_bg">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                >
+                <TextView
+                    android:id="@+id/tv_course_classname"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="3dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    android:text="软件工程"
+                    android:textSize="11dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_course_classroom"
+                    android:layout_marginTop="2dp"
+                    android:layout_below="@id/tv_course_classname"
+                    android:paddingTop="2dp"
+                    android:paddingLeft="2dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="3dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="sdfsdfs"
+                    android:textSize="11dp"
+                    android:maxLines="3"
+                    />
+
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/iv_multiple_class"
+                android:visibility="gone"
+                android:layout_marginBottom="6dp"
+                android:layout_marginRight="5dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@drawable/multiple_class"
+                android:layout_width="6dp"
+                android:layout_height="6dp" />
+
+            <ImageView
+                android:id="@+id/iv_love"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@drawable/love"
+                android:visibility="gone"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>

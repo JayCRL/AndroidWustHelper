@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="70dp"
+    android:layout_height="95dp"
+    android:background="@color/colorTab">
+
+    <LinearLayout
+        android:id="@+id/ll_tab_background"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/shape_item_normal"
+        >
+
+        <TextView
+            android:id="@+id/tv_week"
+            android:textColor="@color/colorTabText"
+            android:text="第1周"
+            android:textSize="12sp"
+            android:letterSpacing="0.1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"/>
+
+        <com.example.wusthelper.widget.TabView
+            android:id="@+id/tabView"
+            android:layout_marginTop="1dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+        <TextView
+            android:id="@+id/tv_this_week"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorTabText"
+            android:layout_marginTop="1.5dp"
+            android:textSize="10sp"
+            android:text="(本周)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+</FrameLayout>

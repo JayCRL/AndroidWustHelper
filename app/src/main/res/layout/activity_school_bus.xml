@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"
+        android:id="@+id/app_bar_bus"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:clipToPadding="true"
+            android:fitsSystemWindows="true"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="@color/colorPrimary"
+            app:titleEnabled="false"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            android:id="@+id/collapsing_toolbar_bus">
+
+            <RelativeLayout
+                android:id="@+id/relative_bus"
+                android:layout_width="match_parent"
+                app:layout_collapseMode="parallax"
+                android:layout_height="match_parent"
+                android:background="@color/colorPrimary">
+
+                <ImageView
+                    android:layout_width="188dp"
+                    android:layout_height="114dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="@dimen/sub_big_spacing"
+                    android:background="@drawable/ic_back"/>
+
+                <TextView
+                    android:id="@+id/tv_bus_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="64dp"
+                    android:layout_marginStart="28dp"
+                    android:textColor="@android:color/white"
+                    tools:text="@string/huangjiahu"/>
+
+                <ImageView
+                    android:id="@+id/iv_bus_private_to"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_toEndOf="@id/tv_bus_start"
+                    android:layout_marginTop="66dp"
+                    android:layout_marginStart="@dimen/medium_spacing"
+                    android:src="@drawable/ic_bus_arrive"/>
+
+                <TextView
+                    android:id="@+id/tv_bus_end"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/iv_bus_private_to"
+                    android:layout_marginStart="@dimen/medium_spacing"
+                    android:textSize="19sp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="64dp"
+                    tools:text="@string/qingshan"/>
+
+                <TextView
+                    android:id="@+id/tv_bus_workday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:layout_below="@id/tv_bus_start"
+                    android:layout_marginTop="@dimen/sub_medium_spacing"
+                    android:layout_marginStart="28dp"
+                    android:text="周一至周五"/>
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_bus"
+                app:layout_collapseMode="pin"
+                app:titleTextColor="@android:color/white"
+                app:navigationIcon="@drawable/ic_arrow_back_white_24dp"
+                app:title="校车"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"/>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_school_bus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

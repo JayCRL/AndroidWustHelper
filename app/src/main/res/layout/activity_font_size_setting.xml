@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/default_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tb_change_font"
+        app:contentInsetStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize">
+        <RelativeLayout
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="?android:actionBarSize">
+            <ImageView
+                android:id="@+id/iv_back"
+                android:padding="12dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_arrow_back_gray_24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp" />
+
+            <TextView
+                style="@style/mToolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_back"
+                android:text="设置字体"
+                android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/iv_introduce"
+                android:padding="12dp"
+                android:layout_centerInParent="true"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_more_vert_black_24dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:background="@color/color_background_change_white_light_246"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_height="436dp"
+                android:layout_width="250dp"
+                style="@style/mChangeBgShadow">
+                <LinearLayout
+                    android:id="@+id/rv_course"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="44dp"
+                            android:layout_height="114dp"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/layer_color_class_3"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tv_course_classname"
+                                android:layout_width="44dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:maxLines="3"
+                                android:paddingLeft="2dp"
+                                android:paddingRight="3dp"
+                                android:text="计算机组成原理"
+                                android:textColor="@color/black"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tv_course_classroom"
+                                android:layout_width="44dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/tv_course_classname"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginTop="2dp"
+                                android:gravity="center"
+                                android:maxLines="3"
+                                android:paddingLeft="2dp"
+                                android:paddingTop="2dp"
+                                android:paddingRight="3dp"
+                                android:paddingBottom="3dp"
+                                android:text="教三楼207(黄家湖)"
+                                android:textColor="@color/black"
+                                android:textSize="11dp" />
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <RelativeLayout
+                android:id="@+id/ll_change_background_content"
+                android:background="@color/white"
+                android:layout_marginTop="1dp"
+                android:layout_margin="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="15dp"
+                    android:text="斜体显示"
+                    android:textColor="@color/colorEditText"
+                    android:textSize="16dp" />
+
+                <Switch
+                    android:id="@+id/switch_font_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="20dp"
+                    android:thumb="@drawable/switch_custom_thumb_selector"
+                    android:track="@drawable/switch_custom_track_selector"
+                    tools:ignore="UseSwitchCompatOrMaterialXml" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:layout_margin="@dimen/dp_10"
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+                <TextView
+                    android:id="@+id/tv_course_bg_white_sar"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/colorEditText"
+                    android:layout_marginStart="15dp"
+                    android:text="字体大小"
+                    android:textSize="16dp" />
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="6"
+                    android:layout_height="match_parent">
+                    <SeekBar
+                        android:id="@+id/course_font_white_sar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="250"
+                        android:progress="0"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="5dp"
+                        />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_course_font_white_size"
+                    android:text="11dp"
+                    android:textColor="@color/colorEditText"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="50dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

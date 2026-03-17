@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@android:color/transparent">
+
+    <!--宽高比：1.935484-->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <!-- 370 - 147 = 223dp-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_dialog_bg_round_corners"
+        android:orientation="vertical">
+        <com.example.wusthelper.widget.FlexibleScrollView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@drawable/shape_dialog_bg_round_corners"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/login_dialog_title"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/make_attention_warm"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color"
+                    android:paddingTop="@dimen/small_spacing"
+                    android:paddingLeft="@dimen/medium_spacing"
+                    android:gravity="center"
+                    android:textSize="19sp"/>
+                <LinearLayout
+                    android:id="@+id/LL_dialog_policy"
+                    android:paddingLeft="16dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:lineSpacingMultiplier="1.2"
+                    >
+                    <TextView
+                        android:textColor="@color/color_default_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="请您阅读完整版的"
+                        android:textSize="14dp" />
+                    <TextView
+                        android:id="@+id/login_dialog_policy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingMultiplier="1.2"
+                        android:textColor="@color/colorBlue"
+                        android:text="《用户协议与隐私政策》"
+                        android:textSize="14dp" />
+                </LinearLayout>
+                <TextView
+                    android:textColor="@color/color_default_text"
+                    android:id="@+id/login_dialog_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:lineSpacingMultiplier="1.2"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp"
+                    android:text="@string/notice_policy_content"
+                    android:textSize="14dp" />
+
+
+
+            </LinearLayout>
+
+
+        </com.example.wusthelper.widget.FlexibleScrollView>
+
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            >
+            <TextView
+                android:id="@+id/btn_notice_dialog_policy_not_permit"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/medium_spacing"
+                android:layout_height="32dp"
+                style="@style/dialog_button_text"
+                android:text="@string/make_not_confirm" />
+            <TextView
+                android:id="@+id/btn_notice_dialog_policy_permit"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_margin="@dimen/medium_spacing"
+                android:layout_height="32dp"
+                android:textColor="@color/color_dialog_confirm"
+                style="@style/dialog_button_text"
+                android:text="@string/make_confirm_and_make_permission"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

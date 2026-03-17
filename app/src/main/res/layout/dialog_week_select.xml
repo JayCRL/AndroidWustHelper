@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/BottomDialog"
+    android:layout_height="330dp"
+    android:layout_width="280dp"
+    app:cardCornerRadius="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_above="@+id/ll_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <GridLayout
+                android:rowCount="5"
+                android:columnCount="5"
+                android:id="@+id/gl_week_container"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_width="250dp"
+                android:layout_height="250dp">
+
+                <TextView
+                    android:id="@+id/tv_week_1"
+                    android:gravity="center"
+                    android:text="1"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_2"
+                    android:gravity="center"
+                    android:text="2"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_3"
+                    android:gravity="center"
+                    android:text="3"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_4"
+                    android:gravity="center"
+                    android:text="4"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_5"
+                    android:gravity="center"
+                    android:text="5"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_6"
+                    android:gravity="center"
+                    android:text="6"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_7"
+                    android:gravity="center"
+                    android:text="7"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_8"
+                    android:gravity="center"
+                    android:text="8"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_9"
+                    android:gravity="center"
+                    android:text="9"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_10"
+                    android:gravity="center"
+                    android:text="10"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_11"
+                    android:gravity="center"
+                    android:text="11"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_12"
+                    android:gravity="center"
+                    android:text="12"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_13"
+                    android:gravity="center"
+                    android:text="13"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_14"
+                    android:gravity="center"
+                    android:text="14"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_15"
+                    android:gravity="center"
+                    android:text="15"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_16"
+                    android:gravity="center"
+                    android:text="16"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_17"
+                    android:gravity="center"
+                    android:text="17"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_18"
+                    android:gravity="center"
+                    android:text="18"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_19"
+                    android:gravity="center"
+                    android:text="19"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_20"
+                    android:gravity="center"
+                    android:text="20"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_21"
+                    android:gravity="center"
+                    android:text="21"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_22"
+                    android:gravity="center"
+                    android:text="22"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_23"
+                    android:gravity="center"
+                    android:text="23"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_24"
+                    android:gravity="center"
+                    android:text="24"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                <TextView
+                    android:id="@+id/tv_week_25"
+                    android:gravity="center"
+                    android:text="25"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"                android:layout_weight="1"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+            </GridLayout>
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_btn"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/btn_cancel"
+                android:textColor="@color/color_class"
+                android:text="取消"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:id="@+id/btn_confirm"
+                android:textColor="@color/colorPrimary"
+                android:text="确定"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
