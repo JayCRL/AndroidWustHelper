@@ -9,7 +9,17 @@ import com.example.wusthelper.bean.javabean.data.AnnouncementContentData;
 import com.example.wusthelper.bean.javabean.data.AnnouncementData;
 import com.example.wusthelper.bean.javabean.data.BaseData;
 import com.example.wusthelper.bean.javabean.data.BookData;
+import com.example.wusthelper.bean.javabean.data.CampusMateActivityDetailData;
+import com.example.wusthelper.bean.javabean.data.CampusMateActivityListData;
+import com.example.wusthelper.bean.javabean.data.CampusMateActivityStatsData;
+import com.example.wusthelper.bean.javabean.data.CampusMateUserInfoData;
+import com.example.wusthelper.bean.javabean.data.CatCommentListData;
+import com.example.wusthelper.bean.javabean.data.CatPostListData;
 import com.example.wusthelper.bean.javabean.data.CollegeData;
+import com.example.wusthelper.bean.javabean.data.Commodity;
+import com.example.wusthelper.bean.javabean.data.CommodityDetailData;
+import com.example.wusthelper.bean.javabean.data.CompetitionPostPageData;
+import com.example.wusthelper.bean.javabean.data.CompetitionResponsePageData;
 import com.example.wusthelper.bean.javabean.data.ConfigData;
 import com.example.wusthelper.bean.javabean.data.CourseData;
 import com.example.wusthelper.bean.javabean.data.CourseNameData;
@@ -25,10 +35,13 @@ import com.example.wusthelper.bean.javabean.data.GraduateGradeData;
 import com.example.wusthelper.bean.javabean.data.LibCollectData;
 import com.example.wusthelper.bean.javabean.data.LibraryHistoryData;
 import com.example.wusthelper.bean.javabean.data.LostData;
+import com.example.wusthelper.bean.javabean.data.PageCommodity;
 import com.example.wusthelper.bean.javabean.data.SchoolCalendarData;
 import com.example.wusthelper.bean.javabean.data.SearchBookData;
 import com.example.wusthelper.bean.javabean.data.SearchCourseData;
 import com.example.wusthelper.bean.javabean.data.SearchCourseFilterData;
+import com.example.wusthelper.bean.javabean.data.SecondHandPageData;
+import com.example.wusthelper.bean.javabean.data.SimpleIdListData;
 import com.example.wusthelper.bean.javabean.data.StudentData;
 import com.example.wusthelper.bean.javabean.data.TermStartDateData;
 import com.example.wusthelper.bean.javabean.data.TokenData;
@@ -336,6 +349,192 @@ public class NewApiHelper {
         RequestParams extraHeaders = new RequestParams();
         extraHeaders.put("Host", WustApi.BASIC_SERVER_HOST_HEADER);
         RequestCenter.getWithBearer(WustApi.EMPTY_CLASSROOMS_V2, params, extraHeaders, listener, EmptyClassroomSimpleData.class);
+    }
+
+    public static void getCampusMateActivities(String campus, String college, String type, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        putIfNotBlank(params, "campus", campus);
+        putIfNotBlank(params, "college", college);
+        putIfNotBlank(params, "type", type);
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_ACTIVITY_LIST, params, null, listener, CampusMateActivityListData.class);
+    }
+
+    public static void getCampusMateActivityDetail(int activityId, DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_ACTIVITY_PREFIX + activityId, null,
+                buildWusterHeaders(), listener, CampusMateActivityDetailData.class);
+    }
+
+    public static void createCampusMateActivity(String title, String description, String type, String activityTime,
+                                                String location, int minPeople, int maxPeople, String expireTime,
+                                                String campus, String college, String tags, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        putIfNotBlank(params, "title", title);
+        putIfNotBlank(params, "description", description);
+        putIfNotBlank(params, "type", type);
+        putIfNotBlank(params, "activityTime", activityTime);
+        putIfNotBlank(params, "location", location);
+        params.put("minPeople", String.valueOf(minPeople));
+        params.put("maxPeople", String.valueOf(maxPeople));
+        putIfNotBlank(params, "expireTime", expireTime);
+        putIfNotBlank(params, "campus", campus);
+        putIfNotBlank(params, "college", college);
+        putIfNotBlank(params, "tags", tags);
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.CAMPUS_MATE_ACTIVITY_CREATE, params,
+                buildWusterHeaders(), listener, BaseData.class);
+    }
+
+    public static void getCampusMateLikedIds(DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_LIKED_IDS, null, buildWusterHeaders(), listener, SimpleIdListData.class);
+    }
+
+    public static void getCampusMateFavoriteIds(DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_FAVORITE_IDS, null, buildWusterHeaders(), listener, SimpleIdListData.class);
+    }
+
+    public static void getCampusMateMyCreated(DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_MY_CREATED, null, buildWusterHeaders(), listener, CampusMateActivityListData.class);
+    }
+
+    public static void getCampusMateActivityStats(int activityId, DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_ACTIVITY_PREFIX + activityId + "/stats", null,
+                buildWusterHeaders(), listener, CampusMateActivityStatsData.class);
+    }
+
+    public static void toggleCampusMateLike(int activityId, DisposeDataListener listener) {
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.CAMPUS_MATE_ACTIVITY_PREFIX + activityId + "/like",
+                new RequestParams(), buildWusterHeaders(), listener, BaseData.class);
+    }
+
+    public static void toggleCampusMateFavorite(int activityId, DisposeDataListener listener) {
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.CAMPUS_MATE_ACTIVITY_PREFIX + activityId + "/favorite",
+                new RequestParams(), buildWusterHeaders(), listener, BaseData.class);
+    }
+
+    public static void applyCampusMateActivity(int activityId, String reason, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        putIfNotBlank(params, "reason", reason);
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.CAMPUS_MATE_ACTIVITY_PREFIX + activityId + "/apply",
+                params, buildWusterHeaders(), listener, BaseData.class);
+    }
+
+    public static void getSecondHandDetail(int pid, DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.SECOND_HAND_DETAIL_PREFIX + pid, null,
+                buildWusterHeaders(), listener, CommodityDetailData.class);
+    }
+
+    public static void addSecondHandCollection(int pid, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        params.put("pid", String.valueOf(pid));
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.SECOND_HAND_COLLECTION_ADD, params,
+                buildWusterHeaders(), listener, BaseData.class);
+    }
+
+    public static void removeSecondHandCollection(int pid, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        params.put("pid", String.valueOf(pid));
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.SECOND_HAND_COLLECTION_REMOVE, params,
+                buildWusterHeaders(), listener, BaseData.class);
+    }
+
+    public static void publishSecondHand(String name, double price, String contact, int status, int type,
+                                         String introduce, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        putIfNotBlank(params, "name", name);
+        params.put("price", String.valueOf(price));
+        putIfNotBlank(params, "contact", contact);
+        params.put("status", String.valueOf(status));
+        params.put("type", String.valueOf(type));
+        putIfNotBlank(params, "introduce", introduce);
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.SECOND_HAND_PUBLISH, params,
+                buildWusterHeaders(), listener, BaseData.class);
+    }
+
+    public static void getSecondHandAll(int page, int size, DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.SECOND_HAND_LIST_ALL + "/" + page + "/" + size, null,
+                buildWusterHeaders(), listener, SecondHandPageData.class);
+    }
+
+    public static void getSecondHandByTypeOrStatus(int page, int size, Integer type, Integer status, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        if (type != null && type >= 0) {
+            params.put("type", String.valueOf(type));
+        }
+        if (status != null && status >= 0) {
+            params.put("status", String.valueOf(status));
+        }
+        RequestCenter.getWithoutToken(WustApi.SECOND_HAND_FILTER + "/" + page + "/" + size, params,
+                buildWusterHeaders(), listener, SecondHandPageData.class);
+    }
+
+    public static void searchSecondHand(String text, int page, int size, Integer category, Integer status, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        putIfNotBlank(params, "txt", text);
+        int requestCategory = category == null || category < 0 ? 0 : category;
+        int requestStatus = status == null || status < 0 ? 0 : status;
+        RequestCenter.getWithoutToken(WustApi.SECOND_HAND_SEARCH + "/" + requestCategory + "/" + requestStatus + "/" + page + "/" + size,
+                params, buildWusterHeaders(), listener, SecondHandPageData.class);
+    }
+
+    public static void getSecondHandCollectionList(DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.SECOND_HAND_COLLECTION_LIST, null, buildWusterHeaders(), listener, SecondHandPageData.class);
+    }
+
+    public static void getSecondHandMyPublish(int page, int size, DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.SECOND_HAND_MY_PUBLISH + "/" + page + "/" + size, null,
+                buildWusterHeaders(), listener, SecondHandPageData.class);
+    }
+
+    public static void getCompetitionPosts(String studentId, int status, String competitionName, int page, int pageSize,
+                                           DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        putIfNotBlank(params, "studentId", studentId);
+        params.put("status", String.valueOf(status));
+        putIfNotBlank(params, "competitionName", competitionName);
+        params.put("page", String.valueOf(page));
+        params.put("pageSize", String.valueOf(pageSize));
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.COMPETITION_POST_PAGE, params, buildWusterHeaders(), listener,
+                CompetitionPostPageData.class);
+    }
+
+    public static void createCompetitionPost(String studentId, String competitionName, String competitionIntroduction,
+                                             String requirement, String contactInformation, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        putIfNotBlank(params, "studentId", studentId);
+        putIfNotBlank(params, "competitionName", competitionName);
+        putIfNotBlank(params, "competitionIntroduction", competitionIntroduction);
+        putIfNotBlank(params, "requirement", requirement);
+        putIfNotBlank(params, "contactInformation", contactInformation);
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.COMPETITION_POST_CREATE, params, buildWusterHeaders(), listener,
+                BaseData.class);
+    }
+
+    public static void getCompetitionResponses(int cid, int page, int pageSize, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        params.put("cid", String.valueOf(cid));
+        params.put("page", String.valueOf(page));
+        params.put("pageSize", String.valueOf(pageSize));
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.COMPETITION_RESPONSE_PAGE, params, buildWusterHeaders(), listener,
+                CompetitionResponsePageData.class);
+    }
+
+    public static void createCompetitionResponse(int cid, String studentId, String response, DisposeDataListener listener) {
+        RequestParams params = new RequestParams();
+        params.put("cid", String.valueOf(cid));
+        putIfNotBlank(params, "studentId", studentId);
+        putIfNotBlank(params, "response", response);
+        RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.COMPETITION_RESPONSE_CREATE, params, buildWusterHeaders(), listener,
+                BaseData.class);
+    }
+
+    private static RequestParams buildWusterHeaders() {
+        RequestParams headers = new RequestParams();
+        headers.put("Platform", "android");
+        headers.put("Content-Type", "application/json");
+        String token = getToken();
+        if (token != null && !token.trim().isEmpty()) {
+            headers.put("Authorization", "Wuster " + token.trim());
+        }
+        return headers;
     }
 
     private static void putIfNotBlank(RequestParams params, String key, String value) {

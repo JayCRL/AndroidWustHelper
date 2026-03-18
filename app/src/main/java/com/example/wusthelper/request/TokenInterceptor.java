@@ -84,14 +84,24 @@ public class TokenInterceptor implements Interceptor {
         if (response.code() == HTTP_UNAUTHORIZED) {
             return true;
         }
-        // 兼容：部分后端可能返回 200 但在 body.code 里提示 401
+        // 兼容：部分后端可能返回 200 但在 body.code 里提示 401，或者 JWC cookie 失效
         if (response.code() == 200 && response.body() != null) {
             try {
                 String body = response.peekBody(1024 * 1024).string();
                 JSONObject jsonObject = new JSONObject(body);
                 if (jsonObject.has("code")) {
                     int code = jsonObject.optInt("code", 0);
-                    return code == BODY_UNAUTHORIZED;
+                    if (code == BODY_UNAUTHORIZED) {
+                        return true;
+                    }
+                    
+                    // 当后端的 JWC cookie 失效时，可能会返回特殊的错误码（如 1）和提示信息
+                    if (code != 200 && code != 0 && code != 10000 && code != 11000) {
+                        String msg = jsonObject.optString("msg", jsonObject.optString("message", ""));
+                        if (msg != null && (msg.contains("cookie失效") || msg.contains("登录已失效") || msg.contains("请先登录") || msg.contains("未登录"))) {
+                            return true;
+                        }
+                    }
                 }
             } catch (Exception ignore) {
                 // body 非 JSON 或解析失败：不按未授权处理
@@ -127,9 +137,9 @@ public class TokenInterceptor implements Interceptor {
                 return false;
             }
 
-            if (jsonObject.has("data")) {
+            if (jsonObject.has("data") && !jsonObject.isNull("data")) {
                 String token = jsonObject.optString("data", "");
-                if (token != null && !token.trim().isEmpty()) {
+                if (token != null && !token.trim().isEmpty() && !"null".equalsIgnoreCase(token)) {
                     RequestCenter.setToken(token);
                     SharePreferenceLab.setToken(token);
                     SharePreferenceLab.getInstance().setMessage(MyApplication.getContext(), message);

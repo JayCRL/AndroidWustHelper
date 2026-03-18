@@ -21,9 +21,49 @@ public class WustApi {
 
     public static final String CHAT_SERVER_HOST_HEADER = "lyzyy.love:8096";
     public static final String CHAT_SERVER_API = "http://8.162.1.176:8096";
+    
+    // 社区服务 API
+    public static final String COMMUNITY_BASE_API = "https://www.lyzyy.love:8081";
+    public static final String CAMPUS_MATE_API = COMMUNITY_BASE_API + "/CampusMate";
+    public static final String COMPETITION_API = COMMUNITY_BASE_API + "/CompetitionGroup";
+    public static final String SECOND_HAND_API = COMMUNITY_BASE_API + "/SecondHand";
+
+    public static final String CAMPUS_MATE_ACTIVITY_LIST = CAMPUS_MATE_API + "/api/activities";
+    public static final String CAMPUS_MATE_ACTIVITY_CREATE = CAMPUS_MATE_API + "/api/activities";
+    public static final String CAMPUS_MATE_ACTIVITY_PREFIX = CAMPUS_MATE_API + "/api/activities/";
+    public static final String CAMPUS_MATE_USER_ME = CAMPUS_MATE_API + "/api/user/me";
+    public static final String CAMPUS_MATE_NOTIFICATIONS = CAMPUS_MATE_API + "/api/notifications";
+    public static final String CAMPUS_MATE_LIKED_IDS = CAMPUS_MATE_API + "/api/activities/Activity/getAllLikedId";
+    public static final String CAMPUS_MATE_FAVORITE_IDS = CAMPUS_MATE_API + "/api/activities/user/favoritesId";
+    public static final String CAMPUS_MATE_APPLICATIONS = CAMPUS_MATE_API + "/api/activities/user/ApplicationsDTO";
+    public static final String CAMPUS_MATE_MY_CREATED = CAMPUS_MATE_API + "/api/activities/user/created";
+    public static final String CAMPUS_MATE_ACTIVITY_STATS = CAMPUS_MATE_API + "/api/activities/stats";
+    public static final String CAMPUS_MATE_ACTIVITY_LIKE = CAMPUS_MATE_API + "/api/activities/like";
+    public static final String CAMPUS_MATE_ACTIVITY_FAVORITE = CAMPUS_MATE_API + "/api/activities/favorite";
+    public static final String CAMPUS_MATE_ACTIVITY_APPLY = CAMPUS_MATE_API + "/api/activities/apply";
+
+    public static final String SECOND_HAND_LIST_ALL = SECOND_HAND_API + "/showController/all";
+    public static final String SECOND_HAND_FILTER = SECOND_HAND_API + "/selectController/byTypeOrStatus";
+    public static final String SECOND_HAND_SEARCH = SECOND_HAND_API + "/selectController/byNameAndIntroduce";
+    public static final String SECOND_HAND_COLLECTION_ADD = SECOND_HAND_API + "/userController/collection/add";
+    public static final String SECOND_HAND_COLLECTION_REMOVE = SECOND_HAND_API + "/userController/collection/remove";
+    public static final String SECOND_HAND_COLLECTION_LIST = SECOND_HAND_API + "/userController/collection/list";
+    public static final String SECOND_HAND_MY_PUBLISH = SECOND_HAND_API + "/userController/uid";
+    public static final String SECOND_HAND_PUBLISH = SECOND_HAND_API + "/publishController/publish";
+    public static final String SECOND_HAND_DELETE_PREFIX = SECOND_HAND_API + "/userController/delete/";
+    public static final String SECOND_HAND_DETAIL_PREFIX = SECOND_HAND_API + "/userController/select/";
+
+    public static final String COMPETITION_POST_PAGE = COMPETITION_API + "/competitionPost/page";
+    public static final String COMPETITION_POST_CREATE = COMPETITION_API + "/competitionPost";
+    public static final String COMPETITION_POST_PREFIX = COMPETITION_API + "/competitionPost/";
+    public static final String COMPETITION_RESPONSE_PAGE = COMPETITION_API + "/responsePost/page";
+    public static final String COMPETITION_RESPONSE_CREATE = COMPETITION_API + "/responsePost";
+    public static final String COMPETITION_RESPONSE_PREFIX = COMPETITION_API + "/responsePost/";
 
     // 新网关入口（聚合路由用；当前网络环境下可能不可达）
     public static final String GATEWAY_API = "http://lyzyy.love:8088";
+    public static final String CAMPUS_CAT_POSTS = GATEWAY_API + "/campus-cat/api/posts";
+    public static final String CAMPUS_CAT_POSTS_PREFIX = GATEWAY_API + "/campus-cat/api/posts/";
     public static final String WUST_BASIC_API = GATEWAY_API + "/wust-basic";
     public static final String WUST_CHAT_API = GATEWAY_API + "/wust-chat";
    //测试

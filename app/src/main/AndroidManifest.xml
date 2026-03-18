@@ -38,6 +38,18 @@
         tools:replace="android:icon,android:theme"
         tools:targetApi="n">
         <activity
+            android:name=".ui.activity.SecondHandActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CompetitionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CampusPartnerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CampusCatActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.AiQaActivity"
             android:exported="false" />
         <activity
