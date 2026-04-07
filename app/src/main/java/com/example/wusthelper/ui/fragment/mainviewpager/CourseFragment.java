@@ -56,6 +56,7 @@ import com.example.wusthelper.ui.activity.CourseBgSettingActivity;
 import com.example.wusthelper.ui.activity.FontSizeSettingActivity;
 import com.example.wusthelper.ui.activity.ImportCalendarActivity;
 import com.example.wusthelper.ui.activity.ScanActivity;
+import com.example.wusthelper.utils.CourseShareCodec;
 import com.example.wusthelper.ui.dialog.SetCurrentWeekDialogFragment;
 import com.example.wusthelper.utils.ToastUtil;
 import com.zhihu.matisse.Matisse;
@@ -645,57 +646,107 @@ public class CourseFragment extends BaseMvpFragment<CourseFragmentView, CoursePa
         switch (requestCode) {
             case REQUEST_SCAN:
 
-                if (resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK && data != null) {
+                    final String v2PayloadRaw = data.getStringExtra("v2Payload");
+                    if (v2PayloadRaw != null && !v2PayloadRaw.isEmpty()) {
+                        handleV2CourseImport(v2PayloadRaw);
+                        break;
+                    }
 
                     final String studentName = data.getStringExtra(ScanActivity.STUDENT_NAME);
                     final String studentId = data.getStringExtra(ScanActivity.STUDENT_ID);
                     final String token = data.getStringExtra(ScanActivity.TOKEN);
                     final String semester = data.getStringExtra(ScanActivity.SEMESTER);
 
-//                    if (CourseDB.isExistScheduleData(getActivity(), Long.parseLong(studentId), semester)) {
-//
-//                        SweetAlertDialog dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
-//                        dialog.setTitle("已存在相同的课程表");
-//                        dialog.setContentText("可以先删除相同的课程表");
-//                        dialog.setCancelText("取消");
-//                        dialog.show();
-//
-//                    }else{
-                        if(SharePreferenceLab.getIsGetQr()){
-                            SweetAlertDialog dialog1 = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
-                            dialog1.setTitleText("已有情侣课表数据，请先清空数据");
-                            dialog1.setCancelText("取消");
-                            dialog1.setConfirmText("确定");
-                            dialog1.show();
-                        }else{
-                            SweetAlertDialog dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE);
-                            dialog.setTitle("是否添加");
-                            dialog.setContentText(studentName + '\n' + semester);
-                            dialog.setConfirmText("添加");
-                            dialog.setCancelText("取消");
-                            dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    if(SharePreferenceLab.getIsGetQr()){
+                        SweetAlertDialog dialog1 = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
+                        dialog1.setTitleText("已有情侣课表数据，请先清空数据");
+                        dialog1.setCancelText("取消");
+                        dialog1.setConfirmText("确定");
+                        dialog1.show();
+                    }else{
+                        SweetAlertDialog dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE);
+                        dialog.setTitle("是否添加");
+                        dialog.setContentText(studentName + '\n' + semester);
+                        dialog.setConfirmText("添加");
+                        dialog.setCancelText("取消");
+                        dialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sweetAlertDialog) {
 
-                                    sweetAlertDialog.dismiss();
-                                    SweetAlertDialog dialog1 = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
-                                    dialog1.setTitle("正在加载~");
-                                    dialog1.show();
-                                    Log.e(TAG, "onClick: 解密的token == "+token );
+                                sweetAlertDialog.dismiss();
+                                SweetAlertDialog dialog1 = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+                                dialog1.setTitle("正在加载~");
+                                dialog1.show();
+                                Log.e(TAG, "onClick: 解密的token == "+token );
 
-                                    getPresenter().getRrData(token, semester, dialog1);
+                                getPresenter().getRrData(token, semester, dialog1);
 
-                                }
-                            });
-                            dialog.show();
-                        }
-//                    }
+                            }
+                        });
+                        dialog.show();
+                    }
                 }
                 break;
             default:
                 break;
 
         }
+    }
+
+    private void handleV2CourseImport(String rawPayload) {
+        if (SharePreferenceLab.getIsGetQr()) {
+            SweetAlertDialog dialog1 = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
+            dialog1.setTitleText("已有情侣课表数据，请先清空数据");
+            dialog1.setCancelText("取消");
+            dialog1.setConfirmText("确定");
+            dialog1.show();
+            return;
+        }
+
+        CourseShareCodec.DecodeResult decodeResult = CourseShareCodec.decode(rawPayload);
+        if (decodeResult.type != CourseShareCodec.DecodeResult.Type.V2 || decodeResult.v2Payload == null) {
+            ToastUtil.show("这不是合理的二维码");
+            return;
+        }
+
+        final CourseShareCodec.V2Payload payload = decodeResult.v2Payload;
+        String studentName = payload.student == null ? "未知同学" : payload.student.name;
+        String semester = payload.semester == null ? "" : payload.semester;
+
+        SweetAlertDialog dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.NORMAL_TYPE);
+        dialog.setTitle("是否添加");
+        dialog.setContentText(studentName + '\n' + semester);
+        dialog.setConfirmText("添加");
+        dialog.setCancelText("取消");
+        dialog.setConfirmClickListener(sweetAlertDialog -> {
+            sweetAlertDialog.dismiss();
+            CourseDB.deleteQrCourse();
+            if (payload.courses != null) {
+                for (CourseShareCodec.SharedCourse sharedCourse : payload.courses) {
+                    CourseBean courseBean = sharedCourse.toCourseBean();
+                    courseBean.setCourseName(courseBean.getCourseName() + "（Ta）");
+                    CourseDB.addOneCourse(
+                            courseBean,
+                            SharePreferenceLab.getInstance().getStudentId(MyApplication.getContext()),
+                            semester,
+                            CourseBean.TYPE_QR
+                    );
+                }
+            }
+            SharePreferenceLab.setIsGetQr(true);
+            getPresenter().showDateList();
+            getPresenter().showMonthText();
+            getPresenter().showWeekText();
+            getPresenter().showSchedule();
+            getPresenter().refreshVacationState();
+            getPresenter().showWeekTabList();
+            setCampusTime(getPresenter().getTimeView(getContext()));
+            SweetAlertDialog successDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE);
+            successDialog.setTitle("添加成功！！");
+            successDialog.show();
+        });
+        dialog.show();
     }
 
     private void getData(final String studentId, String token, final String semester, final String studentName, final SweetAlertDialog dialog) {

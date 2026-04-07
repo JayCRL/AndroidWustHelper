@@ -26,6 +26,10 @@ import java.util.Locale;
 
 public class CompetitionActivity extends BaseActivity<ActivityCompetitionBinding> {
 
+    private static final int REQUEST_PUBLISH = 1002;
+    private static final int REQUEST_DETAIL = 1003;
+    private static final int REQUEST_MY_POSTS = 1004;
+
     private CompetitionAdapter adapter;
     private String searchText = "";
 
@@ -40,9 +44,16 @@ public class CompetitionActivity extends BaseActivity<ActivityCompetitionBinding
 
         getBinding().rvCompetition.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CompetitionAdapter(new ArrayList<>());
+        adapter.setOnItemClickListener((baseQuickAdapter, view, position) -> {
+            CompetitionPost item = adapter.getItem(position);
+            if (item != null) {
+                startActivityForResult(CompetitionDetailActivity.newInstance(this, item), REQUEST_DETAIL);
+            }
+        });
         getBinding().rvCompetition.setAdapter(adapter);
 
-        getBinding().fabAdd.setOnClickListener(v -> Toast.makeText(this, "发布功能开发中...", Toast.LENGTH_SHORT).show());
+        getBinding().fabAdd.setOnClickListener(v -> startActivityForResult(CompetitionPublishActivity.newInstance(this), REQUEST_PUBLISH));
+        getBinding().tvMyPosts.setOnClickListener(v -> startActivityForResult(CompetitionMyPostsActivity.newInstance(this), REQUEST_MY_POSTS));
 
         initFilters();
         loadData();
@@ -69,7 +80,7 @@ public class CompetitionActivity extends BaseActivity<ActivityCompetitionBinding
             @Override
             public void onSuccess(Object responseObj) {
                 CompetitionPostPageData data = (CompetitionPostPageData) responseObj;
-                if ("1".equals(data.getCode()) && data.getData() != null) {
+                if (("1".equals(data.getCode()) || data.isSuccess()) && data.getData() != null) {
                     List<CompetitionPost> records = data.getData().records == null ? new ArrayList<>() : data.getData().records;
                     runOnUiThread(() -> adapter.setNewData(records));
                 } else {
@@ -84,6 +95,14 @@ public class CompetitionActivity extends BaseActivity<ActivityCompetitionBinding
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == REQUEST_PUBLISH || requestCode == REQUEST_DETAIL || requestCode == REQUEST_MY_POSTS) && resultCode == RESULT_OK) {
+            loadData();
+        }
+    }
+
     static class CompetitionAdapter extends BaseQuickAdapter<CompetitionPost, BaseViewHolder> {
         public CompetitionAdapter(List<CompetitionPost> data) {
             super(R.layout.item_competition, data);
@@ -92,7 +111,9 @@ public class CompetitionActivity extends BaseActivity<ActivityCompetitionBinding
         @Override
         protected void convert(BaseViewHolder helper, CompetitionPost item) {
             helper.setText(R.id.tv_title, item.competitionName);
-            helper.setText(R.id.tv_intro, item.competitionIntroduction);
+            helper.setText(R.id.tv_intro, item.competitionIntroduction == null ? "暂无简介" : item.competitionIntroduction);
+            helper.setText(R.id.tv_student_id, item.studentId == null || item.studentId.trim().isEmpty() ? "发起人：未知" : "发起人：" + item.studentId);
+            helper.setText(R.id.tv_status, item.status == 0 ? "招募中" : "已结束");
 
             String timeStr = item.endUpdateTime;
             try {

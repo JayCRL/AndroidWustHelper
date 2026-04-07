@@ -77,6 +77,18 @@ public class RequestCenter {
         CommonOkHttpClient.post(CommonRequest.
                 createPostJsonRequest(url, params, headers), new DisposeDataHandle(listener, clazz));
     }
+
+    public static void putJsonRequestWithoutLegacyToken(String url, RequestParams params, RequestParams headers,
+                                                        DisposeDataListener listener, Class<?> clazz) {
+        CommonOkHttpClient.put(CommonRequest.
+                createPutJsonRequest(url, params, headers), new DisposeDataHandle(listener, clazz));
+    }
+
+    public static void deleteRequestWithoutLegacyToken(String url, RequestParams headers,
+                                                       DisposeDataListener listener, Class<?> clazz) {
+        CommonOkHttpClient.delete(CommonRequest.
+                createDeleteRequest(url, headers), new DisposeDataHandle(listener, clazz));
+    }
     //根据参数发送所有post、请求带请求头的、同步请求
     public static Response postRequestExecute(String url, RequestParams params,RequestParams headers,
                                    Class<?> clazz) throws IOException {

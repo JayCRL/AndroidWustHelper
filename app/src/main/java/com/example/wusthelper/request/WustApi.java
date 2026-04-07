@@ -31,6 +31,7 @@ public class WustApi {
     public static final String CAMPUS_MATE_ACTIVITY_LIST = CAMPUS_MATE_API + "/api/activities";
     public static final String CAMPUS_MATE_ACTIVITY_CREATE = CAMPUS_MATE_API + "/api/activities";
     public static final String CAMPUS_MATE_ACTIVITY_PREFIX = CAMPUS_MATE_API + "/api/activities/";
+    public static final String CAMPUS_MATE_APPLICATION_PREFIX = CAMPUS_MATE_API + "/api/activities/applications/";
     public static final String CAMPUS_MATE_USER_ME = CAMPUS_MATE_API + "/api/user/me";
     public static final String CAMPUS_MATE_NOTIFICATIONS = CAMPUS_MATE_API + "/api/notifications";
     public static final String CAMPUS_MATE_LIKED_IDS = CAMPUS_MATE_API + "/api/activities/Activity/getAllLikedId";

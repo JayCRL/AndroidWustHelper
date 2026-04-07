@@ -89,10 +89,7 @@ public class SearchRoomResultActivity extends BaseActivity<ActivitySearchRoomRes
     }
 
     private void handleUnauthorized(String msg) {
-        NewApiHelper.clearLoginState();
-        ToastUtil.show(getMessage(msg, "登录已失效，请重新登录"));
-        startActivity(LoginMvpActivity.newInstance(this));
-        finish();
+        NewApiHelper.handleUnauthorized(this, getMessage(msg, "登录已失效，请重新登录"));
     }
 
     private String getMessage(String msg, String fallback) {

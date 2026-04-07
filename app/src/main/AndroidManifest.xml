@@ -38,10 +38,46 @@
         tools:replace="android:icon,android:theme"
         tools:targetApi="n">
         <activity
+            android:name=".ui.activity.CampusPartnerDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CampusPartnerPublishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CampusPartnerMyPublishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CampusPartnerProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CampusPartnerNotificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SecondHandDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SecondHandPublishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SecondHandMyPublishActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.SecondHandFavoritesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.SecondHandActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.activity.CompetitionDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CompetitionPublishActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.CompetitionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.activity.CompetitionMyPostsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.CampusPartnerActivity"

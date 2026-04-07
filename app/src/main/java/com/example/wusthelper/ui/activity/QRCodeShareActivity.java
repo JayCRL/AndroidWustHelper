@@ -34,6 +34,7 @@ import com.example.wusthelper.databinding.ActivityQrcodeShareBinding;
 import com.example.wusthelper.helper.ImgTool;
 import com.example.wusthelper.helper.SharePreferenceLab;
 import com.example.wusthelper.utils.Base64Util;
+import com.example.wusthelper.utils.CourseShareCodec;
 import com.example.wusthelper.utils.ScreenUtils;
 import com.example.wusthelper.utils.ToastUtil;
 
@@ -71,9 +72,7 @@ public class QRCodeShareActivity extends BaseActivity<ActivityQrcodeShareBinding
     }
 
     private void initData() {
-        String token = SharePreferenceLab.getInstance().getToken(MyApplication.getContext());
-        String content = Base64Util.encode(studentName, studentId, token, semester);
-        Log.e(TAG, "onCreate: 加密的token:"+token );
+        String content = CourseShareCodec.encodeV2("android", semester, studentName, studentId, null);
         generateLogoBitmap(content);
         savedBitmap = changeBitmapSize(savedBitmap);
         Glide.with(this).load(savedBitmap).into(getBinding().ivQr);

@@ -76,38 +76,39 @@ public class LoginModel {
         SharePreferenceLab.setSelectSemester(semester);
         SharePreferenceLab.setSemester(semester);
 
-        // 旧版本依赖 config 接口返回当前学期开始时间；切到新服务端后可能拿不到，需兜底避免崩溃
-        int week;
-        String startDateStr = ConfigHelper.get_now_Term_startDate();
-        if (startDateStr != null && !startDateStr.isEmpty()) {
+        String anchorDate = SharePreferenceLab.getDate();
+        int anchorWeek = SharePreferenceLab.getWeek();
+        int anchorWeekday = SharePreferenceLab.getWeekday();
+
+        String startDateStr = ConfigHelper.getTermStartDate();
+        if (startDateStr != null && !startDateStr.trim().isEmpty()) {
+            String termStartDateStr = null;
             try {
-                long startTime = Long.parseLong(startDateStr);
-                week = getCurrentWeek(startTime);
-                Log.e(TAG, "saveLoginData: startTime = " + startTime);
-                Log.e(TAG, "saveLoginData: " + week);
+                long startTime = Long.parseLong(startDateStr.trim());
+                termStartDateStr = TimeTools.getDateFromTime(startTime);
             } catch (NumberFormatException e) {
-                week = SharePreferenceLab.getWeek();
-                if (week <= 0) {
-                    week = 1;
+                Date termStartDate = TimeTools.getDate(startDateStr.trim());
+                if (termStartDate != null) {
+                    termStartDateStr = TimeTools.getDateFromTime(termStartDate.getTime());
                 }
-                Log.w(TAG, "saveLoginData: invalid startDateStr=" + startDateStr + ", fallback week=" + week, e);
             }
-        } else {
-            week = SharePreferenceLab.getWeek();
-            if (week <= 0) {
-                week = 1;
+
+            if (termStartDateStr != null) {
+                Date termStartDate = TimeTools.getDate(termStartDateStr);
+                int termStartWeekday = TimeTools.getWeekday(termStartDate);
+                anchorDate = termStartDateStr;
+                anchorWeek = 1;
+                anchorWeekday = termStartWeekday;
             }
-            Log.w(TAG, "saveLoginData: empty term startDate, fallback week=" + week);
         }
 
-        // 同步写入日期/周信息到静态缓存（避免 CoursePagePresenter 读到 0）
-        SharePreferenceLab.setDate(TimeTools.getFormatToday());
-        SharePreferenceLab.setWeek(week);
-        SharePreferenceLab.setWeekday(TimeTools.getWeekday());
+        SharePreferenceLab.setDate(anchorDate);
+        SharePreferenceLab.setWeek(anchorWeek);
+        SharePreferenceLab.setWeekday(anchorWeekday);
 
         // 旧 sharedPreferences("Course") 仍保留写入，兼容历史读取路径
         SharePreferenceLab.getInstance().setData(MyApplication.getContext(), true,
-                studentId, TimeTools.getFormatToday(), week, TimeTools.getWeekday(),
+                studentId, anchorDate, anchorWeek, anchorWeekday,
                 password, semester, true);
 
     }

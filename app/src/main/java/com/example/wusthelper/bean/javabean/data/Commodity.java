@@ -1,6 +1,8 @@
 package com.example.wusthelper.bean.javabean.data;
 
-public class Commodity {
+import java.io.Serializable;
+
+public class Commodity implements Serializable {
     public int pid;
     public String uid;
     public String name;

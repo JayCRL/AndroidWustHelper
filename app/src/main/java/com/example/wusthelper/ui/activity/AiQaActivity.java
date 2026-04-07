@@ -390,10 +390,7 @@ public class AiQaActivity extends BaseActivity<ActivityAiQaBinding> {
     }
 
     private void handleUnauthorized(String msg) {
-        NewApiHelper.clearLoginState();
-        ToastUtil.show(TextUtils.isEmpty(msg) ? "登录已失效，请重新登录" : msg);
-        startActivity(LoginMvpActivity.newInstance(this));
-        finish();
+        NewApiHelper.handleUnauthorized(this, TextUtils.isEmpty(msg) ? "登录已失效，请重新登录" : msg);
     }
 
     private int addMsg(ChatMessage msg) {

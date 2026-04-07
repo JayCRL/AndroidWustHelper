@@ -53,10 +53,7 @@ public class SchoolCalendarActivity extends BaseActivity<ActivitySchoolCalendarB
                 SchoolCalendarData data = (SchoolCalendarData) responseObj;
                 if ("401".equals(data.getCode())) {
                     getBinding().progressBar.setVisibility(View.GONE);
-                    NewApiHelper.clearLoginState();
-                    ToastUtil.show(getMessage(data.getMsg(), "登录已失效，请重新登录"));
-                    startActivity(LoginMvpActivity.newInstance(SchoolCalendarActivity.this));
-                    finish();
+                    NewApiHelper.handleUnauthorized(SchoolCalendarActivity.this, getMessage(data.getMsg(), "登录已失效，请重新登录"));
                     return;
                 }
 

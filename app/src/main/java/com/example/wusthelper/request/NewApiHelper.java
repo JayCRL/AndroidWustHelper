@@ -1,5 +1,10 @@
 package com.example.wusthelper.request;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+
 import com.example.wusthelper.MyApplication;
 import com.example.wusthelper.bean.javabean.CountDownAddData;
 import com.example.wusthelper.bean.javabean.CountDownBean;
@@ -12,6 +17,8 @@ import com.example.wusthelper.bean.javabean.data.BookData;
 import com.example.wusthelper.bean.javabean.data.CampusMateActivityDetailData;
 import com.example.wusthelper.bean.javabean.data.CampusMateActivityListData;
 import com.example.wusthelper.bean.javabean.data.CampusMateActivityStatsData;
+import com.example.wusthelper.bean.javabean.data.CampusMateApplicationListData;
+import com.example.wusthelper.bean.javabean.data.CampusMateNotificationListData;
 import com.example.wusthelper.bean.javabean.data.CampusMateUserInfoData;
 import com.example.wusthelper.bean.javabean.data.CatCommentListData;
 import com.example.wusthelper.bean.javabean.data.CatPostListData;
@@ -49,7 +56,9 @@ import com.example.wusthelper.bean.javabean.CountDownData;
 import com.example.wusthelper.helper.SharePreferenceLab;
 import com.example.wusthelper.request.okhttp.listener.DisposeDataListener;
 import com.example.wusthelper.request.okhttp.request.RequestParams;
+import com.example.wusthelper.ui.activity.LoginMvpActivity;
 import com.example.wusthelper.utils.CountDownUtils;
+import com.example.wusthelper.utils.ToastUtil;
 
 import java.io.IOException;
 
@@ -93,6 +102,21 @@ public class NewApiHelper {
         SharePreferenceLab.setToken("");
         SharePreferenceLab.setIsLogin(false);
         SharePreferenceLab.getInstance().setMessage(MyApplication.getContext(), "");
+    }
+
+    public static void handleUnauthorized(Context context, String message) {
+        clearLoginState();
+        String finalMessage = TextUtils.isEmpty(message) ? "登录已失效，请重新登录" : message;
+        ToastUtil.show(finalMessage);
+        Context targetContext = context == null ? MyApplication.getContext() : context;
+        Intent intent = LoginMvpActivity.newInstance(targetContext);
+        if (!(targetContext instanceof Activity)) {
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            targetContext.startActivity(intent);
+            return;
+        }
+        targetContext.startActivity(intent);
+        ((Activity) targetContext).finish();
     }
 
     /**
@@ -145,11 +169,11 @@ public class NewApiHelper {
     public static Response loginGraduate(String username, String password) throws IOException {
         RequestParams params = new RequestParams();
         RequestParams headers = new RequestParams();
-        params.put("username", username);
-        params.put("password", password);
-        headers.put("Content-Type", "application/json");
+        params.put("stuNum", username);
+        params.put("jwcPwd", password);
+        headers.put("Content-Type", "application/x-www-form-urlencoded");
         headers.put("Platform", "android");
-        return RequestCenter.postJsonRequestExecute(WustApi.LOGIN_GRADUATE_API, params,headers, TokenData.class);
+        return RequestCenter.postRequestExecute(WustApi.LOGIN_GRADUATE_API, params, headers, TokenData.class);
     }
 
     public static void getUserInfo(DisposeDataListener listener) {
@@ -395,6 +419,18 @@ public class NewApiHelper {
         RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_MY_CREATED, null, buildWusterHeaders(), listener, CampusMateActivityListData.class);
     }
 
+    public static void getCampusMateMyApplications(DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_APPLICATIONS, null, buildWusterHeaders(), listener, CampusMateApplicationListData.class);
+    }
+
+    public static void getCampusMateUserInfo(DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_USER_ME, null, buildWusterHeaders(), listener, CampusMateUserInfoData.class);
+    }
+
+    public static void getCampusMateNotifications(DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_NOTIFICATIONS, null, buildWusterHeaders(), listener, CampusMateNotificationListData.class);
+    }
+
     public static void getCampusMateActivityStats(int activityId, DisposeDataListener listener) {
         RequestCenter.getWithoutToken(WustApi.CAMPUS_MATE_ACTIVITY_PREFIX + activityId + "/stats", null,
                 buildWusterHeaders(), listener, CampusMateActivityStatsData.class);
@@ -415,6 +451,11 @@ public class NewApiHelper {
         putIfNotBlank(params, "reason", reason);
         RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.CAMPUS_MATE_ACTIVITY_PREFIX + activityId + "/apply",
                 params, buildWusterHeaders(), listener, BaseData.class);
+    }
+
+    public static void cancelCampusMateApplication(int applicationId, DisposeDataListener listener) {
+        RequestCenter.putJsonRequestWithoutLegacyToken(WustApi.CAMPUS_MATE_APPLICATION_PREFIX + applicationId + "/cancle",
+                new RequestParams(), buildWusterHeaders(), listener, BaseData.class);
     }
 
     public static void getSecondHandDetail(int pid, DisposeDataListener listener) {
@@ -484,6 +525,11 @@ public class NewApiHelper {
                 buildWusterHeaders(), listener, SecondHandPageData.class);
     }
 
+    public static void deleteSecondHand(int pid, DisposeDataListener listener) {
+        RequestCenter.getWithoutToken(WustApi.SECOND_HAND_DELETE_PREFIX + pid, null,
+                buildWusterHeaders(), listener, BaseData.class);
+    }
+
     public static void getCompetitionPosts(String studentId, int status, String competitionName, int page, int pageSize,
                                            DisposeDataListener listener) {
         RequestParams params = new RequestParams();
@@ -505,6 +551,11 @@ public class NewApiHelper {
         putIfNotBlank(params, "requirement", requirement);
         putIfNotBlank(params, "contactInformation", contactInformation);
         RequestCenter.postJsonRequestWithoutLegacyToken(WustApi.COMPETITION_POST_CREATE, params, buildWusterHeaders(), listener,
+                BaseData.class);
+    }
+
+    public static void deleteCompetitionPost(int cid, DisposeDataListener listener) {
+        RequestCenter.deleteRequestWithoutLegacyToken(WustApi.COMPETITION_POST_PREFIX + cid, buildWusterHeaders(), listener,
                 BaseData.class);
     }
 

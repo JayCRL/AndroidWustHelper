@@ -159,4 +159,41 @@ public class CommonRequest {
                 .post(requestBody).build();
         return request;
     }
+
+    public static Request createPutJsonRequest(String url, RequestParams params, RequestParams headers) {
+        JsonObject jsonObject = new JsonObject();
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        if (params != null) {
+            for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+                jsonObject.addProperty(entry.getKey(), entry.getValue());
+            }
+        }
+
+        RequestBody requestBody = RequestBody.create(JSON, jsonObject.toString());
+        Headers.Builder mHeaderBuilder = new Headers.Builder();
+        if (headers != null) {
+            for (Map.Entry<String, String> entry : headers.urlParams.entrySet()) {
+                mHeaderBuilder.add(entry.getKey(), entry.getValue());
+            }
+        }
+        return new Request.Builder()
+                .url(url)
+                .headers(mHeaderBuilder.build())
+                .put(requestBody)
+                .build();
+    }
+
+    public static Request createDeleteRequest(String url, RequestParams headers) {
+        Headers.Builder mHeaderBuilder = new Headers.Builder();
+        if (headers != null) {
+            for (Map.Entry<String, String> entry : headers.urlParams.entrySet()) {
+                mHeaderBuilder.add(entry.getKey(), entry.getValue());
+            }
+        }
+        return new Request.Builder()
+                .url(url)
+                .headers(mHeaderBuilder.build())
+                .delete()
+                .build();
+    }
 }

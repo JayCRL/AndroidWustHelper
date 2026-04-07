@@ -1,6 +1,8 @@
 package com.example.wusthelper.bean.javabean.data;
 
-public class CompetitionPost {
+import java.io.Serializable;
+
+public class CompetitionPost implements Serializable {
     public int cid;
     public String studentId;
     public String competitionName;

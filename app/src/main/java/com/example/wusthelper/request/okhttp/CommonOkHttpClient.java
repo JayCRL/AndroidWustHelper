@@ -140,6 +140,26 @@ public class CommonOkHttpClient {
         return mOkHttpClient.newCall(request).execute();
     }
 
+    public static Call put(Request request, DisposeDataHandle handle) {
+        Call call = mOkHttpClient.newCall(request);
+        call.enqueue(new CommonJsonCallback(handle));
+        return call;
+    }
+
+    public static Response putExecute(Request request, DisposeDataHandle handle) throws IOException {
+        return mOkHttpClient.newCall(request).execute();
+    }
+
+    public static Call delete(Request request, DisposeDataHandle handle) {
+        Call call = mOkHttpClient.newCall(request);
+        call.enqueue(new CommonJsonCallback(handle));
+        return call;
+    }
+
+    public static Response deleteExecute(Request request, DisposeDataHandle handle) throws IOException {
+        return mOkHttpClient.newCall(request).execute();
+    }
+
     public static Call downloadFile(Request request, DisposeDataHandle handle) {
         Call call = mOkHttpClient.newCall(request);
         call.enqueue(new CommonFileCallback(handle));

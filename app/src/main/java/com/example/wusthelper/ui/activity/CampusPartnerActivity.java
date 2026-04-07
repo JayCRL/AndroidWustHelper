@@ -28,6 +28,8 @@ import java.util.List;
 
 public class CampusPartnerActivity extends BaseActivity<ActivityCampusPartnerBinding> {
 
+    private static final int REQUEST_PUBLISH = 1201;
+
     private PartnerAdapter adapter;
     private List<CampusMateActivity> allActivities = new ArrayList<>();
 
@@ -51,9 +53,18 @@ public class CampusPartnerActivity extends BaseActivity<ActivityCampusPartnerBin
 
         getBinding().rvPartner.setLayoutManager(new LinearLayoutManager(this));
         adapter = new PartnerAdapter(new ArrayList<>());
+        adapter.setOnItemClickListener((baseQuickAdapter, view, position) -> {
+            CampusMateActivity item = adapter.getItem(position);
+            if (item != null) {
+                startActivity(CampusPartnerDetailActivity.newInstance(this, item.id));
+            }
+        });
         getBinding().rvPartner.setAdapter(adapter);
 
-        getBinding().fabAdd.setOnClickListener(v -> Toast.makeText(this, "发布功能开发中...", Toast.LENGTH_SHORT).show());
+        getBinding().fabAdd.setOnClickListener(v -> startActivityForResult(CampusPartnerPublishActivity.newInstance(this), REQUEST_PUBLISH));
+        getBinding().tvMyPublish.setOnClickListener(v -> startActivity(CampusPartnerMyPublishActivity.newInstance(this)));
+        getBinding().tvProfile.setOnClickListener(v -> startActivity(CampusPartnerProfileActivity.newInstance(this)));
+        getBinding().tvNotification.setOnClickListener(v -> startActivity(CampusPartnerNotificationActivity.newInstance(this)));
 
         initFilters();
         loadData();
@@ -159,6 +170,14 @@ public class CampusPartnerActivity extends BaseActivity<ActivityCampusPartnerBin
                 runOnUiThread(() -> Toast.makeText(CampusPartnerActivity.this, "网络请求失败", Toast.LENGTH_SHORT).show());
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_PUBLISH && resultCode == RESULT_OK) {
+            loadData();
+        }
     }
 
     static class PartnerAdapter extends BaseQuickAdapter<CampusMateActivity, BaseViewHolder> {

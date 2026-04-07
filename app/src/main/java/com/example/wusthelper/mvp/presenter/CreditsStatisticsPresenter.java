@@ -101,12 +101,7 @@ public class CreditsStatisticsPresenter extends BasePresenter<CreditsStatisticsV
                         Log.e(TAG,"onSuccess");
                         CreditsData data = (CreditsData) responseObj;
                         if ("401".equals(data.getCode())) {
-                            NewApiHelper.clearLoginState();
-                            ToastUtil.show("登录已失效，请重新登录");
-                            getView().getContext().startActivity(com.example.wusthelper.ui.activity.LoginMvpActivity.newInstance(getView().getContext()));
-                            if (getView().getContext() instanceof android.app.Activity) {
-                                ((android.app.Activity) getView().getContext()).finish();
-                            }
+                            NewApiHelper.handleUnauthorized(getView().getContext(), data.getMsg());
                             return;
                         }
 

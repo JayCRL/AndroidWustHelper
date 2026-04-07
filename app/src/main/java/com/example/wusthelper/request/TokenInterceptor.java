@@ -1,5 +1,6 @@
 package com.example.wusthelper.request;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.example.wusthelper.MyApplication;
@@ -84,30 +85,46 @@ public class TokenInterceptor implements Interceptor {
         if (response.code() == HTTP_UNAUTHORIZED) {
             return true;
         }
-        // 兼容：部分后端可能返回 200 但在 body.code 里提示 401，或者 JWC cookie 失效
-        if (response.code() == 200 && response.body() != null) {
-            try {
-                String body = response.peekBody(1024 * 1024).string();
-                JSONObject jsonObject = new JSONObject(body);
-                if (jsonObject.has("code")) {
-                    int code = jsonObject.optInt("code", 0);
-                    if (code == BODY_UNAUTHORIZED) {
-                        return true;
-                    }
-                    
-                    // 当后端的 JWC cookie 失效时，可能会返回特殊的错误码（如 1）和提示信息
-                    if (code != 200 && code != 0 && code != 10000 && code != 11000) {
-                        String msg = jsonObject.optString("msg", jsonObject.optString("message", ""));
-                        if (msg != null && (msg.contains("cookie失效") || msg.contains("登录已失效") || msg.contains("请先登录") || msg.contains("未登录"))) {
-                            return true;
-                        }
-                    }
-                }
-            } catch (Exception ignore) {
-                // body 非 JSON 或解析失败：不按未授权处理
-            }
+        if (response.body() == null) {
+            return false;
         }
-        return false;
+        try {
+            String body = response.peekBody(1024 * 1024).string();
+            JSONObject jsonObject = new JSONObject(body);
+            int code = jsonObject.optInt("code", 0);
+            String msg = getUnauthorizedMessage(jsonObject);
+            if (code == BODY_UNAUTHORIZED) {
+                return true;
+            }
+            return isUnauthorizedMessage(msg);
+        } catch (Exception ignore) {
+            return false;
+        }
+    }
+
+    private String getUnauthorizedMessage(JSONObject jsonObject) {
+        String msg = jsonObject.optString("msg", "");
+        if (TextUtils.isEmpty(msg)) {
+            msg = jsonObject.optString("message", "");
+        }
+        if (TextUtils.isEmpty(msg)) {
+            msg = jsonObject.optString("data", "");
+        }
+        return msg;
+    }
+
+    private boolean isUnauthorizedMessage(String msg) {
+        if (TextUtils.isEmpty(msg)) {
+            return false;
+        }
+        return msg.contains("教务系统会话失效，请重新登录")
+                || msg.contains("教务系统会话失效")
+                || msg.contains("会话失效，请重新登录")
+                || msg.contains("会话失效")
+                || msg.contains("cookie失效")
+                || msg.contains("登录已失效")
+                || msg.contains("请先登录")
+                || msg.contains("未登录");
     }
 
     private boolean refreshToken() {

@@ -28,7 +28,6 @@ import org.greenrobot.eventbus.EventBus;
 import java.util.ArrayList;
 import java.util.List;
 
-//使用不频繁，暂时不进行重构
 public class SetCurrentWeekDialogFragment extends DialogFragment implements View.OnClickListener, WheelView.OnWheelItemSelectedListener {
 
     private WheelView weekWheelView;
@@ -97,7 +96,6 @@ public class SetCurrentWeekDialogFragment extends DialogFragment implements View
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_confirm:
-                //saveDate(selectedIndex);
                 CurrentWeekMessage currentWeekMessage = new CurrentWeekMessage(EventCode.CURRENT_WEEK,new CurrentWeekData());
                 currentWeekMessage.getData().setThisWeek(selectedIndex);
                 EventBus.getDefault().post(currentWeekMessage);
@@ -113,25 +111,11 @@ public class SetCurrentWeekDialogFragment extends DialogFragment implements View
 
     @Override
     public void onWheelItemChanged(WheelView wheelView, int position) {
-
     }
 
     @Override
     public void onWheelItemSelected(WheelView wheelView, int position) {
         selectedIndex = position + 1;
-    }
-
-    private void saveDate(int week) {
-
-        int weekday = TimeTools.getWeekday();
-        String date = TimeTools.getFormatToday();
-        SharePreferenceLab.setWeek(week);
-        SharePreferenceLab.setWeekday(weekday);
-        SharePreferenceLab.setDate(date);
-//        SharePreferenceLab.getInstance().setWeek(getActivity(), week);
-//        SharePreferenceLab.getInstance().setWeekday(getActivity(), weekday);
-//        SharePreferenceLab.getInstance().setDate(getActivity(), date);
-
     }
 
 }

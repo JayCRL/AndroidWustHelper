@@ -37,6 +37,7 @@ import com.example.wusthelper.base.activity.BaseActivity;
 import com.example.wusthelper.databinding.ActivityScanBinding;
 import com.example.wusthelper.helper.SharePreferenceLab;
 import com.example.wusthelper.utils.Base64Util;
+import com.example.wusthelper.utils.CourseShareCodec;
 import com.zhihu.matisse.Matisse;
 import com.zhihu.matisse.MimeType;
 import com.zhihu.matisse.engine.impl.GlideEngine;
@@ -116,60 +117,49 @@ public class ScanActivity extends BaseActivity<ActivityScanBinding> implements Q
 
     @Override
     public void onScanQRCodeSuccess(String result) {
+        CourseShareCodec.DecodeResult decodeResult = CourseShareCodec.decode(result);
 
-//        String content = Base64Util.decode(result);
-        String content=result.substring(3,10)+result.substring(13);
-        content=new String( Base64.decode(content, Base64.DEFAULT));
-        Log.d(TAG, "onScanQRCodeSuccess: "+content);
-
-        if (content != null) {
-            if(kind  == COURSE){
-                if (content.startsWith("kjbk")){
-                    String[] strs = content.split("\\?\\+/");
-                    if (strs.length == 5) {
-                        String studentName = strs[1];
-                        String studentId = strs[2];
-                        String token = strs[3];
-                        String semester = strs[4];
-
-                        String myStudentId = SharePreferenceLab.getInstance().getStudentId(this);
-                        if (myStudentId.equals(studentId)) {
-
-                            Toast.makeText(this, "干嘛添加自己的课程表？", Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            Intent intent = new Intent();
-                            intent.putExtra(STUDENT_NAME, studentName);
-                            intent.putExtra(STUDENT_ID, studentId);
-                            intent.putExtra(TOKEN, token);
-                            intent.putExtra(SEMESTER, semester);
-                            setResult(RESULT_OK, intent);
-                        }
-                    } else {
-                        Toast.makeText(this, "这不是合理的二维码", Toast.LENGTH_SHORT).show();
-                    }
-                    finish();
-                } else {
-                    Toast.makeText(this, "这不是合理的二维码", Toast.LENGTH_SHORT).show();
-                }
-            }else if(kind == COUNTDOWN){
+        if (kind == COURSE) {
+            if (decodeResult.type == CourseShareCodec.DecodeResult.Type.V2 && decodeResult.v2Payload != null) {
                 Intent intent = new Intent();
-                intent.putExtra("onlyId",content);
-                Log.e(TAG, "onScanQRCodeSuccess: "+content);
-                setResult(RESULT_OK,intent);
+                intent.putExtra("v2Payload", result);
+                setResult(RESULT_OK, intent);
                 finish();
+                vibrate();
+                return;
             }
-            //成功后设置震动
-            vibrate();
 
-        } else {
+            if (decodeResult.type == CourseShareCodec.DecodeResult.Type.LEGACY && decodeResult.legacyPayload != null) {
+                String myStudentId = SharePreferenceLab.getInstance().getStudentId(this);
+                if (myStudentId.equals(decodeResult.legacyPayload.studentId)) {
+                    Toast.makeText(this, "干嘛添加自己的课程表？", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent();
+                    intent.putExtra(STUDENT_NAME, decodeResult.legacyPayload.studentName);
+                    intent.putExtra(STUDENT_ID, decodeResult.legacyPayload.studentId);
+                    intent.putExtra(TOKEN, decodeResult.legacyPayload.token);
+                    intent.putExtra(SEMESTER, decodeResult.legacyPayload.semester);
+                    setResult(RESULT_OK, intent);
+                }
+                finish();
+                vibrate();
+                return;
+            }
 
             Toast.makeText(this, "这不是合理的二维码", Toast.LENGTH_SHORT).show();
-
+            return;
         }
 
-//        Log.d(TAG, content);
-
+        if (kind == COUNTDOWN) {
+            String content = result.substring(3,10)+result.substring(13);
+            content = new String(Base64.decode(content, Base64.DEFAULT));
+            Intent intent = new Intent();
+            intent.putExtra("onlyId",content);
+            Log.e(TAG, "onScanQRCodeSuccess: "+content);
+            setResult(RESULT_OK,intent);
+            finish();
+            vibrate();
+        }
     }
 
     @Override

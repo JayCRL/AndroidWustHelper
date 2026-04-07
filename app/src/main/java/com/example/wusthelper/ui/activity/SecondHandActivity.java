@@ -31,12 +31,17 @@ public class SecondHandActivity extends BaseActivity<ActivitySecondHandBinding> 
 
     private SecondHandAdapter adapter;
 
-    private String[] categories = {"全部分类", "电子商品", "生活用品", "虚拟商品", "学习用品", "跑腿服务"};
-    private String[] statuses = {"全部状态", "出售", "求购", "其它"};
+    private final String[] categories = {"全部分类", "电子商品", "生活用品", "虚拟商品", "学习用品", "跑腿服务"};
+    private final String[] statuses = {"全部状态", "出售", "求购", "其它"};
 
     private int selectedCategory = -1;
     private int selectedStatus = -1;
     private String searchText = "";
+
+    private static final int REQUEST_PUBLISH = 1001;
+    private static final int REQUEST_DETAIL = 1002;
+    private static final int REQUEST_MY_PUBLISH = 1003;
+    private static final int REQUEST_FAVORITES = 1004;
 
     public static Intent newInstance(Context context) {
         return new Intent(context, SecondHandActivity.class);
@@ -49,9 +54,17 @@ public class SecondHandActivity extends BaseActivity<ActivitySecondHandBinding> 
 
         getBinding().rvSecondHand.setLayoutManager(new LinearLayoutManager(this));
         adapter = new SecondHandAdapter(new ArrayList<>());
+        adapter.setOnItemClickListener((baseQuickAdapter, view, position) -> {
+            Commodity item = adapter.getItem(position);
+            if (item != null) {
+                startActivityForResult(SecondHandDetailActivity.newInstance(this, item.pid), REQUEST_DETAIL);
+            }
+        });
         getBinding().rvSecondHand.setAdapter(adapter);
 
-        getBinding().fabAdd.setOnClickListener(v -> Toast.makeText(this, "发布功能开发中...", Toast.LENGTH_SHORT).show());
+        getBinding().fabAdd.setOnClickListener(v -> startActivityForResult(SecondHandPublishActivity.newInstance(this), REQUEST_PUBLISH));
+        getBinding().tvMyPublish.setOnClickListener(v -> startActivityForResult(SecondHandMyPublishActivity.newInstance(this), REQUEST_MY_PUBLISH));
+        getBinding().tvMyFavorites.setOnClickListener(v -> startActivityForResult(SecondHandFavoritesActivity.newInstance(this), REQUEST_FAVORITES));
 
         initFilters();
         loadData();
@@ -128,6 +141,15 @@ public class SecondHandActivity extends BaseActivity<ActivitySecondHandBinding> 
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if ((requestCode == REQUEST_PUBLISH || requestCode == REQUEST_DETAIL || requestCode == REQUEST_MY_PUBLISH || requestCode == REQUEST_FAVORITES)
+                && resultCode == RESULT_OK) {
+            loadData();
+        }
+    }
+
     static class SecondHandAdapter extends BaseQuickAdapter<Commodity, BaseViewHolder> {
         public SecondHandAdapter(List<Commodity> data) {
             super(R.layout.item_second_hand, data);
@@ -138,6 +160,8 @@ public class SecondHandActivity extends BaseActivity<ActivitySecondHandBinding> 
             helper.setText(R.id.tv_title, item.name);
             helper.setText(R.id.tv_price, "¥ " + String.format("%.2f", item.price));
             helper.setText(R.id.tv_desc, item.introduce);
+            helper.setGone(R.id.tv_edit, false);
+            helper.setGone(R.id.tv_delete, false);
 
             String timeStr = item.date;
             if (timeStr != null && timeStr.length() > 10) {

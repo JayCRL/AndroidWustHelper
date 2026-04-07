@@ -240,7 +240,7 @@ public class CoursePageModel {
     public void saveCurrentWeek() {
         String startDateStr = ConfigHelper.getTermStartDate();
         long thisTermStartTime = -1;
-        
+
         if(startDateStr != null && !startDateStr.trim().isEmpty()){
             // 兼容：可能是旧 config 的毫秒时间戳字符串，也可能是 basic 缓存的 yyyy-MM-dd
             try {
@@ -250,44 +250,33 @@ public class CoursePageModel {
                 if (d != null) thisTermStartTime = d.getTime();
             }
         }
-        
-        // 兜底：如果获取不到开学日期，不要直接用“今天”。
-        // 此时优先使用缓存中的 dateBean（如果存在），否则才回退到当前周一。
+
+        // 兜底：如果获取不到开学日期，不要用“今天 + 当前周”覆盖稳定锚点。
+        // 此时优先保留已有缓存；若历史缓存不存在，再回退到本周周一作为最小可用锚点。
         if (thisTermStartTime <= 0) {
             DateBean existing = SharePreferenceLab.getDateBean();
             if (existing != null && existing.getDate() != null && !existing.getDate().isEmpty()) {
-                Log.d(TAG, "saveCurrentWeek: Use existing dateBean fallback");
-                return; 
+                Log.d(TAG, "saveCurrentWeek: keep existing dateBean anchor");
+                return;
             }
-            // 最后的兜底：本周周一
             Calendar c = Calendar.getInstance();
             c.setFirstDayOfWeek(Calendar.MONDAY);
             c.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
             thisTermStartTime = c.getTimeInMillis();
-            Log.d(TAG, "saveCurrentWeek: Use Monday of current week as fallback");
+            Log.d(TAG, "saveCurrentWeek: Use Monday of current week as fallback anchor");
         }
 
         String termStartDateStr = TimeTools.getDateFromTime(thisTermStartTime);
         Date termStartDate = TimeTools.getDate(termStartDateStr);
-        int weekday = TimeTools.getWeekday(termStartDate);
+        int termStartWeekday = TimeTools.getWeekday(termStartDate);
 
-        // 计算当前周数
-        String currentStr = TimeTools.getFormatToday();
-        DateBean termStartDateBean = new DateBean(termStartDateStr, 1, weekday);
-
-        int gap = TimeTools.getWeek(termStartDateBean, currentStr);
-
-        SharePreferenceLab.setWeek(gap);
-        SharePreferenceLab.setWeekday(TimeTools.getWeekday());
-        SharePreferenceLab.setDate(currentStr);
+        SharePreferenceLab.setDate(termStartDateStr);
+        SharePreferenceLab.setWeek(1);
+        SharePreferenceLab.setWeekday(termStartWeekday);
     }
 
     public void saveRealWeek(int week) {
-        int weekday = TimeTools.getWeekday();
-        String date = TimeTools.getFormatToday();
-        SharePreferenceLab.setWeek(week);
-        SharePreferenceLab.setWeekday(weekday);
-        SharePreferenceLab.setDate(date);
+        Log.d(TAG, "saveRealWeek: skip overriding date anchor, selected week=" + week);
     }
 
     public int getCourseSizeFormDB(String studentId, String realSemester) {

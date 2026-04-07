@@ -334,16 +334,50 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="5dp"
-                    app:cardBackgroundColor="#E3F2FD"
+                    app:cardBackgroundColor="#FDEBEC"
                     style="@style/mViewShadow"
                     >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="二手平台"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="14dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="二手平台"
+                                android:textColor="#D95C63"
+                                android:textStyle="bold"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="物品置换"
+                                android:textColor="#E08A90"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:layout_marginLeft="6dp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/home_second_hand_ios"
+                            android:contentDescription="二手平台" />
+                    </LinearLayout>
                 </com.meetsl.scardview.SCardView>
 
                 <com.meetsl.scardview.SCardView
@@ -353,16 +387,49 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
-                    app:cardBackgroundColor="#F3E5F5"
+                    app:cardBackgroundColor="#EEF2FF"
                     style="@style/mViewShadow"
                     >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="竞赛组队"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="14dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="竞赛组队"
+                                android:textColor="#5B6FD9"
+                                android:textStyle="bold"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="志同道合"
+                                android:textColor="#8895E8"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginLeft="6dp"
+                            android:src="@drawable/ic_home_competition"
+                            android:contentDescription="竞赛组队" />
+                    </LinearLayout>
                 </com.meetsl.scardview.SCardView>
             </LinearLayout>
 
@@ -378,16 +445,49 @@
                     android:layout_weight="1"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="5dp"
-                    app:cardBackgroundColor="#E8F5E9"
+                    app:cardBackgroundColor="#F4EBDD"
                     style="@style/mViewShadow"
                     >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="校园搭子"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="14dp"
+                        android:paddingTop="10dp"
+                        android:paddingRight="10dp"
+                        android:paddingBottom="10dp">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="校园搭子"
+                                android:textColor="#8D6547"
+                                android:textStyle="bold"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="多彩生活"
+                                android:textColor="#B08A70"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_marginLeft="6dp"
+                            android:src="@drawable/ic_home_campus_partner"
+                            android:contentDescription="校园搭子" />
+                    </LinearLayout>
                 </com.meetsl.scardview.SCardView>
 
                 <com.meetsl.scardview.SCardView
@@ -434,29 +534,19 @@
                         android:textSize="16sp"/>
                 </com.meetsl.scardview.SCardView>
 
-                <com.meetsl.scardview.SCardView
-                    android:id="@+id/card_campus_cat"
+                <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="10dp"
-                    app:cardBackgroundColor="#FFEBEE"
-                    style="@style/mViewShadow"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="校园猫"
-                        android:layout_gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="16sp"/>
-                </com.meetsl.scardview.SCardView>
+                    android:layout_marginRight="10dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingRight="12dp"
                 >
                 <TextView
                     android:layout_width="wrap_content"
@@ -466,12 +556,28 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="5dp"
-
                     android:textSize="20dp"
                     android:textStyle="bold"
                     >
 
                 </TextView>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/card_campus_cat"
+                    android:layout_width="66dp"
+                    android:layout_height="66dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="4dp"
+                    android:adjustViewBounds="true"
+                    android:clickable="true"
+                    android:contentDescription="校园猫"
+                    android:focusable="true"
+                    android:src="@drawable/home_campus_cat_ios" />
 
             </LinearLayout>
             <LinearLayout
