@@ -15,15 +15,15 @@ public class WustApi {
     public static final String BASE_API = "https://wusthelper.wustlinghang.cn/mobileapi";
 
     // 新服务直连（当网关不可达/超时时可用）
-    // 说明：这仍然是“新体系”接口，只是绕过 8088 网关直连各业务服务。
-    public static final String BASIC_SERVER_HOST_HEADER = "lyzyy.love:8082";
-    public static final String BASIC_SERVER_API = "http://8.162.1.176:8082";
+    // 说明：这仍然是”新体系”接口，只是绕过网关直连各业务服务。
+    public static final String BASIC_SERVER_HOST_HEADER = “your-domain.com:8082”;
+    public static final String BASIC_SERVER_API = “http://your-server-ip:8082”;
 
-    public static final String CHAT_SERVER_HOST_HEADER = "lyzyy.love:8096";
-    public static final String CHAT_SERVER_API = "http://8.162.1.176:8096";
-    
+    public static final String CHAT_SERVER_HOST_HEADER = “your-domain.com:8096”;
+    public static final String CHAT_SERVER_API = “http://your-server-ip:8096”;
+
     // 社区服务 API
-    public static final String COMMUNITY_BASE_API = "https://www.lyzyy.love:8081";
+    public static final String COMMUNITY_BASE_API = “https://your-domain.com:8081”;
     public static final String CAMPUS_MATE_API = COMMUNITY_BASE_API + "/CampusMate";
     public static final String COMPETITION_API = COMMUNITY_BASE_API + "/CompetitionGroup";
     public static final String SECOND_HAND_API = COMMUNITY_BASE_API + "/SecondHand";
@@ -62,7 +62,7 @@ public class WustApi {
     public static final String COMPETITION_RESPONSE_PREFIX = COMPETITION_API + "/responsePost/";
 
     // 新网关入口（聚合路由用；当前网络环境下可能不可达）
-    public static final String GATEWAY_API = "http://lyzyy.love:8088";
+    public static final String GATEWAY_API = "http://your-gateway-domain:8088";
     public static final String CAMPUS_CAT_POSTS = GATEWAY_API + "/campus-cat/api/posts";
     public static final String CAMPUS_CAT_POSTS_PREFIX = GATEWAY_API + "/campus-cat/api/posts/";
     public static final String WUST_BASIC_API = GATEWAY_API + "/wust-basic";

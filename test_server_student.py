@@ -6,11 +6,11 @@ import time
 
 
 
-# WustProject 全功能学生集成测试脚本 (生产环境)
-# 运行环境: lyzyy.love
+# WustProject 全功能学生集成测试脚本
+# 运行环境: 请配置为你的服务器地址
 
 # 配置各服务地址
-SERVER_HOST = "lyzyy.love"
+SERVER_HOST = "your-server-domain.com"
 BASE_URLS = {
     "basic": f"http://{SERVER_HOST}:8082",      # 基础服务 (鉴权/教务)
     "detail": f"http://{SERVER_HOST}:8085",     # 经验分享
@@ -19,7 +19,7 @@ BASE_URLS = {
 }
 
 # --- 用户凭据 (请替换为真实的测试学号和密码) ---
-STUDENT_UID = "202212345678"
+STUDENT_UID = "your_student_id"
 STUDENT_PWD = "your_password"
 
 class AdvancedStudentTester:

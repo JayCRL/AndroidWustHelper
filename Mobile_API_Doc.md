@@ -1,9 +1,9 @@
-z# 安卓端联调 API 文档
+# 安卓端联调 API 文档
 
-本文档仅整理**本轮已实测通过、可直接交给安卓端联调**的接口能力。
+本文档整理**可直接交给安卓端联调**的接口能力。
 
 实测环境：
-- 网关地址：`http://lyzyy.love:8088`
+- 网关地址：`http://your-gateway-domain:8088`
 - 验证脚本：`test_all_system.py`
 - 最新实测结果：
   - 学生登录成功
@@ -41,7 +41,7 @@ z# 安卓端联调 API 文档
 安卓端统一走网关：
 
 ```text
-http://lyzyy.love:8088
+http://your-gateway-domain:8088
 ```
 
 不要使用服务内部端口直连。
@@ -98,7 +98,7 @@ Authorization: Bearer <token>
 
 ```json
 {
-  "username": "202313201025",
+  "username": "your_student_id",
   "password": "your_password"
 }
 ```
@@ -440,7 +440,7 @@ GET /wust-basic/admin/common/getCalendar
 安卓端统一使用：
 
 ```text
-http://lyzyy.love:8088
+http://your-gateway-domain:8088
 ```
 
 优先联调路径：
